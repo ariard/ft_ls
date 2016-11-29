@@ -6,14 +6,14 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:55:58 by ariard            #+#    #+#             */
-/*   Updated: 2016/11/29 15:20:39 by ariard           ###   ########.fr       */
+/*   Updated: 2016/11/29 16:29:38 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <stdio.h>
 
-static void			ft_generate_option(t_option *option, char *value)
+static void		ft_generate_option1(t_option *option, char *value)
 {
 	if (*value == 'l')
 		option->l = 1;
@@ -27,6 +27,33 @@ static void			ft_generate_option(t_option *option, char *value)
 		option->r = 1;
 }
 
+static int		ft_check_option(char *string)
+{
+	char		*legal_opt;
+	int			check;
+	int			index;
+
+	legal_opt = "laRtr";
+	while (*string)
+	{
+		check = 0;
+		index = 0;
+		while (legal_opt[index])
+		{
+			if (*string == legal_opt[index])
+				check++;
+			index++;
+		}
+		if (*string == '-' && *(string - 1) == '-')
+			check++;
+		if (*string == '-' && *(string - 1) == '-' && *(string + 1))
+			return (1);
+		if (check == 0)
+			return (1);
+		string++;
+	}
+	return (0);
+}
 
 t_option		*ft_parse_option(char **argv)
 {
@@ -38,9 +65,11 @@ t_option		*ft_parse_option(char **argv)
 	option = ft_memalloc(sizeof(option));
 	while (argv[i] && argv[i][0] == '-')
 	{
-		j = 0;	
+		if (ft_check_option(&argv[i][1]))
+			return (NULL);
+		j = 1;
 		while (argv[i][j])
-			ft_generate_option(option, &argv[i][j++]);	
+			ft_generate_option1(option, &argv[i][j++]);	
 		i++;
 	}
 	return (option);

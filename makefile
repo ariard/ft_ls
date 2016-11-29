@@ -6,7 +6,7 @@
 #    By: ariard <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 13:20:33 by ariard            #+#    #+#              #
-#    Updated: 2016/11/29 15:14:23 by ariard           ###   ########.fr        #
+#    Updated: 2016/11/29 16:31:40 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,22 +36,74 @@ re: fclean all
 
 #parsing options
 
-test-multiopt:
-	@ echo "Votre LS :"
+test-opt:
+	@ echo "Test multi lines opt : "
+	@ echo " "
 	 ./ft_ls -l -a -R -t -r
-	@ echo "Ls original :"
-	@ echo "1"
-	@ echo "1"
-	@ echo "1"
-	@ echo "1"
-	@ echo "1"
-
-test-oneopt:
-	@ echo "Votre LS :"
+	@ echo "LS original :"
+	@ echo "1-1-1-1-1"
+	@ echo " "
+	@ echo "Test one line opt 1:"
+	@ echo " "
 	 ./ft_ls -latr
-	@ echo "Ls original :"
+	@ echo "LS original :"
+	@ echo "1-1-1-1"
+	@ echo " " 
+	@ echo "Test one line opt 2:"
+	@ echo " "
+	 ./ft_ls -rlta
+	@ echo "LS original :"
+	@ echo "1-1-1-1"
+	@ echo " "	
+	@ echo "Test --"
+	@ echo " "
+	 ./ft_ls --
+	@ echo "LS original :"
+	@ echo " "
+
+test-illeglopt:
+	@ echo "Test illegal options 1:"
+	@ echo " "
+	 ./ft_ls -aU
+	@ echo "LS original :"
+	@ echo "usage: ls [laRtr][- ...]"
+	@ echo " "
+	@ echo " "
+	@ echo "Test illegal options 2:"
+	@ echo " "
+	 ./ft_ls -a -U 
+	@ echo "LS original :"
+	@ echo "usage: ls [laRtr][- ...]"
+	@ echo " "
+	@ echo " "
+	@ echo "Test illegal options 3:"
+	@ echo " "
+	 ./ft_ls -a -- 
+	@ echo "LS original :"
 	@ echo "1"
-	@ echo "1"
-	@ echo "1"
-	@ echo "1"
-	@ echo "1"
+	@ echo " "
+	@ echo "Test illegal options 4:"
+	@ echo " "
+	 ./ft_ls -a --- 
+	@ echo "LS original :"
+	@ echo "usage: ls [laRtr][- ...]"
+	@ echo " "
+	@ echo " "
+	@ echo "Test illegal options 5:"
+	@ echo " "
+	 ./ft_ls -y 
+	@ echo "LS original :"
+	@ echo "usage: ls [laRtr][- ...]"
+	@ echo " "
+	@ echo " "
+	@ echo "Test illegal options 6:"
+	@ echo " "
+	 ./ft_ls -- 
+	@ echo "LS original :"
+	@ echo " "
+	@ echo " "
+	
+
+
+
+

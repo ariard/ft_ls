@@ -10,13 +10,21 @@ int				main(int argc, char **argv)
 	option = ft_memalloc(sizeof(option));
 	if (argv[1][0] == '-')
 		option = ft_parse_option(argv);
-
-	printf("%d\n", (int)option->l);
-	printf("%d\n", (int)option->a);
-	printf("%d\n", (int)option->R);
-	printf("%d\n", (int)option->t);
-	printf("%d\n", (int)option->r);
-	printf("%d\n", (int)option->U);
-
+	if (option == NULL)
+	{
+		printf("usage: ls [-laRtr][file ...]\n");
+		return (0);
+	}
+	if (option->l)
+		printf("%d-", (int)option->l);
+	if (option->a)
+		printf("%d-", (int)option->a);
+	if (option->R)
+		printf("%d-", (int)option->R);
+	if (option->t)
+		printf("%d-", (int)option->t);
+	if (option->r)
+		printf("%d-", (int)option->r);
+	printf("\n");
 	return (0);
 }
