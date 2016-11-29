@@ -15,16 +15,22 @@ int				main(int argc, char **argv)
 		printf("usage: ls [-laRtr][file ...]\n");
 		return (0);
 	}
-	if (option->l)
-		printf("%d-", (int)option->l);
+	if (option->sort)
+		printf("%c-", option->sort);
+	if (option->mode)
+		printf("%c-", option->mode);
 	if (option->a)
-		printf("%d-", (int)option->a);
+		printf("%c-", option->a);
 	if (option->R)
-		printf("%d-", (int)option->R);
-	if (option->t)
-		printf("%d-", (int)option->t);
+		printf("%c-", option->R);
 	if (option->r)
-		printf("%d-", (int)option->r);
+		printf("%c-", option->r);
+	if (option->aro)
+		printf("%c-", option->aro);
+	if (option->n)
+		printf("%c-", option->n);
+	if (option->S)
+		printf("%c-", option->S);
 	printf("\n");
 	return (0);
 }

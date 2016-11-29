@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/11/29 17:27:11 by ariard           ###   ########.fr       */
+/*   Updated: 2016/11/29 19:01:20 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,25 @@
 static void		ft_generate_option1(t_option *option, char *value)
 {
 	if (*value == 'l')
-		option->mode = 1;
+		option->mode = 'l';
 	else if (*value == 'a')
-		option->a = 1;
+		option->a = 'a';
 	else if (*value == 'R')
-		option->R = 1;
+		option->R = 'R';
 	else if (*value == 't')
-		option->sort = 1;
+		option->sort = 't';
 	else if (*value == 'r')
-		option->r = 1;
+		option->r = 'r';
+	else if (*value == 'S')
+		option->S = 'S';
+	else if (*value == '@')
+		option->aro = '@';
+	else if (*value == 'n')
+		option->n = 'n';
+	else if (*value == '1')
+		option->mode = '1';
+	else if (*value == 'u')
+		option->sort = 'u';
 }
 
 static int		ft_check_option(char *string)
@@ -33,7 +43,7 @@ static int		ft_check_option(char *string)
 	int			check;
 	int			index;
 
-	legal_opt = "laRtr";
+	legal_opt = "laRtrS@n1u";
 	while (*string)
 	{
 		check = 0;
@@ -57,9 +67,24 @@ static int		ft_check_option(char *string)
 
 static void		ft_solve_conflict(t_option *option)
 {
-	if
-}
+	static int	i;
 
+	if (!i)
+		i = 0;
+	if (option->aro)
+		i++;
+	if (option->S && option->sort)
+		option->sort = 0;
+	if (option->aro == '@' && option->mode != 'l' )
+	{
+		option->aro = 0;
+		i++;
+	}
+	if (option->mode == 'l' && i)
+		option->aro = '@';
+	if (option->n)
+		option->mode = 'l';
+}
 
 t_option		*ft_parse_option(char **argv)
 {
@@ -75,9 +100,11 @@ t_option		*ft_parse_option(char **argv)
 			return (NULL);
 		j = 1;
 		while (argv[i][j])
+		{
 			ft_generate_option1(option, &argv[i][j++]);
+			ft_solve_conflict(option);
+		}
 		i++;
 	}
-	ft_solve_conflict(option);
 	return (option);
 }

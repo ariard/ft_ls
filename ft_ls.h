@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/11/29 17:27:07 by ariard           ###   ########.fr       */
+/*   Updated: 2016/11/29 19:01:27 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct		s_option
 	char	a;
 	char	r;
 	char	sort;
+	char	S;
 	char 	G;
 	char	g;
 	char	e;

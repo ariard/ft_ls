@@ -6,7 +6,7 @@
 #    By: ariard <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 13:20:33 by ariard            #+#    #+#              #
-#    Updated: 2016/11/29 17:27:21 by ariard           ###   ########.fr        #
+#    Updated: 2016/11/29 19:01:31 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,11 @@ test-opt:
 	 ./ft_ls --
 	@ echo "LS original :"
 	@ echo " "
+	@ echo "Test pas d option"
+	@ echo " "
+	 ./ft_ls hello
+	@ echo "LS original :"
+	@ echo " "
 
 test-illeglopt:
 	@ echo "Test illegal options 1:"
@@ -103,7 +108,51 @@ test-illeglopt:
 	@ echo " "
 	@ echo " "
 	
+test-conflit:
+	@ echo "Test conflit de sort :"
+	@ echo " "
+	 ./ft_ls -ut 
+	@ echo "LS original :"
+	@ echo "0-1 "
+	@ echo " "
+	@ echo "Test activation parallele:"
+	@ echo " "
+	 ./ft_ls -n
+	@ echo "LS original :"
+	@ echo "1-1 "
+	@ echo " "
+	@ echo "Test priorite S"
+	@ echo " "
+	 ./ft_ls -St
+	@ echo "LS original :"
+	@ echo "1-0-0 "
+	@ echo "Test activation impose negatif"
+	@ echo " "
+	 ./ft_ls -@
+	@ echo "LS original :"
+	@ echo "0"
+	@ echo " "
+	@ echo "Test activation impose positif"
+	@ echo " "
+	 ./ft_ls -@l
+	@ echo "LS original :"
+	@ echo "1-1"
+	@ echo " "
+	@ echo "Test conflit de mode"
+	@ echo " "
+	 ./ft_ls -l -1
+	@ echo "LS original :"
+	@ echo "0-1 "
+	@ echo " "
+	@ echo "Test conflit de mode et activation imposee"
+	@ echo " "
+	 ./ft_ls -l@ -1 -l
+	@ echo "LS original :"
+	@ echo "1-1-0"
+	@ echo " "
 
+
+	
 
 
 

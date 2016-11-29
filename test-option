@@ -10,4 +10,5 @@ l R a t r G u f g e @ S p m h o T U 1 n F i
 		-conflit de sort et exception de S
 		-activation parallele
 		-activation imposee (static int pour avant apres)
-		-conflit de mode
+	les classes exclusives mettre la valeur asciii
+	tableau pour les caracteres non exclusifs ? oui pour gerer la reactivationc
