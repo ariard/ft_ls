@@ -11,10 +11,7 @@ int				main(int argc, char **argv)
 	if (argv[1][0] == '-')
 		option = ft_parse_option(argv);
 	if (option == NULL)
-	{
-		printf("usage: ls [-laRtr][file ...]\n");
 		return (0);
-	}
 	if (option->sort)
 		printf("%c-", option->sort);
 	if (option->mode)
