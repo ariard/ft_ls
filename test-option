@@ -1,7 +1,13 @@
 l R a t r G u f g e @ S p m h o T U 1 n F i
 
-1. tester si option lue
+
 2. tester si option illgale : -y -I
 3. tester --
-4. tester si multi options, option lue
-5. tester conflit commandes  
+4. tester conflit commandes
+ 	simuler un cas pour chaque grand conflit
+	creer fichier auxiliaire
+	creer solve pour chaque conflit
+		-conflit de sort et exception de S
+		-activation parallele
+		-activation imposee (static int pour avant apres)
+		-conflit de mode

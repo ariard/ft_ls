@@ -6,14 +6,14 @@
 #    By: ariard <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 13:20:33 by ariard            #+#    #+#              #
-#    Updated: 2016/11/29 16:31:40 by ariard           ###   ########.fr        #
+#    Updated: 2016/11/29 17:27:21 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= ft_ls
 
-SRC= main.c parsing-option.c ./Libft/ft_memalloc.c ./Libft/ft_bzero.c
-OBJ= main.o parsing-option.o ft_memalloc.o ft_bzero.o
+SRC= main.c parsing_option.c ./Libft/ft_memalloc.c ./Libft/ft_bzero.c
+OBJ= main.o parsing_option.o ft_memalloc.o ft_bzero.o
 HEADER= ft_ls.h
 FLAGS= -Wall -Wextra -Werror
 

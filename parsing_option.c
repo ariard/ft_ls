@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing-option.c                                   :+:      :+:    :+:   */
+/*   parsing_option.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/29 13:55:58 by ariard            #+#    #+#             */
-/*   Updated: 2016/11/29 16:29:38 by ariard           ###   ########.fr       */
+/*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
+/*   Updated: 2016/11/29 17:27:11 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 static void		ft_generate_option1(t_option *option, char *value)
 {
 	if (*value == 'l')
-		option->l = 1;
+		option->mode = 1;
 	else if (*value == 'a')
 		option->a = 1;
 	else if (*value == 'R')
 		option->R = 1;
 	else if (*value == 't')
-		option->t = 1;
+		option->sort = 1;
 	else if (*value == 'r')
 		option->r = 1;
 }
@@ -55,6 +55,12 @@ static int		ft_check_option(char *string)
 	return (0);
 }
 
+static void		ft_solve_conflict(t_option *option)
+{
+	if
+}
+
+
 t_option		*ft_parse_option(char **argv)
 {
 	t_option	*option;
@@ -69,8 +75,9 @@ t_option		*ft_parse_option(char **argv)
 			return (NULL);
 		j = 1;
 		while (argv[i][j])
-			ft_generate_option1(option, &argv[i][j++]);	
+			ft_generate_option1(option, &argv[i][j++]);
 		i++;
 	}
+	ft_solve_conflict(option);
 	return (option);
 }
