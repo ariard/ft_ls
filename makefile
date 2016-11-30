@@ -6,14 +6,14 @@
 #    By: ariard <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 13:20:33 by ariard            #+#    #+#              #
-#    Updated: 2016/11/29 19:22:23 by ariard           ###   ########.fr        #
+#    Updated: 2016/11/30 01:11:35 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= ft_ls
 
-SRC= main.c parsing_option.c ./Libft/ft_memalloc.c ./Libft/ft_bzero.c ./Libft/ft_putchar.c ./Libft/ft_putstr.c
-OBJ= main.o parsing_option.o ft_memalloc.o ft_bzero.o ft_putchar.o ft_putstr.o
+SRC= main.c parsing_option.c parsing_files.c ./Libft/ft_memalloc.c ./Libft/ft_bzero.c ./Libft/ft_putchar.c ./Libft/ft_putstr.c
+OBJ= main.o parsing_option.o parsing_files.o ft_memalloc.o ft_bzero.o ft_putchar.o ft_putstr.o
 HEADER= ft_ls.h
 FLAGS= -Wall -Wextra -Werror
 
@@ -149,6 +149,47 @@ test-conflit:
 	 ./ft_ls -l@ -1 -l
 	@ echo "LS original :"
 	@ echo "1-1-0"
+	@ echo " "
+
+#parsing-files
+	
+test-opt-error:
+	@ echo "->Test pas de permission"
+	@ echo " "
+	 ./ft_ls no_permission
+	@ echo "LS original :"
+	@ echo "ls : Permission Denied"
+	@ echo " "
+	@ echo " "
+	@ echo "->Test pas de fichier existant"
+	@ echo " "
+	 ./ft_ls abcedf
+	@ echo "LS original :"
+	@ echo "ls : No such file or directory"
+	@ echo " "
+	@ echo " "
+	@ echo "->Test pas un directory"
+	@ echo " "
+	 ./ft_ls no_directory
+	@ echo "LS original :"
+	@ echo "ls : Not a directory"
+	@ echo " "
+	@ echo " "
+	@ echo "->Test all directory"
+	@ echo " "
+	 ./ft_ls 
+	@ echo "LS original :"
+	@ echo "hello-bonjour-salut-aurevoir"
+	@ echo " "
+	@ echo " "
+	@ echo "->Test directory and files"
+	@ echo " "
+	 ./ft_ls hello-fichier1-bonjour-fichier2-salut-aurevoir
+	@ echo "LS original :"
+	@ echo "fichier1 : Not a directory"
+	@ echo "fichier2 : Not a directory"
+	@ echo "hello-bonjour-salut-aurevoir"
+	@ echo " "
 	@ echo " "
 
 

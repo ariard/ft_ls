@@ -1,0 +1,9 @@
+cas de a et d
+
+regarder perror et strdor pour les permissions denied
+
+a la fin de phase d affichage rappeler parsing 1 phase de balayage simple + 1 phase de tri avec nouvelle liste = reproduire main ? rendre la fonction full reutilisable avec des static et un readdir jete dans un tableau + 1 ?
+
+opendir(FLAGS) + strjoin path
+
+enlever les algos de tri, module la fonction pour la rappeler elle-meme
