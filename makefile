@@ -6,14 +6,14 @@
 #    By: ariard <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 13:20:33 by ariard            #+#    #+#              #
-#    Updated: 2016/11/30 01:11:35 by ariard           ###   ########.fr        #
+#    Updated: 2016/12/04 00:35:33 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= ft_ls
 
-SRC= main.c parsing_option.c parsing_files.c ./Libft/ft_memalloc.c ./Libft/ft_bzero.c ./Libft/ft_putchar.c ./Libft/ft_putstr.c
-OBJ= main.o parsing_option.o parsing_files.o ft_memalloc.o ft_bzero.o ft_putchar.o ft_putstr.o
+SRC= main.c parsing_option.c parsing_files.c ./Libft/ft_memalloc.c ./Libft/ft_bzero.c ./Libft/ft_putchar.c ./Libft/ft_putstr.c ./Libft/ft_strcmp.c 
+OBJ= main.o parsing_option.o parsing_files.o ft_memalloc.o ft_bzero.o ft_putchar.o ft_putstr.o ft_strcmp.o
 HEADER= ft_ls.h
 FLAGS= -Wall -Wextra -Werror
 
@@ -153,10 +153,10 @@ test-conflit:
 
 #parsing-files
 	
-test-opt-error:
+test-files-error:
 	@ echo "->Test pas de permission"
 	@ echo " "
-	 ./ft_ls no_permission
+	 ./ft_ls ../../../bocal/Desktop
 	@ echo "LS original :"
 	@ echo "ls : Permission Denied"
 	@ echo " "
@@ -170,7 +170,7 @@ test-opt-error:
 	@ echo " "
 	@ echo "->Test pas un directory"
 	@ echo " "
-	 ./ft_ls no_directory
+	 ./ft_ls fichier1;
 	@ echo "LS original :"
 	@ echo "ls : Not a directory"
 	@ echo " "
@@ -184,7 +184,7 @@ test-opt-error:
 	@ echo " "
 	@ echo "->Test directory and files"
 	@ echo " "
-	 ./ft_ls hello-fichier1-bonjour-fichier2-salut-aurevoir
+	 ./ft_ls hello fichier1 bonjour fichier2 salut aurevoir
 	@ echo "LS original :"
 	@ echo "fichier1 : Not a directory"
 	@ echo "fichier2 : Not a directory"
