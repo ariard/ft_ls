@@ -22,7 +22,7 @@ int				main(int argc, char **argv)
 		}
 		printf("\n");
 
-	}*/
+	} */
 	ft_parse_files(argc, argv, option);
 	return (0);
 }

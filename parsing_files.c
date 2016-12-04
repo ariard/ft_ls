@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 21:46:24 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/04 00:40:42 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/04 01:04:42 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,39 @@ int				ft_error_files(DIR *ds)
 	return (0);
 }
 
-t_dlist			**ft_parse_files(int argc, char **argv, t_option *option)
+t_dlist				**ft_parse_files(int argc, char **argv, t_option *option)
 {
-	DIR *ds;
+	DIR 			*ds;
+	DIR				*ds2;
+	char			**new;
+	struct dirent	*lu;
+	char			*s;
 //	t_dlist		**dir_list;
 
 	(void)option;
 	if (argc == 1)
 		printf("phase appel");
 	argv++;
+	new = argv;
 	while (*argv)
 	{
-		ds = opendir(*argv);
-		if (!(ft_error_files(ds)))
-			ft_putstr(*argv);
-//			ft_generate_dlist(dir_list, *argv, option);
+		ft_putstr(*argv);
 		argv++;
+	}
+	while (*new)
+	{
+		ds = opendir(*new);
+		while ((lu = readdir(ds)))	
+		{
+			ds2 = opendir(lu->d_name);
+				if (!(ft_error_files(ds2)))
+				{
+					s = lu->d_name;
+					main(2, &s);
+				}
+		}
+//			ft_generate_dlist(dir_list, *argv, option);
+		new++;
 	}
 	return (0);
 }
