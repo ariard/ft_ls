@@ -6,30 +6,14 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 18:19:07 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/13 18:14:07 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/13 19:10:39 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <dirent.h>
 #include <errno.h>
-#include "Lib42/includes/libft.h"
-
-void			ft_push_stack(stack **stack, void *data)
-{
-	ft_list_push_front(stack, data);
-}
-
-void			ft_pop_stack(stack **stack)
-{
-	if (stack)
-		ft_list_rem_front(stack);
-}
-
-void			*ft_peek_stack(stack **stack)
-{
-	return ((*stack)->data);
-}
+#include "Libft/includes/libft.h"
 
 int				ft_parsing_dir(char *s)
 {
@@ -37,16 +21,16 @@ int				ft_parsing_dir(char *s)
 	struct dirent		*lu;
 	char				*path;
 	char				*path2;
-	stack				**front_stack;
+	t_stack				**front_stack;
 
-	front_stack = ft_memalloc(sizeof(stack));
-	ft_push_stack(front_stack, s);
+	front_stack = ft_memalloc(sizeof(t_stack));
+	ft_stack_push(front_stack, s);
 	while (*front_stack)
 	{
 		ds = opendir((*front_stack)->data);
 		path = ft_strnew(1024);
 		path = ft_strjoin((*front_stack)->data, "/");
-		ft_pop_stack(front_stack);
+		ft_stack_pop(front_stack);
 		if (ds)
 		{
 			while ((lu = readdir(ds)))
@@ -56,7 +40,7 @@ int				ft_parsing_dir(char *s)
 				{
 					path2 = ft_strnew(1024);
 					path2 = ft_strjoin(path, lu->d_name);			
-					ft_push_stack(front_stack, path2);
+					ft_stack_push(front_stack, path2);
 				}
 			}
 			closedir(ds);

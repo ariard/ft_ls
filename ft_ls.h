@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/11 20:04:57 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/13 18:42:48 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <grp.h>
 # include <time.h>
 # include <errno.h>
+# include <stdio.h>
 
 typedef struct		s_option
 {
@@ -54,7 +55,7 @@ typedef struct		s_dir_id
 
 t_option			*ft_parse_option(char **argv);
 
-t_dlist				**ft_parse_files(int argc, char **argv, t_option *option);
+void				ft_command(int argc, char **argv, t_option *option);
 
 int					main(int argc, char **argv);
 

@@ -8,7 +8,7 @@ int				main(int argc, char **argv)
 
 	i = 0;
 	option = ft_memalloc(sizeof(option));
-/*	if (argc > 1)
+	if (argc > 1)
 	{
 		if (argv[1][0] == '-')
 			option = ft_parse_option(argv);
@@ -20,10 +20,8 @@ int				main(int argc, char **argv)
 			while (*argv && **argv == '-')
 				argv++;
 		}
-		printf("\n");
-
-	} */
-	ft_parse_files(argc, argv, option);
+	} 
+	ft_command(argc, argv, option);
 	return (0);
 }
 
