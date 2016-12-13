@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/13 18:42:48 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/13 23:29:46 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ typedef struct		s_dir_id
 	char			*modes;
 	char			*time;
 }					t_dir_id;
+
+typedef struct		s_error
+{
+	char			*name;
+	char			*message;
+}					t_error;
 
 t_option			*ft_parse_option(char **argv);
 
