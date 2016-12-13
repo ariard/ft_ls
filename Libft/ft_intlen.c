@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/02 20:54:19 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/02 14:33:15 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/11 15:27:33 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+size_t				ft_intlen(long long int d)
 {
-	t_dlist	*node;
+	int				len;
+	long long		nb;
 
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
+	len = 0;
+	nb = d;
+	if (nb < 0)
 	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
+		len++;
+		nb *= -1;
 	}
-	return (node);
+	if (nb == 0)
+		len++;
+	while (nb)
+	{
+		len++;
+		nb = nb / 10;
+	}
+	return (len);
 }

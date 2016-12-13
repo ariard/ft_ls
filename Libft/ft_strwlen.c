@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_strwlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/02 20:54:19 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/11 17:57:28 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/11 17:58:17 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+size_t		ft_strwlen(wchar_t *w)
 {
-	t_dlist	*node;
+	int		len;
 
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
-	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
-	}
-	return (node);
+	len = 0;
+	while (*w)
+		len += ft_sizewchar(*w++);
+	return (len);
 }

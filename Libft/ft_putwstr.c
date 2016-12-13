@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_putwstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/02 20:54:19 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/11 17:52:20 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/11 18:05:29 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+int			ft_putwstr(wchar_t *w)
 {
-	t_dlist	*node;
+	int		n;
 
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
+	n = 0;
+	while (*w)
 	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
+		if (*w < 128)
+			n += ft_putchar(*w++);
+		else
+			n += ft_putwchar(*w++);
 	}
-	return (node);
+	return (n);
 }

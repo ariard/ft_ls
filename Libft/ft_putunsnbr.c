@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/02 20:54:19 by ariard           ###   ########.fr       */
+/*   Created: 2016/11/04 16:24:18 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/06 18:30:36 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+void	ft_putunsnbr(unsigned long long int n)
 {
-	t_dlist	*node;
+	unsigned long long int	nb;
 
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
+	nb = n;
+	if (nb > 9)
 	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
-	return (node);
+	else
+		ft_putchar(nb + '0');
 }

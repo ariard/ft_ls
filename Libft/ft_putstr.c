@@ -6,16 +6,16 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 15:36:18 by ariard            #+#    #+#             */
-/*   Updated: 2016/11/23 16:36:34 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/09 20:24:04 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_putstr(char const *s)
+int		ft_putstr(char const *s)
 {
 	if (!s)
-		return ;
-	while (*s)
-		write(1, s++, 1);
+		return (0);
+	write(1, s, ft_strlen(s));
+	return (ft_strlen(s));
 }

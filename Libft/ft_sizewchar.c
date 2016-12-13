@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_sizewchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/02 20:54:19 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/11 17:56:09 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/11 18:05:13 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+size_t	ft_sizewchar(wchar_t w)
 {
-	t_dlist	*node;
-
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
-	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
-	}
-	return (node);
+	if (w < 128)
+		return (1);
+	else if (w < 2048)
+		return (2);
+	else if (w < 65536)
+		return (3);
+	else
+		return (4);
 }

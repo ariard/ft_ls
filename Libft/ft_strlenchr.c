@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_strlenchr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/02 20:54:19 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/01 16:10:54 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/04 14:27:35 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+size_t		ft_strlenchr(const char *s, char c)
 {
-	t_dlist	*node;
+	size_t	i;
 
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
-	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
-	}
-	return (node);
+	i = 0;
+	while (*s && *s++ != c)
+		i++;
+	return (i);
 }

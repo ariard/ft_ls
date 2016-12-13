@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_list_rem_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/02 20:54:19 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/12 20:27:09 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/12 20:28:43 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+void		ft_list_rem_front(t_dlist **begin_list)
 {
-	t_dlist	*node;
+	t_dlist		*tmp;
 
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
+	if (*begin_list)
 	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
+		tmp = (*begin_list)->next;
+		free(*begin_list);
+		*begin_list = NULL;
+		*begin_list = tmp;
 	}
-	return (node);
 }

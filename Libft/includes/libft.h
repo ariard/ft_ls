@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 19:52:29 by ariard            #+#    #+#             */
-/*   Updated: 2016/11/29 22:23:37 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/13 18:12:22 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct		s_dlist
 	void			*data;
 }					t_dlist;
 
+typedef t_dlist		t_stack;
+
 void				*ft_memset(void *b, int c, size_t len);
 
 void				ft_bzero(void *s, size_t n);
@@ -45,13 +47,21 @@ void				*ft_memchr(const void *s, int c, size_t n);
 
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 
+size_t				ft_intlen(long long int d);
+
+size_t				ft_unsintlen(unsigned long long int d);
+
 size_t				ft_strlen(const char *s);
+
+size_t				ft_strlenchr(const char *s, char c);
 
 char				*ft_strdup(const char *s1);
 
 char				*ft_strcpy(char *dst, const char *src);
 
 char				*ft_strncpy(char *dst, const char *src, size_t len);
+
+char				*ft_strchrcpy(char *dst, const char *src, char c);
 
 char				*ft_strcat(char *s1, const char *s2);
 
@@ -63,6 +73,8 @@ char				*ft_strchr(const char *s, int c);
 
 char				*ft_strrchr(const char *s, int c);
 
+void				ft_strrev(char *s);
+
 char				*ft_strstr(const char *big, const char *little);
 
 char				*ft_strnstr(const char *big, const char *little,
@@ -73,6 +85,8 @@ int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
 int					ft_atoi(const char *str);
+
+int					ft_atoi_base(char *s, size_t size_base);
 
 int					ft_isalpha(int c);
 
@@ -122,13 +136,20 @@ char				**ft_strsplit(char const *s, char c);
 
 char				*ft_itoa(int n);
 
-void				ft_putchar(char c);
+char				*ft_itoa_base(unsigned long long int nb,
+		size_t size_base, char new[]);
 
-void				ft_putstr(char const *s);
+int					ft_putchar(char c);
+
+int					ft_putstr(char const *s);
+
+int					ft_putstrn(char const *s, int n);
 
 void				ft_putendl(char const *s);
 
-void				ft_putnbr(int n);
+void				ft_putnbr(long long int n);
+
+void				ft_putunsnbr(unsigned long long n);
 
 void				ft_putchar_fd(char c, int fd);
 
@@ -172,4 +193,23 @@ t_dlist				*ft_list_find(t_dlist **begin_list, void *data_ref,
 	int (*cmp)());
 
 void				ft_list_cycle(t_dlist **begin_list);
+
+void				ft_list_rem_front(t_dlist **begin_list);
+
+int					ft_recursive_power(int nb, int power);
+
+int					ft_putwchar(wchar_t w);
+
+int					ft_putwstr(wchar_t *w);
+
+size_t				ft_sizewchar(wchar_t w);
+
+size_t				ft_strwlen(wchar_t *w);
+
+void				ft_stack_push(t_stack **stack, void *data);
+
+void				ft_stack_pop(t_stack **stack);
+
+void				*ft_stack_peek(t_stack **stack);
+
 #endif

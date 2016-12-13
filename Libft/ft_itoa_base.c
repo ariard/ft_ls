@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/02 20:54:19 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/11 16:40:49 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/11 17:45:11 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+char		*ft_itoa_base(unsigned long long int nb,
+		size_t size_base, char new[])
 {
-	t_dlist	*node;
+	char	*base;
+	int		index;
+	int		len;
 
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
+	if (!new || size_base < 2)
+		return (0);
+	ft_bzero(new, 128);
+	base = "0123456789abcdef";
+	len = 0;
+	if ((nb) == 0)
+		new[len] = '0';
+	while (nb)
 	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
+		index = nb % size_base;
+		new[len++] = base[index];
+		nb = nb / size_base;
 	}
-	return (node);
+	new[len] = 0;
+	ft_strrev(new);
+	return (new);
 }

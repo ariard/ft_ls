@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/02 20:54:19 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/04 17:10:53 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/11 17:26:44 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+void		ft_strrev(char *s)
 {
-	t_dlist	*node;
+	char	*tmp;
+	char	c;
 
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
+	tmp = s;
+	while (*tmp + 1)
+		tmp++;
+	while (s < tmp)
 	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
+		c = *s;
+		*s = *tmp;
+		*tmp = c;
+		s++;
+		tmp--;
 	}
-	return (node);
 }
