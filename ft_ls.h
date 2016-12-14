@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/14 22:58:25 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 00:13:55 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ void				ft_bubble_sort(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));
 
 void				ft_insert_sort(t_dlist **begin_list,
+		int (*cmp)(const void *key1, const void *key2));
+
+void				ft_insert_sort_arg(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));
 
 int					ft_stralphcmp(const void *s1, const void *s2);

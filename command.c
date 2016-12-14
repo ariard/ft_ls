@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/14 23:21:58 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 00:32:46 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void				ft_print_error(t_dlist **list_error)
 	t_dlist			*tmp;
 	t_error			*one_error;
 
-	ft_insert_sort(list_error, &ft_stralphcmp);
+	if (*list_error)
+		ft_insert_sort(list_error, &ft_stralphcmp);
 	tmp = *list_error;
 	while (tmp)
 	{
@@ -70,20 +71,32 @@ void				ft_command(int argc, char **argv, t_option *option)
 	char			*path2;
 	t_stack			**head;
 	t_dlist			**list_error;
+	t_dlist			**list_arg;
+	t_dlist			*tmp;
 
 	head = ft_memalloc(sizeof(t_stack));
 	list_error = ft_memalloc(sizeof(t_list));
+	list_arg = ft_memalloc(sizeof(t_list));
 	if (argc == 1 || !*argv)
 		ft_stack_push(head, ".");
 	while (*argv)
 	{
 		if (!ft_check_dir(*argv, list_error))
-			ft_stack_push(head, *argv);
+			ft_list_push_back(list_arg, *argv);
 		argv++;
 	}
 	ft_print_error(list_error);
 	free(list_error);
 	list_error = NULL;
+	ft_insert_sort_arg(list_arg, &ft_stralphcmp);
+	tmp = *list_arg;
+	while (tmp->next)
+		tmp = tmp->next;
+	while (tmp)
+	{
+		ft_stack_push(head, tmp->data);	
+		tmp = tmp->previous;
+	}
 	while (*head)
 	{
 		ds = opendir((*head)->data);
