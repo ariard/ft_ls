@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/14 00:01:55 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/14 23:21:58 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_error				*ft_set_error(char *name, char *message)
 		one_error->message = message;
 	else
 		one_error->message = 0;
+	one_error->sort = one_error->name;
 	return (one_error);
 }
 
@@ -50,6 +51,7 @@ void				ft_print_error(t_dlist **list_error)
 	t_dlist			*tmp;
 	t_error			*one_error;
 
+	ft_insert_sort(list_error, &ft_stralphcmp);
 	tmp = *list_error;
 	while (tmp)
 	{
@@ -104,10 +106,4 @@ void				ft_command(int argc, char **argv, t_option *option)
 		}
 		ft_strdel(&path);
 	}
-/*	tmp = *head;
-	while (tmp)
-	{
-		printf("%s\n", tmp->data);
-		tmp = tmp->next;
-	}*/
 }

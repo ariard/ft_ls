@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 19:52:29 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/13 18:41:40 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/14 23:54:59 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,17 @@ void				ft_list_cycle(t_dlist **begin_list);
 
 void				ft_list_rem_front(t_dlist **begin_list);
 
+void				ft_list_swap(t_dlist **begin_list, t_dlist *node1, t_dlist *node2);
+
+t_dlist				*ft_list_rem(t_dlist **begin_list, t_dlist *node);
+
+void				ft_list_ins(t_dlist **begin_list, 
+		t_dlist *node1, t_dlist *node2);
+
+void				ft_stack_pop(t_stack **stack);
+
+void				ft_stack_push(t_stack **stack, void *data);
+
 int					ft_recursive_power(int nb, int power);
 
 int					ft_putwchar(wchar_t w);
@@ -205,11 +216,5 @@ int					ft_putwstr(wchar_t *w);
 size_t				ft_sizewchar(wchar_t w);
 
 size_t				ft_strwlen(wchar_t *w);
-
-void				ft_stack_push(t_stack **stack, void *data);
-
-void				ft_stack_pop(t_stack **stack);
-
-void				*ft_stack_peek(t_stack **stack);
 
 #endif

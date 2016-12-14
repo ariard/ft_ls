@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_peek.c                                    :+:      :+:    :+:   */
+/*   ft_list_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/13 18:08:45 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/13 18:12:08 by ariard           ###   ########.fr       */
+/*   Created: 2016/12/14 15:57:22 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/14 22:48:34 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void		*ft_stack_peek(t_stack **stack)
+void		ft_list_swap(t_dlist **begin_list, t_dlist *node1, t_dlist *node2)
 {
-	return ((*stack)->data);
+	if (!node1 || !node2)
+		return ;
+	if (node2->next)
+		(node2->next)->previous = node1;
+	if (node1->previous)
+		(node1->previous)->next = node2;
+	else
+		*begin_list = node2;
+	node2->previous = node1->previous;
+	node1->next = node2->next;
+	node2->next = node1;
+	node1->previous = node2;
 }
