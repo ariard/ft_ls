@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 19:52:29 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/14 23:54:59 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 00:17:14 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct		s_dlist
 	struct s_dlist	*next;
 	struct s_dlist	*previous;
 	void			*data;
+	int				key;
 }					t_dlist;
 
 typedef t_dlist		t_stack;
@@ -216,5 +217,8 @@ int					ft_putwstr(wchar_t *w);
 size_t				ft_sizewchar(wchar_t w);
 
 size_t				ft_strwlen(wchar_t *w);
+
+void				ft_list_push_back_special(t_dlist **begin_list, void *data,
+		t_dlist *(*create)(void *));
 
 #endif

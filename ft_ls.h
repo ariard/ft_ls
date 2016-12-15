@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 21:45:51 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 00:32:43 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct		s_info
 	char			*time;
 	long int 		*pure_time;
 	char			*name;
-	void			*sort;
+	long long int 	sort;
 }					t_info;	
 
 typedef struct		s_error
@@ -78,7 +78,11 @@ void				ft_insert_sort(t_dlist **begin_list,
 void				ft_insert_sort_arg(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));
 
+void				ft_insert_sort_2(t_dlist **begin_list);
+
 t_info				*ft_get_info(char *s);
+
+t_dlist				*ft_create_info(void *data);
 
 int					ft_stralphcmp(const void *s1, const void *s2);
 

@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create-elem.c                                   :+:      :+:    :+:   */
+/*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/23 01:25:53 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 22:52:08 by ariard           ###   ########.fr       */
+/*   Created: 2016/08/23 01:42:02 by ariard            #+#    #+#             */
+/*   Updated: 2016/12/16 00:11:21 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_dlist		*ft_create_elem(void *data)
+void	ft_list_push_back_special(t_dlist **begin_list, void *data, 
+		t_dlist *(*create)(void *))
 {
 	t_dlist	*node;
+	t_dlist	*tmp;
+	t_dlist	*tmp2;
 
-	node = 0;
-	node = (t_dlist *)malloc(sizeof(t_dlist));
-	if (node != 0)
+	node = (create)(data);
+	if (node)
 	{
-		node->data = data;
-		node->next = NULL;
-		node->previous = NULL;
+		if (*begin_list)
+		{
+			tmp = *begin_list;
+			while (tmp->next)
+				tmp = tmp->next;
+			tmp2 = tmp;
+			tmp->next = node;
+			node->previous = tmp2;
+		}
+		else
+			*begin_list = node;
 	}
-	return (node);
 }

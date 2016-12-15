@@ -6,12 +6,32 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 21:54:26 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 00:32:27 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <stdio.h>
+
+t_dlist				*ft_create_info(void *data)
+{
+	t_dlist			*node;
+	t_info			*info;
+
+	node = ft_memalloc(sizeof(t_dlist));
+	if (node)
+	{
+		node->data = data;
+		node->next = NULL;
+		node->previous = NULL;
+		if (data)
+		{
+			info = data;
+			node->key = info->sort;
+		}
+	}
+	return (node);
+}
 
 char				*ft_set_type(struct stat *buf)
 {
@@ -96,6 +116,6 @@ t_info				*ft_get_info(char *s)
 	info->time = ctime(&buf->st_mtimespec.tv_sec);
 	info->pure_time = &buf->st_mtimespec.tv_sec;
 	info->name = s;
-	info->sort = info->pure_time;
+	info->sort = info->size;
 	return (info);
 }
