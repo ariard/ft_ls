@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 00:32:46 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 18:56:27 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,20 @@ void				ft_command(int argc, char **argv, t_option *option)
 		argv++;
 	}
 	ft_print_error(list_error);
-	free(list_error);
-	list_error = NULL;
-	ft_insert_sort_arg(list_arg, &ft_stralphcmp);
+	if (*list_arg)
+		ft_insert_sort_arg(list_arg, &ft_stralphcmp);
 	tmp = *list_arg;
-	while (tmp->next)
-		tmp = tmp->next;
+	if (tmp)
+		while (tmp->next)
+			tmp = tmp->next;
 	while (tmp)
 	{
-		ft_stack_push(head, tmp->data);	
+		ft_stack_push(head, tmp->data);
 		tmp = tmp->previous;
 	}
 	while (*head)
 	{
 		ds = opendir((*head)->data);
-		path = ft_strnew(1024);
 		path = ft_strjoin((*head)->data, "/");
 		ft_stack_pop(head);
 		if (ds)
@@ -110,7 +109,6 @@ void				ft_command(int argc, char **argv, t_option *option)
 				printf("%s\n", lu->d_name);
 				if (lu->d_type == DT_DIR && lu->d_name[0] != '.' && option->R) 
 				{
-					path2 = ft_strnew(1024);
 					path2 = ft_strjoin(path, lu->d_name);
 					ft_stack_push(head, path2);
 				}

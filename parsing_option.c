@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/13 23:27:22 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 16:42:52 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,12 @@ static void		ft_solve_conflict(t_option *option)
 		option->mode = 'l';
 }
 
-t_option		*ft_parse_option(char **argv)
+t_option		*ft_parse_option(char **argv, t_option *option)
 {
-	t_option	*option;
 	int			i;
 	int			j;
 
 	i = 1;
-	option = ft_memalloc(sizeof(option));
 	while (argv[i] && argv[i][0] == '-')
 	{
 		if (ft_check_option(&argv[i][1]))

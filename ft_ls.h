@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 00:13:55 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 16:42:17 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct		s_error
 	void			*sort;
 }					t_error;
 
-t_option			*ft_parse_option(char **argv);
+t_option			*ft_parse_option(char **argv, t_option *option);
 
 void				ft_command(int argc, char **argv, t_option *option);
 

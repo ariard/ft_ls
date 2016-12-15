@@ -6,7 +6,7 @@
 #    By: ariard <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 13:20:33 by ariard            #+#    #+#              #
-#    Updated: 2016/12/14 22:49:21 by ariard           ###   ########.fr        #
+#    Updated: 2016/12/15 17:09:55 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC= main.c parsing_option.c command.c sort.c ./Libft/ft_memalloc.c ./Libft/ft_b
 
 OBJ= main.o parsing_option.o command.o sort.o ft_memalloc.o ft_bzero.o ft_putchar.o ft_putstr.o ft_strcmp.o ft_stack_push.o ft_list_push_front.o ft_create_elem.o ft_strlen.o ft_strdel.o ft_stack_pop.o ft_strjoin.o ft_strnew.o ft_list_rem_front.o ft_strcat.o ft_strcpy.o ft_memcpy.o ft_list_push_back.o ft_list_clear.o ft_memdel.o ft_list_ins.o ft_list_rem.o ft_list_swap.o
 HEADER= ft_ls.h
-FLAGS= -Wall -Wextra -Werror
+FLAGS= -g #-Wall -Wextra -Werror
 
 all : $(NAME)
 
