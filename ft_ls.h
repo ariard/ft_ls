@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 16:42:17 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 19:21:39 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ t_option			*ft_parse_option(char **argv, t_option *option);
 
 void				ft_command(int argc, char **argv, t_option *option);
 
-void				ft_bubble_sort(t_dlist **begin_list,
-		int (*cmp)(const void *key1, const void *key2));
+void				ft_read_dir(t_option *option, t_stack **head);
 
 void				ft_insert_sort(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));

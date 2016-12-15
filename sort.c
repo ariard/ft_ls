@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 16:04:40 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 18:26:33 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 19:20:39 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,6 @@ int			ft_stralphcmp(const void *s1, const void *s2)
 		}
 	}
 	return (0);
-}
-
-void		ft_bubble_sort(t_dlist **begin_list, 
-		int (*cmp)(const void *key1, const void *key2))
-{
-	t_dlist		*tmp;
-	t_error		*one_error;
-	t_error		*one_error2;
-
-	tmp = *begin_list;
-	while (tmp->next)
-	{
-		one_error = tmp->data;
-		one_error2 = (tmp->next)->data;
-		if ((cmp)(one_error->sort, one_error2->sort) < 0)
-		{
-			ft_list_swap(begin_list, tmp, tmp->next);
-			tmp = *begin_list;
-		}
-		else
-			tmp = tmp->next;
-	}
 }
 
 void		ft_insert_sort(t_dlist **begin_list, 

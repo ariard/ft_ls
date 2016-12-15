@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 18:56:27 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 19:20:16 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,37 @@ void				ft_print_error(t_dlist **list_error)
 	ft_list_clear(list_error);
 }
 
-void				ft_command(int argc, char **argv, t_option *option)
+void		ft_print_all(t_option *option, t_stack **head)
 {
 	DIR				*ds;
 	struct dirent	*lu;
 	char			*path;
 	char			*path2;
+
+	while (*head)
+	{
+		ds = opendir((*head)->data);
+		path = ft_strjoin((*head)->data, "/");
+		ft_stack_pop(head);
+		if (ds)
+		{
+			while ((lu = readdir(ds)))
+			{
+				printf("%s\n", lu->d_name);
+				if (lu->d_type == DT_DIR && lu->d_name[0] != '.' && option->R) 
+				{
+					path2 = ft_strjoin(path, lu->d_name);
+					ft_stack_push(head, path2);
+				}
+			}
+			closedir(ds);
+		}
+		ft_strdel(&path);
+	}
+}
+
+void				ft_command(int argc, char **argv, t_option *option)
+{
 	t_stack			**head;
 	t_dlist			**list_error;
 	t_dlist			**list_arg;
@@ -97,24 +122,5 @@ void				ft_command(int argc, char **argv, t_option *option)
 		ft_stack_push(head, tmp->data);
 		tmp = tmp->previous;
 	}
-	while (*head)
-	{
-		ds = opendir((*head)->data);
-		path = ft_strjoin((*head)->data, "/");
-		ft_stack_pop(head);
-		if (ds)
-		{
-			while ((lu = readdir(ds)))
-			{
-				printf("%s\n", lu->d_name);
-				if (lu->d_type == DT_DIR && lu->d_name[0] != '.' && option->R) 
-				{
-					path2 = ft_strjoin(path, lu->d_name);
-					ft_stack_push(head, path2);
-				}
-			}
-			closedir(ds);
-		}
-		ft_strdel(&path);
-	}
+	ft_read_dir(option, head);
 }
