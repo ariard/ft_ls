@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 19:21:39 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 21:45:51 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,19 @@ typedef struct		s_option
 	char	i;
 }					t_option;	
 
-typedef struct		s_dir_id
+typedef struct		s_info
 {
-	char			*name;
+	char			*perm;
 	char			type;
-	char			*modes;
+	unsigned int	link;
+	char			*owner;
+	char			*team;
+	long long int	size;
 	char			*time;
-}					t_dir_id;
+	long int 		*pure_time;
+	char			*name;
+	void			*sort;
+}					t_info;	
 
 typedef struct		s_error
 {
@@ -71,6 +77,8 @@ void				ft_insert_sort(t_dlist **begin_list,
 
 void				ft_insert_sort_arg(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));
+
+t_info				*ft_get_info(char *s);
 
 int					ft_stralphcmp(const void *s1, const void *s2);
 

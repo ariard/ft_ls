@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/15 20:11:13 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/15 21:47:12 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,17 @@ void				ft_read_files(t_option *option, t_stack **head, DIR *ds,
 	struct dirent	*lu;
 	t_dlist			**list_files;
 	t_dlist			*tmp;
+	t_info			*info;
 
 	list_files = ft_memalloc(sizeof(t_list));
 	printf("\n%s:\n", path);
 	while ((lu = readdir(ds)))
-		ft_list_push_back(list_files, lu->d_name);
+	{
+		info = ft_get_info(lu->d_name);
+		printf("%s %u %s %s %lld %s %s\n", info->perm, info->link, 
+				info->owner, info->team, info->size, info->time, info->name);
+	}
+/*		ft_list_push_back(list_files, ft_get_info(lu->d_name));
 	if (*list_files)
 		ft_insert_sort_arg(list_files, &ft_stralphcmp);
 	tmp = *list_files;
@@ -34,11 +40,11 @@ void				ft_read_files(t_option *option, t_stack **head, DIR *ds,
 		tmp = tmp->next;
 	}
 
-//	if (lu->d_type == DT_DIR && lu->d_name[0] != '.' && option->R)
-//	
-//			path2 = ft_strjoin(path, lu->d_name);
-//			ft_stack_push(head, path2);
-//	}
+	if (lu->d_type == DT_DIR && lu->d_name[0] != '.' && option->R)
+	
+			path2 = ft_strjoin(path, lu->d_name);
+			ft_stack_push(head, path2);
+	}*/
 
 }
 
