@@ -6,32 +6,49 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 16:04:40 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 16:51:10 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 21:48:37 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int			ft_stralphcmp(const void *s1, const void *s2)
+void		ft_sort_ascii(t_dlist **begin_list)
 {
-	const char	*str1;
-	const char	*str2;
+	t_dlist	*tmp;
+	t_dlist	*first;
+	t_dlist	*second;
 
-	str1 = s1;
-	str2 = s2;
-	while (*str1 || *str2)
+	tmp = *begin_list;
+	while (tmp->next)
 	{
-		if (*str1 > *str2)
-			return (-1);
-		if (*str1 < *str2)
-			return (1);
-		if (*str1 == *str2)
+		first = tmp;
+		second = tmp->next;
+		while (*(first->name) || *(second->name))
 		{
-			str1++;
-			str2++;
+			if (*(first->name) < *(second->name) && first->key == second->key)
+			{
+				ft_list_swap(begin_list, first, second);
+				tmp = *begin_list;
+				break;
+			}
+
+
+
+
+			}
+
+			{
+				tmp = tmp->next;
+				break;
+			}
+			if (*(first->name) == *(second->name))
+			{
+				(first->name)++;
+				(second->name)++;
+			}
 		}
+		tmp = tmp->next;
 	}
-	return (0);
 }
 
 void		ft_insert_sort_2(t_dlist **begin_list)

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 19:52:29 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 00:53:22 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 21:39:43 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct		s_dlist
 	struct s_dlist	*next;
 	struct s_dlist	*previous;
 	void			*data;
-	int				key;
+	long long int	key;
+	char			*name;
 }					t_dlist;
 
 typedef t_dlist		t_stack;

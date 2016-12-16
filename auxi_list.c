@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 15:49:10 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 17:32:52 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 21:24:36 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_dlist				*ft_create_error(void *data)
 		{
 			error = data;
 			node->key = error->sort;
+			node->name = error->name;
 		}
 	}
 	return (node);

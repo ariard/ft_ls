@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 16:56:17 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 21:23:32 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_dlist				*ft_create_info(void *data)
 		{
 			info = data;
 			node->key = info->sort;
+			node->name = info->name;
 		}
 	}
 	return (node);
@@ -95,13 +96,13 @@ char				*ft_set_perm(struct stat *buf)
 	return (ft_set_end_perm(buf, perm));
 }
 
-t_info				*ft_get_info(char *s)
+t_info				*ft_get_info(char *s, t_option *option)
 {
 	struct stat		*buf;
 	struct passwd	*uid;
 	struct group	*gid;
 	t_info			*info;
-	
+
 	buf = ft_memalloc(sizeof(struct stat));
 	stat(s, buf);
 	uid = getpwuid(buf->st_uid);
@@ -117,5 +118,9 @@ t_info				*ft_get_info(char *s)
 	info->pure_time = &buf->st_mtimespec.tv_sec;
 	info->name = s;
 	info->sort = ft_strlen(info->name);;
+	if (option->sort == 't')
+		info->sort = ft_gen_time(info->pure_time);
+	if (option->S == 'S')
+		info->sort = info->size;
 	return (info);
 }
