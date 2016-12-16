@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 16:51:45 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 18:05:57 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_error				*ft_set_error(char *name, char *message)
 	return (one_error);
 }
 
-int					ft_check_dir(char *argv, t_dlist **list_error)
+int					ft_check_dir(char *argv, t_dlist **list_error, t_option *option)
 {
 	DIR				*ds;
 	char			*s;
@@ -38,7 +38,7 @@ int					ft_check_dir(char *argv, t_dlist **list_error)
 	if (ds == NULL)
 	{
 		s = strerror(errno);
-		if (ft_strcmp(s, "Not a directory") == 0)
+		if (ft_strcmp(s, "Not a directory") == 0 && !option->R)
 			return (0);
 		ft_list_push_back_special(list_error,
 				ft_set_error(argv, s), &ft_create_error);
@@ -49,7 +49,7 @@ int					ft_check_dir(char *argv, t_dlist **list_error)
 	return (0);
 }
 
-void				ft_print_error(t_dlist **list_error)
+void				ft_print_error(t_dlist **list_error) 
 {
 	t_dlist			*tmp;
 	t_error			*error;
@@ -64,6 +64,19 @@ void				ft_print_error(t_dlist **list_error)
 		tmp = tmp->next;
 	}
 	ft_list_clear(list_error);
+}
+
+void			ft_print_one_error(t_dlist **list_error)
+{
+	t_error		*error;
+
+	if (*list_error)
+	{
+		error = (*list_error)->data;
+		printf("ls: %s: %s\n", error->name, error->message);
+		free(*list_error);
+		*list_error = NULL;
+	}
 }
 
 void				ft_command(int argc, char **argv, t_option *option)
@@ -81,7 +94,7 @@ void				ft_command(int argc, char **argv, t_option *option)
 		ft_list_push_back_special(head, ft_get_info("."), &ft_create_info);
 	while (*argv)
 	{
-		if (!ft_check_dir(*argv, list_error))
+		if (!ft_check_dir(*argv, list_error, option))
 			ft_list_push_back_special(list_arg, 
 				ft_get_info(*argv), &ft_create_info);
 		argv++;

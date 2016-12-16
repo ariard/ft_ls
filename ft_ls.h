@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 16:48:51 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 18:05:06 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,14 @@ void				ft_insert_sort_2(t_dlist **begin_list);
 t_info				*ft_get_info(char *s);
 
 t_info				*ft_get_no_info(char *s);
+
+t_error				*ft_set_error(char *name, char *message);
+
+int					ft_check_dir(char *argv, t_dlist **list_error, t_option *option);
+
+void				ft_print_error(t_dlist **list_error);
+
+void				ft_print_one_error(t_dlist **list_error);
 
 t_dlist				*ft_create_info(void *data);
 
