@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 00:32:27 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 14:15:54 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ char				*ft_set_type(struct stat *buf)
 	char			*c;
 
 	c = "0";
-	if ((S_ISDIR(buf->st_mode)) ? 'd' : '-')
+	if (((S_ISDIR(buf->st_mode)) ? 'd' : '-') == 'd')
 		c = "d";
-	else if ((S_ISREG(buf->st_mode)) ? '-' : 'd')
+	else if (((S_ISREG(buf->st_mode)) ? '-' : 'd') == '-')
 		c = "-";
 	return (c);
 }

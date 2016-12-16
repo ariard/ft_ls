@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 00:18:06 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 14:33:03 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void				ft_command(int argc, char **argv, t_option *option)
 	list_error = ft_memalloc(sizeof(t_list));
 	list_arg = ft_memalloc(sizeof(t_list));
 	if (argc == 1 || !*argv)
-		ft_stack_push(head, ".");
+		ft_list_push_back_special(head, ft_get_info("."), &ft_create_info);
 	while (*argv)
 	{
 		if (!ft_check_dir(*argv, list_error))
