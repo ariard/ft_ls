@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 14:33:03 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 16:51:45 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_error				*ft_set_error(char *name, char *message)
 		one_error->message = message;
 	else
 		one_error->message = 0;
-	one_error->sort = one_error->name;
+	one_error->sort = ft_strlen(one_error->name);
 	return (one_error);
 }
 
@@ -40,24 +40,27 @@ int					ft_check_dir(char *argv, t_dlist **list_error)
 		s = strerror(errno);
 		if (ft_strcmp(s, "Not a directory") == 0)
 			return (0);
-		ft_list_push_back(list_error, ft_set_error(argv, s));
+		ft_list_push_back_special(list_error,
+				ft_set_error(argv, s), &ft_create_error);
 		return (1);
 	}
+	else
+		closedir(ds);
 	return (0);
 }
 
 void				ft_print_error(t_dlist **list_error)
 {
 	t_dlist			*tmp;
-	t_error			*one_error;
+	t_error			*error;
 
 	if (*list_error)
-		ft_insert_sort(list_error, &ft_stralphcmp);
+		ft_insert_sort_2(list_error);
 	tmp = *list_error;
 	while (tmp)
 	{
-		one_error = tmp->data;
-		printf("ls: %s: %s\n", one_error->name, one_error->message);
+		error = tmp->data;
+		printf("ls: %s: %s\n", error->name, error->message);
 		tmp = tmp->next;
 	}
 	ft_list_clear(list_error);
@@ -69,6 +72,7 @@ void				ft_command(int argc, char **argv, t_option *option)
 	t_dlist			**list_error;
 	t_dlist			**list_arg;
 	t_dlist			*tmp;
+	char			**tmp2;
 
 	head = ft_memalloc(sizeof(t_stack));
 	list_error = ft_memalloc(sizeof(t_list));
@@ -78,12 +82,14 @@ void				ft_command(int argc, char **argv, t_option *option)
 	while (*argv)
 	{
 		if (!ft_check_dir(*argv, list_error))
-			ft_list_push_back(list_arg, *argv);
+			ft_list_push_back_special(list_arg, 
+				ft_get_info(*argv), &ft_create_info);
 		argv++;
 	}
-	ft_print_error(list_error);
+	if (*list_error)
+		ft_print_error(list_error);
 	if (*list_arg)
-		ft_insert_sort_arg(list_arg, &ft_stralphcmp);
+		ft_insert_sort_2(list_arg);
 	tmp = *list_arg;
 	if (tmp)
 		while (tmp->next)

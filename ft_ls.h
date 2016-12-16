@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 14:23:32 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 16:48:51 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct		s_error
 {
 	char			*name;
 	char			*message;
-	void			*sort;
+	long long int	sort;
 }					t_error;
 
 t_option			*ft_parse_option(char **argv, t_option *option);
@@ -82,7 +82,11 @@ void				ft_insert_sort_2(t_dlist **begin_list);
 
 t_info				*ft_get_info(char *s);
 
+t_info				*ft_get_no_info(char *s);
+
 t_dlist				*ft_create_info(void *data);
+
+t_dlist				*ft_create_error(void *data);
 
 int					ft_stralphcmp(const void *s1, const void *s2);
 

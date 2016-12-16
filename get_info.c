@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 14:15:54 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/16 16:39:09 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,6 @@ t_info				*ft_get_info(char *s)
 	info->time = ctime(&buf->st_mtimespec.tv_sec);
 	info->pure_time = &buf->st_mtimespec.tv_sec;
 	info->name = s;
-	info->sort = info->size;
+	info->sort = ft_strlen(info->name);;
 	return (info);
 }
