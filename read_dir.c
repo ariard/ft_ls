@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/17 16:54:52 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/17 18:13:05 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ void				ft_read_files(t_option *option, t_stack **head, DIR *ds,
 		ft_insert_sort_2(list_files);
 //		ft_sort_ascii(list_files);
 	}
-//	if (option->r || option->S)
-//		ft_list_reverse(list_files);
+	if (option->r || option->S)
+		if (*list_files)
+			ft_list_reverse(list_files);
 	tmp = *list_files;
 	while (tmp)
 	{
