@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 21:49:51 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/17 18:28:55 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,6 @@ void				ft_read_dir(t_option *option, t_stack **head);
 void				ft_insert_sort(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));
 
-void				ft_insert_sort_arg(t_dlist **begin_list,
-		int (*cmp)(const void *key1, const void *key2));
-
 void				ft_insert_sort_2(t_dlist **begin_list);
 
 t_info				*ft_get_info(char *s, t_option *option);
@@ -99,7 +96,5 @@ int					ft_stralphcmp(const void *s1, const void *s2);
 int					main(int argc, char **argv);
 
 long long int		ft_gen_time(long int *time);
-
-void				ft_sort_ascii(t_dlist **begin_list);
 
 #endif
