@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/17 18:36:05 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/17 19:53:10 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void				ft_read_files(t_option *option, t_stack **head, DIR *ds,
 	list_error = ft_memalloc(sizeof(t_error));
 	printf("\n%s:\n", path);
 	while ((lu = readdir(ds)))
-	{
+	{	
 		if (lu->d_name[0] != '.')
 		{
 			path2 = ft_strjoin(path, lu->d_name);
@@ -61,9 +61,9 @@ void				ft_read_files(t_option *option, t_stack **head, DIR *ds,
 	{
 		info = tmp->data;
 		printf("%s\n", info->name);	
-		if (info->type == 'd' && option->R)
-		{
-			if (ft_check_dir(info->name, list_error, option))
+		if (info->type == 'd' && option->R) 
+		{	
+			if (ft_check_dir(info->path, list_error, option))
 			{
 				printf("\n");
 				ft_print_one_error(list_error);
@@ -84,8 +84,8 @@ void				ft_read_dir(t_option *option, t_stack **head)
 	while (*head)
 	{
 		info = (*head)->data;
-		ds = opendir(info->name);
-		path = ft_strjoin(info->name, "/");
+		ds = opendir(info->path);
+		path = ft_strjoin(info->path, "/");
 		ft_stack_pop(head);
 		if (ds) 
 		{

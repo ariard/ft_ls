@@ -6,15 +6,15 @@
 #    By: ariard <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 13:20:33 by ariard            #+#    #+#              #
-#    Updated: 2016/12/17 16:42:21 by ariard           ###   ########.fr        #
+#    Updated: 2016/12/17 19:55:24 by ariard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= ft_ls
 
-SRC= main.c parsing_option.c command.c sort.c read_dir.c get_info.c auxi_list.c auxi_key.c ./Libft/ft_memalloc.c ./Libft/ft_bzero.c ./Libft/ft_putchar.c ./Libft/ft_putstr.c ./Libft/ft_strcmp.c ./Libft/ft_stack_push.c ./Libft/ft_list_push_front.c ./Libft/ft_create_elem.c ./Libft/ft_strlen.c ./Libft/ft_strdel.c ./Libft/ft_stack_pop.c ./Libft/ft_strjoin.c ./Libft/ft_strnew.c ./Libft/ft_list_rem_front.c ./Libft/ft_strcat.c ./Libft/ft_strcpy.c ./Libft/ft_memcpy.c ./Libft/ft_list_push_back.c ./Libft/ft_list_clear.c ./Libft/ft_memdel.c ./Libft/ft_list_ins.c ./Libft/ft_list_rem.c ./Libft/ft_list_swap.c ./Libft/ft_list_push_back_special.c ./Libft/ft_list_reverse.c
+SRC= main.c parsing_option.c command.c sort.c read_dir.c get_info.c auxi_list.c auxi_key.c ./Libft/ft_memalloc.c ./Libft/ft_bzero.c ./Libft/ft_putchar.c ./Libft/ft_putstr.c ./Libft/ft_strcmp.c ./Libft/ft_stack_push.c ./Libft/ft_list_push_front.c ./Libft/ft_create_elem.c ./Libft/ft_strlen.c ./Libft/ft_strdel.c ./Libft/ft_stack_pop.c ./Libft/ft_strjoin.c ./Libft/ft_strnew.c ./Libft/ft_list_rem_front.c ./Libft/ft_strcat.c ./Libft/ft_strcpy.c ./Libft/ft_memcpy.c ./Libft/ft_list_push_back.c ./Libft/ft_list_clear.c ./Libft/ft_memdel.c ./Libft/ft_list_ins.c ./Libft/ft_list_rem.c ./Libft/ft_list_swap.c ./Libft/ft_list_push_back_special.c ./Libft/ft_list_reverse.c ./Libft/ft_strrchr.c
 
-OBJ= main.o parsing_option.o command.o sort.o read_dir.o get_info.o auxi_list.o auxi_key.o ft_memalloc.o ft_bzero.o ft_putchar.o ft_putstr.o ft_strcmp.o ft_stack_push.o ft_list_push_front.o ft_create_elem.o ft_strlen.o ft_strdel.o ft_stack_pop.o ft_strjoin.o ft_strnew.o ft_list_rem_front.o ft_strcat.o ft_strcpy.o ft_memcpy.o ft_list_push_back.o ft_list_clear.o ft_memdel.o ft_list_ins.o ft_list_rem.o ft_list_swap.o ./ft_list_push_back_special.o ft_list_reverse.o
+OBJ= main.o parsing_option.o command.o sort.o read_dir.o get_info.o auxi_list.o auxi_key.o ft_memalloc.o ft_bzero.o ft_putchar.o ft_putstr.o ft_strcmp.o ft_stack_push.o ft_list_push_front.o ft_create_elem.o ft_strlen.o ft_strdel.o ft_stack_pop.o ft_strjoin.o ft_strnew.o ft_list_rem_front.o ft_strcat.o ft_strcpy.o ft_memcpy.o ft_list_push_back.o ft_list_clear.o ft_memdel.o ft_list_ins.o ft_list_rem.o ft_list_swap.o ./ft_list_push_back_special.o ft_list_reverse.o ft_strrchr.o
 
 HEADER= ft_ls.h
 FLAGS= -g #-Wall -Wextra -Werror
