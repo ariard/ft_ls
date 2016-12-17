@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 21:23:32 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/17 16:41:13 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_info				*ft_get_info(char *s, t_option *option)
 	t_info			*info;
 
 	buf = ft_memalloc(sizeof(struct stat));
-	stat(s, buf);
+	lstat(s, buf);
 	uid = getpwuid(buf->st_uid);
 	gid = getgrgid(buf->st_gid);
 	info = ft_memalloc(sizeof(t_info));

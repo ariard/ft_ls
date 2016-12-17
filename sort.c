@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 16:04:40 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 21:48:37 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/17 16:49:51 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		ft_sort_ascii(t_dlist **begin_list)
+/*void		ft_sort_ascii(t_dlist **begin_list)
 {
 	t_dlist	*tmp;
 	t_dlist	*first;
@@ -49,7 +49,7 @@ void		ft_sort_ascii(t_dlist **begin_list)
 		}
 		tmp = tmp->next;
 	}
-}
+}*/
 
 void		ft_insert_sort_2(t_dlist **begin_list)
 {
@@ -60,13 +60,13 @@ void		ft_insert_sort_2(t_dlist **begin_list)
 	tmp = *begin_list;
 	while (tmp->next)
 	{
-		if (tmp->key > (tmp->next)->key)
+		if (tmp->key < (tmp->next)->key)
 		{
 			to_sort = ft_list_rem(begin_list, tmp->next);
 			tmp2 = *begin_list;
 			while (tmp2)
 			{	
-				if (tmp2->key > to_sort->key)
+				if (tmp2->key < to_sort->key)
 				{
 					ft_list_ins(begin_list, tmp2, to_sort);
 					break;
