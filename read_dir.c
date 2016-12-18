@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/17 19:53:10 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 15:34:38 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,41 +27,29 @@ int					ft_no_parent(char *s)
 	return (i);
 }
 
-void				ft_read_files(t_option *option, t_stack **head, DIR *ds,
-		char *path)
-{
-	char			*path2;
-	struct dirent	*lu;
-	t_dlist			**list_files;
-	t_dlist			*tmp;
-	t_dlist			**list_error;	
-	t_info			*info;
-
-	list_files = ft_memalloc(sizeof(t_list));
-	list_error = ft_memalloc(sizeof(t_error));
-	printf("\n%s:\n", path);
-	while ((lu = readdir(ds)))
-	{	
-		if (lu->d_name[0] != '.')
-		{
-			path2 = ft_strjoin(path, lu->d_name);
-			ft_list_push_back_special(list_files, 
-				ft_get_info(path2, option), &ft_create_info);
-		}
-	}
-	if (*list_files)
-		ft_insert_sort(list_files, &ft_stralphcmp);
+void				ft_sort(t_option *option, t_dlist **list_files)
+{	
 	if (*list_files && (option->sort || option->S))
 		ft_insert_sort_2(list_files);
 	if (option->r || option->S)
 		if (*list_files)
 			ft_list_reverse(list_files);
+}
+
+void				ft_push_dir(t_option *option, t_stack **head, 
+		t_dlist **list_files)
+{	
+	t_dlist			*tmp;
+	t_dlist			**list_error;	
+	t_info			*info;
+
+	list_error = ft_memalloc(sizeof(t_error));
 	tmp = *list_files;
 	while (tmp)
 	{
 		info = tmp->data;
-		printf("%s\n", info->name);	
-		if (info->type == 'd' && option->R) 
+		printf("%s\n", info->name);
+		if (info->perm[0] == 'd' && option->R) 
 		{	
 			if (ft_check_dir(info->path, list_error, option))
 			{
@@ -75,7 +63,32 @@ void				ft_read_files(t_option *option, t_stack **head, DIR *ds,
 	}
 }
 
-void				ft_read_dir(t_option *option, t_stack **head)
+void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
+		char *path)
+{
+	char			*path2;
+	struct dirent	*lu;
+	t_dlist			**list_files;
+
+	list_files = ft_memalloc(sizeof(t_list));
+	printf("\n%s:\n", path);
+	while ((lu = readdir(ds)))
+	{
+		if (lu->d_name[0] != '.')
+		{	
+			path2 = ft_strjoin(path, lu->d_name);
+			ft_list_push_back_special(list_files, 
+				ft_get_info(path2, option), &ft_create_info);
+		}
+	}
+	if (*list_files)
+		ft_insert_sort(list_files, &ft_stralphcmp);
+	if (option->sort || option->S || option->r)
+		ft_sort(option, list_files);
+	ft_push_dir(option, head, list_files);
+}
+
+void				ft_scroll_dir(t_option *option, t_stack **head)
 {
 	DIR				*ds;
 	char			*path;
@@ -89,7 +102,7 @@ void				ft_read_dir(t_option *option, t_stack **head)
 		ft_stack_pop(head);
 		if (ds) 
 		{
-			ft_read_files(option, head, ds, path);
+			ft_read_dir(option, head, ds, path);
 			closedir(ds);
 		}
 		ft_strdel(&path);

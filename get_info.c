@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/17 19:51:55 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 14:59:45 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ t_info				*ft_get_info(char *s, t_option *option)
 	gid = getgrgid(buf->st_gid);
 	info = ft_memalloc(sizeof(t_info));
 	info->perm = ft_set_perm(buf);
-	info->type = info->perm[0];
 	info->link = buf->st_nlink;
 	info->owner = uid->pw_name;
 	info->team = gid->gr_name;
@@ -118,7 +117,7 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->pure_time = &buf->st_mtimespec.tv_sec;
 	info->path = s;
 	info->name = (ft_strrchr(s, '/')); 
-	info->sort = ft_strlen(info->name);;
+	info->sort = 0; 
 	if (option->sort == 't')
 		info->sort = ft_gen_time(info->pure_time);
 	if (option->S == 'S')
