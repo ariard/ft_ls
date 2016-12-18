@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 19:36:51 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 19:52:22 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void				ft_print_path(char *s)
 	ft_bzero(buf, 1028);
 	ft_strcpy(buf, "\n");
 	ft_strncat(buf, s, (ft_strlen(s) - 1));
-	ft_strcpy(buf, ":\n");
+	ft_strcat(buf, ":\n");
 	write(1, &buf, ft_strlen(buf));
 }
 
@@ -69,7 +69,7 @@ void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
 	t_dlist			**list_files;
 
 	list_files = ft_memalloc(sizeof(t_list));
-	printf("\n%s:\n", path);
+	ft_print_path(path);
 	while ((lu = readdir(ds)))
 	{
 		if (lu->d_name[0] != '.')

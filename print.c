@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 19:39:11 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 20:09:04 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void			ft_space(char *buf, size_t len_max, char *s)
 	to_space = len_max - ft_strlen(s);
 	while (to_space--)
 		ft_strcat(buf, " ");
-	ft_strcat(buf, "  ");
 }
 
 void			ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint)
@@ -54,17 +53,22 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint)
 	(void)sizeprint;
 	ft_bzero(buf, 1028);
 	ft_strcpy(buf, info->perm);
+	ft_strcat(buf, "  ");
 	ft_space(buf, sizeprint->link, ft_itoa(info->link));
 	ft_strcat(buf, ft_itoa(info->link));
+	ft_strcat(buf, " ");
 	ft_space(buf, sizeprint->owner, info->owner);
 	ft_strcat(buf, info->owner);
+	ft_strcat(buf, "  ");
 	ft_space(buf, sizeprint->team, info->team);
 	ft_strcat(buf, info->team);
+	ft_strcat(buf, "  ");
 	ft_space(buf, sizeprint->size, ft_itoa(info->size));
 	ft_strcat(buf, ft_itoa(info->size));
+	ft_strcat(buf, " ");
 	ft_space(buf, sizeprint->time, info->time);
 	ft_strcat(buf, info->time);
-	ft_strcat(buf, "  ");
+	ft_strcat(buf, " ");
 	ft_strcat(buf, info->name);
 	ft_strcat(buf, "\n");
 	write(1, &buf, ft_strlen(buf));
@@ -94,7 +98,7 @@ void			ft_print_dir(t_option *option, t_dlist **list_files)
 	t_dlist		*tmp;
 	t_info		*info;
 
-//	ft_insert_sort_3(list_files, &ft_stralphcmp);
+	ft_insert_sort_3(list_files, &ft_stralphcmp);
 	if (option->mode == 'l')
 		ft_print_all(list_files);
 	else
@@ -107,5 +111,5 @@ void			ft_print_dir(t_option *option, t_dlist **list_files)
 			tmp = tmp->next;
 		}
 	}
-//	ft_insert_sort(list_files, &ft_stralphcmp);
+	ft_insert_sort(list_files, &ft_stralphcmp);
 }

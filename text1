@@ -2239,7 +2239,7 @@ drwxr-xr-x    3 ariard  2016_paris   102 Nov  2 09:56 FontCollections
 drwxr-xr-x    4 ariard  2016_paris   136 Nov 12 13:00 Google
 drwx------    7 ariard  2016_paris   238 Nov 25 13:17 Group Containers
 drwxr-xr-x    6 ariard  2016_paris   204 Dec 18 14:17 IdentityServices
-drwxr-xr-x   51 ariard  2016_paris  1734 Dec 18 17:12 Keychains
+drwxr-xr-x   51 ariard  2016_paris  1734 Dec 18 19:40 Keychains
 drwxr-xr-x    9 ariard  2016_paris   306 Nov 27 19:56 LanguageModeling
 drwxr-xr-x    4 ariard  2016_paris   136 Dec 18 14:17 LaunchAgents
 lrwxr-xr-x    1 ariard  2016_paris    42 Dec 18 14:17 Logs -> /Volumes/Storage/cache/ariard/Library/Logs
@@ -25188,7 +25188,7 @@ total 40
 
 /Users/ariard/Projects:
 total 144
-drwxr-xr-x  83 ariard  2016_paris   2822 Dec 18 19:26 LS
+drwxr-xr-x  85 ariard  2016_paris   2890 Dec 18 20:09 LS
 drwxr-xr-x  24 ariard  2016_paris    816 Dec 14 20:08 LS_back
 drwxr-xr-x  17 ariard  2016_paris    578 Dec 14 19:52 LS_back2
 drwxr-xr-x  41 ariard  2016_paris   1394 Dec 15 16:49 LS_back3
@@ -25204,81 +25204,83 @@ drwxr-xr-x  11 ariard  2016_paris    374 Nov 28 13:21 nov2016
 -rw-r--r--   1 ariard  2016_paris  36679 Dec 16 15:16 text2
 
 /Users/ariard/Projects/LS:
-total 8816
-drwxr-xr-x  97 ariard  2016_paris     3298 Dec 18 19:26 Libft
+total 10920
+drwxr-xr-x  97 ariard  2016_paris     3298 Dec 18 20:09 Libft
 -rw-r--r--   1 ariard  2016_paris     1719 Dec 13 19:16 R-loop.c
 drwxr-xr-x   4 ariard  2016_paris      136 Dec 16 14:50 a
 -rw-r--r--   1 ariard  2016_paris     2280 Dec 14 23:28 all_algo.c
 drwxr-xr-x   5 ariard  2016_paris      170 Dec 16 19:43 aurevoir
 -rw-r--r--   1 ariard  2016_paris        8 Dec 18 17:18 auteur
--rw-r--r--   1 ariard  2016_paris     1222 Dec 18 19:17 auxi_key.c
--rw-r--r--   1 ariard  2016_paris      944 Dec 18 19:26 auxi_key.o
+-rw-r--r--   1 ariard  2016_paris     1222 Dec 18 19:58 auxi_key.c
+-rw-r--r--   1 ariard  2016_paris      944 Dec 18 20:09 auxi_key.o
 -rw-r--r--   1 ariard  2016_paris     1226 Dec 16 21:49 auxi_list.c
--rw-r--r--   1 ariard  2016_paris      784 Dec 18 19:26 auxi_list.o
+-rw-r--r--   1 ariard  2016_paris      784 Dec 18 20:09 auxi_list.o
 drwxr-xr-x   2 ariard  2016_paris       68 Dec 15 00:28 b
 drwxr-xr-x   2 ariard  2016_paris       68 Dec  4 00:10 bonjour
 drwxr-xr-x   2 ariard  2016_paris       68 Dec 15 00:28 c
 -rw-r--r--   1 ariard  2016_paris     1902 Dec 18 17:45 command.c
--rw-r--r--   1 ariard  2016_paris     1776 Dec 18 19:26 command.o
+-rw-r--r--   1 ariard  2016_paris     1776 Dec 18 20:09 command.o
 drwxr-xr-x   2 ariard  2016_paris       68 Dec 15 00:28 d
 -rw-r--r--   1 ariard  2016_paris     2151 Dec 18 15:18 error.c
--rw-r--r--   1 ariard  2016_paris     2176 Dec 18 19:26 error.o
+-rw-r--r--   1 ariard  2016_paris     2176 Dec 18 20:09 error.o
 -rw-r--r--   1 ariard  2016_paris        0 Dec  4 00:10 fichier1
 -rw-r--r--   1 ariard  2016_paris        0 Dec  4 00:10 fichier2
--rw-r--r--   1 ariard  2016_paris      668 Dec 18 19:26 ft_bzero.o
--rw-r--r--   1 ariard  2016_paris      732 Dec 18 19:26 ft_create_elem.o
--rw-r--r--   1 ariard  2016_paris     1464 Dec 18 19:26 ft_itoa.o
--rw-r--r--   1 ariard  2016_paris      720 Dec 18 19:26 ft_list_clear.o
--rw-r--r--   1 ariard  2016_paris      736 Dec 18 19:26 ft_list_ins.o
--rw-r--r--   1 ariard  2016_paris      804 Dec 18 19:26 ft_list_push_back.o
--rw-r--r--   1 ariard  2016_paris      772 Dec 18 19:26 ft_list_push_back_special.o
--rw-r--r--   1 ariard  2016_paris      736 Dec 18 19:26 ft_list_push_front.o
--rw-r--r--   1 ariard  2016_paris      808 Dec 18 19:26 ft_list_rem.o
--rw-r--r--   1 ariard  2016_paris      724 Dec 18 19:26 ft_list_rem_front.o
--rw-r--r--   1 ariard  2016_paris      732 Dec 18 19:26 ft_list_reverse.o
--rw-r--r--   1 ariard  2016_paris      776 Dec 18 19:26 ft_list_swap.o
--rwxr-xr-x   1 ariard  2016_paris    24644 Dec 18 19:26 ft_ls
+-rw-r--r--   1 ariard  2016_paris      668 Dec 18 20:09 ft_bzero.o
+-rw-r--r--   1 ariard  2016_paris      732 Dec 18 20:09 ft_create_elem.o
+-rw-r--r--   1 ariard  2016_paris     1464 Dec 18 20:09 ft_itoa.o
+-rw-r--r--   1 ariard  2016_paris      720 Dec 18 20:09 ft_list_clear.o
+-rw-r--r--   1 ariard  2016_paris      736 Dec 18 20:09 ft_list_ins.o
+-rw-r--r--   1 ariard  2016_paris      804 Dec 18 20:09 ft_list_push_back.o
+-rw-r--r--   1 ariard  2016_paris      772 Dec 18 20:09 ft_list_push_back_special.o
+-rw-r--r--   1 ariard  2016_paris      736 Dec 18 20:09 ft_list_push_front.o
+-rw-r--r--   1 ariard  2016_paris      808 Dec 18 20:09 ft_list_rem.o
+-rw-r--r--   1 ariard  2016_paris      724 Dec 18 20:09 ft_list_rem_front.o
+-rw-r--r--   1 ariard  2016_paris      732 Dec 18 20:09 ft_list_reverse.o
+-rw-r--r--   1 ariard  2016_paris      776 Dec 18 20:09 ft_list_swap.o
+-rwxr-xr-x   1 ariard  2016_paris    24780 Dec 18 20:09 ft_ls
 -rw-r--r--   1 ariard  2016_paris     2912 Dec 18 19:21 ft_ls.h
--rw-r--r--   1 ariard  2016_paris      760 Dec 18 19:26 ft_memalloc.o
--rw-r--r--   1 ariard  2016_paris      700 Dec 18 19:26 ft_memcpy.o
--rw-r--r--   1 ariard  2016_paris      692 Dec 18 19:26 ft_memdel.o
--rw-r--r--   1 ariard  2016_paris      708 Dec 18 19:26 ft_putchar.o
--rw-r--r--   1 ariard  2016_paris      768 Dec 18 19:26 ft_putstr.o
--rw-r--r--   1 ariard  2016_paris      684 Dec 18 19:26 ft_stack_pop.o
--rw-r--r--   1 ariard  2016_paris      684 Dec 18 19:26 ft_stack_push.o
--rw-r--r--   1 ariard  2016_paris      780 Dec 18 19:26 ft_strcat.o
--rw-r--r--   1 ariard  2016_paris      684 Dec 18 19:26 ft_strchr.o
--rw-r--r--   1 ariard  2016_paris      748 Dec 18 19:26 ft_strcmp.o
--rw-r--r--   1 ariard  2016_paris      692 Dec 18 19:26 ft_strcpy.o
--rw-r--r--   1 ariard  2016_paris      692 Dec 18 19:26 ft_strdel.o
--rw-r--r--   1 ariard  2016_paris      916 Dec 18 19:26 ft_strjoin.o
--rw-r--r--   1 ariard  2016_paris      660 Dec 18 19:26 ft_strlen.o
--rw-r--r--   1 ariard  2016_paris      768 Dec 18 19:26 ft_strnew.o
--rw-r--r--   1 ariard  2016_paris      760 Dec 18 19:26 ft_strrchr.o
--rw-r--r--   1 ariard  2016_paris     3377 Dec 18 18:26 get_info.c
--rw-r--r--   1 ariard  2016_paris     3308 Dec 18 19:26 get_info.o
+-rw-r--r--   1 ariard  2016_paris      760 Dec 18 20:09 ft_memalloc.o
+-rw-r--r--   1 ariard  2016_paris      700 Dec 18 20:09 ft_memcpy.o
+-rw-r--r--   1 ariard  2016_paris      692 Dec 18 20:09 ft_memdel.o
+-rw-r--r--   1 ariard  2016_paris      708 Dec 18 20:09 ft_putchar.o
+-rw-r--r--   1 ariard  2016_paris      768 Dec 18 20:09 ft_putstr.o
+-rw-r--r--   1 ariard  2016_paris      684 Dec 18 20:09 ft_stack_pop.o
+-rw-r--r--   1 ariard  2016_paris      684 Dec 18 20:09 ft_stack_push.o
+-rw-r--r--   1 ariard  2016_paris      780 Dec 18 20:09 ft_strcat.o
+-rw-r--r--   1 ariard  2016_paris      684 Dec 18 20:09 ft_strchr.o
+-rw-r--r--   1 ariard  2016_paris      748 Dec 18 20:09 ft_strcmp.o
+-rw-r--r--   1 ariard  2016_paris      692 Dec 18 20:09 ft_strcpy.o
+-rw-r--r--   1 ariard  2016_paris      692 Dec 18 20:09 ft_strdel.o
+-rw-r--r--   1 ariard  2016_paris      840 Dec 18 20:09 ft_strdup.o
+-rw-r--r--   1 ariard  2016_paris      916 Dec 18 20:09 ft_strjoin.o
+-rw-r--r--   1 ariard  2016_paris      660 Dec 18 20:09 ft_strlen.o
+-rw-r--r--   1 ariard  2016_paris      784 Dec 18 20:09 ft_strncat.o
+-rw-r--r--   1 ariard  2016_paris      768 Dec 18 20:09 ft_strnew.o
+-rw-r--r--   1 ariard  2016_paris      760 Dec 18 20:09 ft_strrchr.o
+-rw-r--r--   1 ariard  2016_paris     3388 Dec 18 20:06 get_info.c
+-rw-r--r--   1 ariard  2016_paris     3352 Dec 18 20:09 get_info.o
 drwxr-xr-x   2 ariard  2016_paris       68 Dec  4 00:10 hello
 -rw-r--r--   1 ariard  2016_paris   229952 Dec 13 19:11 libft.a
 -rw-r--r--   1 ariard  2016_paris      787 Dec 18 17:45 main.c
--rw-r--r--   1 ariard  2016_paris     1252 Dec 18 19:26 main.o
--rw-r--r--   1 ariard  2016_paris     5587 Dec 18 18:22 makefile
+-rw-r--r--   1 ariard  2016_paris     1252 Dec 18 20:09 main.o
+-rw-r--r--   1 ariard  2016_paris     5653 Dec 18 20:06 makefile
 -rw-r--r--   1 ariard  2016_paris     1710 Dec 15 21:30 parsing_files.c
 -rw-r--r--   1 ariard  2016_paris     2757 Dec 16 20:47 parsing_option.c
--rw-r--r--   1 ariard  2016_paris     2704 Dec 18 19:26 parsing_option.o
--rw-r--r--   1 ariard  2016_paris     3240 Dec 18 19:26 print.c
--rw-r--r--   1 ariard  2016_paris     3552 Dec 18 19:26 print.o
--rw-r--r--   1 ariard  2016_paris     2616 Dec 18 19:23 read_dir.c
--rw-r--r--   1 ariard  2016_paris     2684 Dec 18 19:26 read_dir.o
+-rw-r--r--   1 ariard  2016_paris     2704 Dec 18 20:09 parsing_option.o
+-rw-r--r--   1 ariard  2016_paris     3329 Dec 18 20:09 print.c
+-rw-r--r--   1 ariard  2016_paris     3728 Dec 18 20:09 print.o
+-rw-r--r--   1 ariard  2016_paris     2809 Dec 18 19:52 read_dir.c
+-rw-r--r--   1 ariard  2016_paris     3356 Dec 18 20:09 read_dir.o
 -rw-r--r--   1 ariard  2016_paris     2818 Dec 18 18:11 read_dir_a.c
--rw-r--r--   1 ariard  2016_paris     2960 Dec 18 19:26 read_dir_a.o
+-rw-r--r--   1 ariard  2016_paris     2960 Dec 18 20:09 read_dir_a.o
 drwxr-xr-x   6 ariard  2016_paris      204 Dec 17 16:47 salut
--rw-r--r--   1 ariard  2016_paris     2685 Dec 18 19:22 sort.c
--rw-r--r--   1 ariard  2016_paris     1904 Dec 18 19:26 sort.o
+-rw-r--r--   1 ariard  2016_paris     2685 Dec 18 19:54 sort.c
+-rw-r--r--   1 ariard  2016_paris     1904 Dec 18 20:09 sort.o
 -rw-r--r--   1 ariard  2016_paris      399 Nov 30 01:11 test-argument
 -rw-r--r--   1 ariard  2016_paris      463 Dec 16 19:18 test-option
 -rw-r--r--   1 ariard  2016_paris   978048 Dec 17 20:15 text
--rw-r--r--   1 ariard  2016_paris  2052096 Dec 18 19:26 text1
--rw-r--r--   1 ariard  2016_paris   975068 Dec 17 20:15 text2
+-rw-r--r--   1 ariard  2016_paris  2052096 Dec 18  2016 text1
+-rw-r--r--   1 ariard  2016_paris  2047602 Dec 18 20:08 text2
 
 /Users/ariard/Projects/LS/Libft:
 total 1192
@@ -25375,7 +25377,7 @@ total 1192
 -rw-r--r--  1 ariard  2016_paris    1007 Dec 14 17:56 ft_toupper.c
 -rw-r--r--  1 ariard  2016_paris    1115 Dec 14 17:56 ft_unsintlen.c
 drwxr-xr-x  4 ariard  2016_paris     136 Dec 16 21:39 includes
--rw-r--r--  1 ariard  2016_paris  232736 Dec 18 19:26 libft.a
+-rw-r--r--  1 ariard  2016_paris  232736 Dec 18 20:09 libft.a
 
 /Users/ariard/Projects/LS/Libft/includes:
 total 16
