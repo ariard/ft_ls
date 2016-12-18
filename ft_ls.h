@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 15:52:50 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 16:51:31 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,7 @@ int					ft_stralphcmp(const void *s1, const void *s2);
 int					main(int argc, char **argv);
 
 long long int		ft_gen_time(long int *time);
+
+void				ft_print_dir(t_option *option, t_dlist **list_files);
 
 #endif

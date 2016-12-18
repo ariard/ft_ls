@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 15:47:50 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 16:27:56 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 17:11:40 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void				ft_push_dir_a(t_option *option, t_stack **head,
 
 	list_error = ft_memalloc(sizeof(t_error));
 	tmp = *list_files;
+	ft_print_dir(option, list_files);
 	while (tmp)
 	{
 		info = tmp->data;
-		printf("%s\n", info->name);
 		if ((info->name[0] != '.' || info->name[1] != '.') &&
 			(info->name[0] != '.' || info->name[1] != 0))
 			if (info->perm[0] == 'd' && option->R) 
