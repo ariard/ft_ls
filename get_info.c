@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 14:59:45 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 16:37:09 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,7 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->time = ctime(&buf->st_mtimespec.tv_sec);
 	info->pure_time = &buf->st_mtimespec.tv_sec;
 	info->path = s;
-	info->name = (ft_strrchr(s, '/')); 
-	info->sort = 0; 
+	info->name = ft_strrchr(s, '/'); 
 	if (option->sort == 't')
 		info->sort = ft_gen_time(info->pure_time);
 	if (option->S == 'S')
