@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 16:51:31 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 19:21:44 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,16 @@ typedef struct		s_error
 	long long int	sort;
 }					t_error;
 
+typedef struct		s_sizeprint
+{
+	size_t			perm;
+	size_t			link;
+	size_t			owner;
+	size_t			team;
+	size_t			size;
+	size_t			time;
+}					t_sizeprint;
+
 t_option			*ft_parse_option(char **argv, t_option *option);
 
 void				ft_command(int argc, char **argv, t_option *option);
@@ -78,6 +88,9 @@ void				ft_insert_sort(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));
 
 void				ft_insert_sort_2(t_dlist **begin_list);
+
+void				ft_insert_sort_3(t_dlist **begin_list, 
+		int (*cmp)(const void *key1, const void *key2));
 
 t_info				*ft_get_info(char *s, t_option *option);
 
@@ -100,5 +113,7 @@ int					main(int argc, char **argv);
 long long int		ft_gen_time(long int *time);
 
 void				ft_print_dir(t_option *option, t_dlist **list_files);
+
+char				*ft_strsub_lim(char *s);
 
 #endif

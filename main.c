@@ -31,7 +31,6 @@ int				main(int argc, char **argv)
 {
 	t_option	*option;
 	int			i;
-	char		**tmp;
 
 	i = 0;
 	option = ft_init_option();

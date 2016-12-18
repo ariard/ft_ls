@@ -6,13 +6,24 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 17:10:21 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 19:36:51 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"ft_ls.h"
 #include	<stdio.h>
-	
+
+void				ft_print_path(char *s)
+{
+	char		buf[1028];
+
+	ft_bzero(buf, 1028);
+	ft_strcpy(buf, "\n");
+	ft_strncat(buf, s, (ft_strlen(s) - 1));
+	ft_strcpy(buf, ":\n");
+	write(1, &buf, ft_strlen(buf));
+}
+
 void				ft_sort(t_option *option, t_dlist **list_files)
 {	
 	if (*list_files && (option->sort || option->S))
@@ -30,8 +41,9 @@ void				ft_push_dir(t_option *option, t_stack **head,
 	t_info			*info;
 
 	list_error = ft_memalloc(sizeof(t_error));
+	if (*list_files)
+		ft_print_dir(option, list_files);
 	tmp = *list_files;
-	ft_print_dir(option, list_files);
 	while (tmp)
 	{
 		info = tmp->data;

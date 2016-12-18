@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 16:37:09 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 18:26:28 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->owner = uid->pw_name;
 	info->team = gid->gr_name;
 	info->size = buf->st_size;
-	info->time = ctime(&buf->st_mtimespec.tv_sec);
+	info->time = ft_strsub_lim(ctime(&buf->st_mtimespec.tv_sec));
 	info->pure_time = &buf->st_mtimespec.tv_sec;
 	info->path = s;
 	info->name = ft_strrchr(s, '/'); 

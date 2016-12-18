@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 15:47:27 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/18 17:45:33 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void				ft_read_argv(char **argv, t_option *option, t_stack **head)
 void				ft_command(int argc, char **argv, t_option *option)
 {
 	t_stack			**head;
-	t_dlist			*tmp;
 
 	head = ft_memalloc(sizeof(t_stack));
 	if (argc == 1 || !*argv)
