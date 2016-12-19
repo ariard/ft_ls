@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 20:15:10 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 21:42:54 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->pure_time = &buf->st_mtimespec.tv_sec;
 	info->path = s;
 	info->name = ft_strrchr(s, '/');
-	info->ACL = ft_setACL(s);
+	info->ACL = ft_setACL(s, option);
 	if (info->ACL)
 		ft_strcat(info->perm, "+");
 //	info->att = ft_setatt(s);

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 20:23:53 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 21:58:46 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint)
 	return (blocks);
 }
 
-void			ft_just_print(t_info *info, t_sizeprint *sizeprint)
+void			ft_just_print(t_info *info, t_sizeprint *sizeprint, t_option *option)
 {
 	char		buf[1028];
 
@@ -65,22 +65,15 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint)
 	ft_space(buf, sizeprint->link, ft_itoa(info->link));
 	ft_strcat(buf, ft_itoa(info->link));
 	ft_strcat(buf, " ");
-	if (!option->g)
-	{
-	ft_space(buf, sizeprint->owner, info->owner);
-	ft_strcat(buf, info->owner);
-	ft_strcat(buf, "  ");
-	}
-	ft_space(buf, sizeprint->team, info->team);
-	ft_strcat(buf, info->team);
-	ft_strcat(buf, "  ");
+	ft_join_owner(buf, info, sizeprint, option);
+	ft_join_team(buf, info, sizeprint, option);
 	ft_space(buf, sizeprint->size, ft_itoa(info->size));
 	ft_strcat(buf, ft_itoa(info->size));
 	ft_strcat(buf, " ");
 	ft_space(buf, sizeprint->time, info->time);
 	ft_strcat(buf, info->time);
 	ft_strcat(buf, " ");
-	ft_strcat(buf, info->name);
+	ft_join_name(buf, info, option);
 	if (info->ACL)
 		ft_strcat(buf, info->ACL);
 	else
@@ -88,7 +81,7 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint)
 	write(1, &buf, ft_strlen(buf));
 }
 
-void			ft_print_all(t_dlist **list_files)
+void			ft_print_all(t_dlist **list_files, t_option *option)
 {
 	t_dlist		*tmp;
 	t_info		*info;
@@ -105,7 +98,7 @@ void			ft_print_all(t_dlist **list_files)
 	while (tmp)
 	{
 		info = tmp->data;
-		ft_just_print(info, sizeprint);					
+		ft_just_print(info, sizeprint, option);
 		tmp = tmp->next;
 	}
 	free(sizeprint);
@@ -119,7 +112,7 @@ void			ft_print_dir(t_option *option, t_dlist **list_files)
 
 	ft_insert_sort_3(list_files, &ft_stralphcmp);
 	if (option->mode == 'l')
-		ft_print_all(list_files);
+		ft_print_all(list_files, option);
 	else
 	{
 		tmp = *list_files;

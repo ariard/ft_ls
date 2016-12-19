@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 18:51:02 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 22:03:21 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,16 @@ void				ft_print_dir(t_option *option, t_dlist **list_files);
 
 char				*ft_strsub_lim(char *s);
 
-char				*ft_setACL(char *s);
+char				*ft_setACL(char *s, t_option *option);
+
+void				ft_space(char *buf, size_t len_max, char *s);
+
+void				ft_join_owner(char *buf, t_info *info, t_sizeprint *sizeprint,
+		t_option *option);
+
+void				ft_join_team(char *buf, t_info *info, t_sizeprint *sizeprint,
+		t_option *option);
+
+void				ft_join_name(char *buf, t_info *info, t_option *option);
 
 #endif

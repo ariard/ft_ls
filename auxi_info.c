@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 14:33:22 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 20:21:24 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 21:55:26 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,24 @@ void		ft_fill(char *dst, char *src)
 	ft_fill2(dst, src);
 }
 
-char		*ft_setACL(char *s)
+char		*ft_setACL(char *s, t_option *option)
 {
 	char	*str;
 	char	*ret;	
 	acl_t	acl;
 	ssize_t	len;
 	int		d;
+	char	*tmp;
 
-	str = ft_strnew(2056);
-	ret = ft_strnew(2056);
 	d = 0;
-	acl = acl_get_file(s, ACL_TYPE_EXTENDED);
+	acl = acl_get_link_np(s, ACL_TYPE_EXTENDED);
 	if (!acl)
 		return (NULL);
+	if (!option->aro)
+		return ("");
+	str = ft_strnew(1028);
+	tmp = str;
+	ret = ft_strnew(1028);
 	ft_strcpy(str, acl_to_text(acl, &len));
 	while (*str != 10)
 		str++;	
@@ -83,5 +87,7 @@ char		*ft_setACL(char *s)
 		str++;
 		d++;
 	}
+	acl_free(acl);
+	ft_strdel(&tmp);
 	return (ret);
 }
