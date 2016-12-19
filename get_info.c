@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 20:06:29 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 13:19:24 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ char				*ft_set_type(struct stat *buf)
 		c = "d";
 	else if (((S_ISREG(buf->st_mode)) ? '-' : 'd') == '-')
 		c = "-";
+	else if (((S_ISCHR(buf->st_mode)) ? 'c' : '-') == 'c')
+		c = "c";
+	else if (((S_ISBLK(buf->st_mode)) ? 'b' : '-') == 'b')
+		c = "l";
+	else if (((S_ISFIFO(buf->st_mode)) ? 'p' : '-') == 'p')
+		c = "p";
+	else if (((S_ISSOCK(buf->st_mode)) ? 's' : '-') == 's')
+		c = "s";
 	return (c);
 }
 
@@ -113,6 +121,7 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->owner = uid->pw_name;
 	info->team = gid->gr_name;
 	info->size = buf->st_size;
+	info->blocks = buf->st_blocks;
 	info->time = ft_strdup(ft_strsub_lim(ctime(&buf->st_mtimespec.tv_sec)));
 	info->pure_time = &buf->st_mtimespec.tv_sec;
 	info->path = s;
