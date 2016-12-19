@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 14:33:22 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 17:11:05 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 20:21:24 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ char		*ft_setACL(char *s)
 	ret = ft_strnew(2056);
 	d = 0;
 	acl = acl_get_file(s, ACL_TYPE_EXTENDED);
-	return (NULL);
+	if (!acl)
+		return (NULL);
 	ft_strcpy(str, acl_to_text(acl, &len));
 	while (*str != 10)
 		str++;	

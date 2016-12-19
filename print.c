@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 17:07:21 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 20:23:53 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,12 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint)
 	ft_space(buf, sizeprint->link, ft_itoa(info->link));
 	ft_strcat(buf, ft_itoa(info->link));
 	ft_strcat(buf, " ");
+	if (!option->g)
+	{
 	ft_space(buf, sizeprint->owner, info->owner);
 	ft_strcat(buf, info->owner);
 	ft_strcat(buf, "  ");
+	}
 	ft_space(buf, sizeprint->team, info->team);
 	ft_strcat(buf, info->team);
 	ft_strcat(buf, "  ");

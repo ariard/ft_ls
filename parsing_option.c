@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 20:47:10 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 20:22:07 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ static void		ft_generate_option1(t_option *option, char *value)
 		option->mode = '1';
 	else if (*value == 'u')
 		option->sort = 'u';
+	else if (*value == 'e')
+		option->sort = 'e';
+	else if (*value == 'g')
+		option->g = 'g';
 }
 
 static int		ft_error_option(char *string)
@@ -42,7 +46,7 @@ static int		ft_error_option(char *string)
 	ft_putstr("illegal option :");
 	ft_putchar(*string);
 	ft_putchar(10);
-	ft_putstr("usage: ls [-laRtr][file ...]\n");
+	ft_putstr("usage: ls [-laRtr@n1ue][file ...]\n");
 	return (1);
 }
 
