@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 22:03:21 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 23:19:34 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct		s_option
 	char	e;
 	char	aro;
 	char	p;
+	char	d;
 	char	h;
 	char	o;
 	char	T;
@@ -90,6 +91,8 @@ void				ft_scroll_dir(t_option *option, t_stack **head);
 
 void				ft_scroll_dir_a(t_option *option, t_stack **head);
 
+void				ft_scroll_dir_d(t_option *option, t_stack **head);
+
 void				ft_insert_sort(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));
 
@@ -133,5 +136,9 @@ void				ft_join_team(char *buf, t_info *info, t_sizeprint *sizeprint,
 		t_option *option);
 
 void				ft_join_name(char *buf, t_info *info, t_option *option);
+
+void				ft_print_path(char *s);
+
+void				ft_sort(t_option *option, t_dlist **list_files);
 
 #endif

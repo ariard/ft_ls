@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 17:45:33 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 23:21:32 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void				ft_command(int argc, char **argv, t_option *option)
 		ft_list_push_back_special(head, ft_get_info(".", option), &ft_create_info);
 	if (*argv)
 		ft_read_argv(argv, option, head);
-	if (option->a)
+	if (option->d)
+		ft_scroll_dir_d(option, head);
+	else if (option->a)
 		ft_scroll_dir_a(option, head);
 	else
 		ft_scroll_dir(option, head);
