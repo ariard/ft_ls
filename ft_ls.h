@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 12:44:49 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 16:49:33 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@
 # include <dirent.h>
 # include <sys/stat.h>
 # include <sys/types.h>
+# include <sys/xattr.h>
+# include <sys/acl.h>
 # include <pwd.h>
 # include <uuid/uuid.h>
 # include <grp.h>
 # include <time.h>
 # include <errno.h>
 # include <stdio.h>
+#
 
 typedef struct		s_option
 {
@@ -56,6 +59,8 @@ typedef struct		s_info
 	long int 		*pure_time;
 	char			*path;
 	char			*name;
+	char			*att;
+	char			*ACL;
 	long long int	blocks;
 	long long int 	sort;
 }					t_info;	
@@ -116,5 +121,7 @@ long long int		ft_gen_time(long int *time);
 void				ft_print_dir(t_option *option, t_dlist **list_files);
 
 char				*ft_strsub_lim(char *s);
+
+char				*ft_setACL(char *s);
 
 #endif

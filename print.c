@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 12:53:36 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 17:07:21 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,12 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint)
 
 	(void)sizeprint;
 	ft_bzero(buf, 1028);
+	ft_space(buf, sizeprint->perm, info->perm);
 	ft_strcpy(buf, info->perm);
-	ft_strcat(buf, "  ");
+	if (info->ACL)
+		ft_strcat(buf, " ");
+	else
+		ft_strcat(buf, "  ");
 	ft_space(buf, sizeprint->link, ft_itoa(info->link));
 	ft_strcat(buf, ft_itoa(info->link));
 	ft_strcat(buf, " ");
@@ -74,7 +78,10 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint)
 	ft_strcat(buf, info->time);
 	ft_strcat(buf, " ");
 	ft_strcat(buf, info->name);
-	ft_strcat(buf, "\n");
+	if (info->ACL)
+		ft_strcat(buf, info->ACL);
+	else
+		ft_strcat(buf, "\n");
 	write(1, &buf, ft_strlen(buf));
 }
 
