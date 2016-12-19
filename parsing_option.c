@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 23:21:25 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 23:46:04 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void		ft_generate_option1(t_option *option, char *value)
 		option->p = 'p';
 	else if (*value == 'd')
 		option->d = 'd';
+	else if (*value == 'm')
+		option->mode = 'm';
 }
 
 static int		ft_error_option(char *string)
@@ -62,7 +64,7 @@ static int		ft_check_option(char *string)
 	int			check;
 	int			index;
 
-	legal_opt = "laRtrS@n1uegopd";
+	legal_opt = "laRtrS@n1uegopdm";
 	while (*string)
 	{
 		check = 0;

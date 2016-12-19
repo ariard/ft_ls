@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 23:00:26 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 23:54:48 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint)
 	return (blocks);
 }
 
-void			ft_just_print(t_info *info, t_sizeprint *sizeprint, t_option *option)
+void			ft_just_print(t_info *info, t_sizeprint *sizeprint, 
+		t_option *option)
 {
 	char		buf[1028];
 
@@ -107,21 +108,10 @@ void			ft_print_all(t_dlist **list_files, t_option *option)
 
 void			ft_print_dir(t_option *option, t_dlist **list_files)
 {
-	t_dlist		*tmp;
-	t_info		*info;
-
 	ft_insert_sort_3(list_files, &ft_stralphcmp);
 	if (option->mode == 'l')
 		ft_print_all(list_files, option);
 	else
-	{
-		tmp = *list_files;
-		while (tmp)
-		{
-			info = tmp->data;
-			printf("%s\n", info->name);
-			tmp = tmp->next;
-		}
-	}
+		ft_print_files(list_files, option);
 	ft_insert_sort(list_files, &ft_stralphcmp);
 }

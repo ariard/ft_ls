@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 23:19:34 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/19 23:34:25 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,7 @@ void				ft_join_name(char *buf, t_info *info, t_option *option);
 void				ft_print_path(char *s);
 
 void				ft_sort(t_option *option, t_dlist **list_files);
+
+void				ft_print_files(t_dlist **list_files, t_option *option);
 
 #endif
