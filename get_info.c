@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/20 22:37:59 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 00:17:38 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,6 @@ t_info				*ft_get_info(char *s, t_option *option)
 	struct passwd	*uid;
 	struct group	*gid;
 	t_info			*info;
-	char			*str;
-	char			att[126];
 
 	buf = ft_memalloc(sizeof(struct stat));
 	lstat(s, buf);
@@ -126,19 +124,18 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->team = gid->gr_name;
 	info->size = buf->st_size;
 	info->blocks = buf->st_blocks;
-	str = ctime(&buf->st_mtimespec.tv_sec);
-	info->time = ft_strdup(ft_strsub_lim(str));
-	info->pure_time = &buf->st_mtimespec.tv_sec;
+	info->pure_time = buf->st_mtimespec.tv_sec;
+	info->time = ft_strdup(ft_set_date(info->pure_time));
 	info->path = s;
 	info->name = ft_strrchr(s, '/');
 	info->ACL = ft_setACL(s, option);
-	info->att = listxattr(s, att, 126, 0); 
+	info->att = listxattr(s, NULL, 1, 0); 
 	if (info->att && info->perm[0] != 'l')
 		ft_strcat(info->perm, "@");
 	if (info->ACL && !info->att)
 		ft_strcat(info->perm, "+");
 	if (option->sort == 't')
-		info->sort = ft_gen_time(info->pure_time);
+		info->sort = info->pure_time;
 	if (option->S == 'S')
 		info->sort = info->size;
 	return (info);

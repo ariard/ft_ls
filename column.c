@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 00:18:44 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/20 20:20:28 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/20 23:54:16 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int				ft_get_lines(t_dlist **list_files, int col, int max)
 	size = ft_list_size(list_files);
 	if (size == 0)
 		return (0);
-	block = col/max;
+	block = col / max;
 	if (block == 0)
 		return (0);
 	lines = 0;

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/20 21:31:22 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 00:18:15 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/xattr.h>
 # include <sys/acl.h>
 # include <sys/ioctl.h>
+# include <sys/time.h>
 # include <pwd.h>
 # include <uuid/uuid.h>
 # include <grp.h>
@@ -59,7 +60,7 @@ typedef struct		s_info
 	char			*team;
 	long long int	size;
 	char			*time;
-	long int 		*pure_time;
+	long int 		pure_time;
 	char			*path;
 	char			*name;
 	long int		att;
@@ -159,5 +160,6 @@ void				*ft_get_next(t_dlist *node, int nb, int block, int size);
 
 void				*ft_get_special(t_dlist *node, int nb, int block, int size);
 
+char				*ft_set_date(long int time);
 
 #endif
