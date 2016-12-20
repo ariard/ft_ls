@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/20 01:23:45 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/20 20:00:04 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct		s_option
 	char	n;
 	char	F;
 	char	i;
+	char	x;
 }					t_option;	
 
 typedef struct		s_info
@@ -149,5 +150,14 @@ int					ft_get_column(void);
 int					ft_get_max(t_dlist **list_files);
 
 int					ft_get_less(int col, int lines, int size);
+
+int					ft_get_block(t_dlist **list_files, int col, int max);
+
+int					ft_get_lines(t_dlist **list_files, int col, int max);
+
+void				*ft_get_next(t_dlist *node, int nb, int block, int size);
+
+void				*ft_get_special(t_dlist *node, int nb, int block, int size);
+
 
 #endif

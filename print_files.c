@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 23:27:06 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/20 01:32:37 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/20 20:03:52 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,53 +51,83 @@ static void 		ft_print_comma(t_dlist **list_files)
 	}
 }
 
-static void			ft_print_normal(t_dlist **list_files, t_option *option, 
-		int column)
+static void			ft_print_lines(t_dlist **list_files, int column)
 {
 	t_dlist			*tmp;
 	t_info			*info;
-	int				nb;
-	int				col;
-	int				lines;
+	int				block;
 	int				max;
-	int				size;
-	int				less;
+	int				nb;
 	char			buf[624];
-	char			c;
 
-	(void)option;
-	max = ft_get_max(list_files) + 1;
-	nb = column/max;
 	tmp = *list_files;
-	size = ft_list_size(list_files);
-	lines = size/nb;
-	less = ft_get_less(nb, lines, size) + 1;
-	while (tmp)
+	if ((max = ft_get_max(list_files) + 1) == 1)
+		return ;
+	block = ft_get_block(list_files, column, max);
+	while (tmp && block)
 	{
-		col = nb;
-		while (col-- && tmp)
+		nb = block;
+		while (nb-- && tmp)
 		{
-			if (col == 0 && (lines - less) <= 0)
-			{
-				c = 10;
-				write(1, &c, 1);
-			}
-			else
-			{
-				ft_bzero(buf, 614);
-				info = tmp->data;
-				ft_strcpy(buf, info->name);
-				ft_space(buf, max, info->name);
-				if (col == 0 || !(tmp->next))
-					ft_strcat(buf, "\n");
-				write(1, &buf, ft_strlen(buf));
-				tmp = tmp->next;	
-			}	
+			ft_bzero(buf, 614);
+			info = tmp->data;
+			ft_strcpy(buf, info->name);
+			ft_space(buf, max, info->name);
+			if (nb == 0 || !(tmp->next))
+				ft_strcat(buf, "\n");
+			write(1, &buf, ft_strlen(buf));
+			tmp = tmp->next;	
 		}
-		lines--;
 	}
 }
 
+static void			ft_print_column(t_dlist **list_files, int column)
+{
+	t_dlist			*tmp;
+	t_info			*info;
+	int				block;
+	int				lines;
+	int				cp;
+	int				max;
+	int				nb;
+	int				size;
+	char			buf[624];
+
+	tmp = *list_files;
+	if ((max = ft_get_max(list_files) + 1) == 1)
+		return ;
+	lines = ft_get_lines(list_files, column, max);
+	block = ft_get_block(list_files, column, max);
+	size = ft_list_size(list_files);
+	cp = lines;
+	while (tmp && block && lines)
+	{
+		nb = block;
+		while (nb-- && tmp)
+		{
+			ft_bzero(buf, 614);
+			if (size == block * cp)
+				info = ft_get_special(tmp, nb, block, size);
+			else
+				info = ft_get_next(tmp, nb, block, size);
+			if (info)
+			{
+				ft_strcpy(buf, info->name);
+				ft_space(buf, max, info->name);
+				if (nb == 0 || !(tmp->next))
+					ft_strcat(buf, "\n");
+				write(1, &buf, ft_strlen(buf));
+			}
+			else if (size != 1)
+			{
+				nb = 0;
+				ft_putchar(10);
+			}
+		}
+		lines--;
+		tmp = tmp->next;
+	}
+}
 void				ft_print_files(t_dlist **list_files, t_option *option)
 {
 	static	int		column;
@@ -108,6 +138,8 @@ void				ft_print_files(t_dlist **list_files, t_option *option)
 		ft_print_uno(list_files);
 	else if (option->mode == 'm')
 		ft_print_comma(list_files);
+	else if (option->x == 'x')
+		ft_print_lines(list_files, column);
 	else
-		ft_print_normal(list_files, option, column);
+		ft_print_column(list_files, column); 
 }
