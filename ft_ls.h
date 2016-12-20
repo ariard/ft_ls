@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 23:34:25 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/20 01:23:45 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/types.h>
 # include <sys/xattr.h>
 # include <sys/acl.h>
+# include <sys/ioctl.h>
 # include <pwd.h>
 # include <uuid/uuid.h>
 # include <grp.h>
@@ -142,5 +143,11 @@ void				ft_print_path(char *s);
 void				ft_sort(t_option *option, t_dlist **list_files);
 
 void				ft_print_files(t_dlist **list_files, t_option *option);
+
+int					ft_get_column(void);
+
+int					ft_get_max(t_dlist **list_files);
+
+int					ft_get_less(int col, int lines, int size);
 
 #endif
