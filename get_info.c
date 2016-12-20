@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 23:19:14 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/20 22:37:59 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@ char				*ft_set_type(struct stat *buf)
 	else if (((S_ISCHR(buf->st_mode)) ? 'c' : '-') == 'c')
 		c = "c";
 	else if (((S_ISBLK(buf->st_mode)) ? 'b' : '-') == 'b')
-		c = "l";
+		c = "b";
 	else if (((S_ISFIFO(buf->st_mode)) ? 'p' : '-') == 'p')
 		c = "p";
 	else if (((S_ISSOCK(buf->st_mode)) ? 's' : '-') == 's')
 		c = "s";
+	else if (((S_ISLNK(buf->st_mode)) ? 'l' : '-') == 'l')
+		c = "l";
 	return (c);
 }
 
@@ -110,6 +112,8 @@ t_info				*ft_get_info(char *s, t_option *option)
 	struct passwd	*uid;
 	struct group	*gid;
 	t_info			*info;
+	char			*str;
+	char			att[126];
 
 	buf = ft_memalloc(sizeof(struct stat));
 	lstat(s, buf);
@@ -122,14 +126,17 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->team = gid->gr_name;
 	info->size = buf->st_size;
 	info->blocks = buf->st_blocks;
-	info->time = ft_strdup(ft_strsub_lim(ctime(&buf->st_mtimespec.tv_sec)));
+	str = ctime(&buf->st_mtimespec.tv_sec);
+	info->time = ft_strdup(ft_strsub_lim(str));
 	info->pure_time = &buf->st_mtimespec.tv_sec;
 	info->path = s;
 	info->name = ft_strrchr(s, '/');
 	info->ACL = ft_setACL(s, option);
-	if (info->ACL)
+	info->att = listxattr(s, att, 126, 0); 
+	if (info->att && info->perm[0] != 'l')
+		ft_strcat(info->perm, "@");
+	if (info->ACL && !info->att)
 		ft_strcat(info->perm, "+");
-//	info->att = ft_setatt(s);
 	if (option->sort == 't')
 		info->sort = ft_gen_time(info->pure_time);
 	if (option->S == 'S')

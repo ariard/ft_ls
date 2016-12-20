@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 14:33:22 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 23:09:32 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/20 20:47:11 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char		*ft_setACL(char *s, t_option *option)
 	acl = acl_get_link_np(s, ACL_TYPE_EXTENDED);
 	if (!acl)
 		return (NULL);
-	if (!option->aro)
+	if (!option->e)
 		return ("");
 	str = ft_strnew(1028);
 	tmp = str;

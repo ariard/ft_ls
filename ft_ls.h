@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/20 20:00:04 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/20 21:31:22 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <time.h>
 # include <errno.h>
 # include <stdio.h>
-#
+# include <unistd.h>
 
 typedef struct		s_option
 {
@@ -62,7 +62,7 @@ typedef struct		s_info
 	long int 		*pure_time;
 	char			*path;
 	char			*name;
-	char			*att;
+	long int		att;
 	char			*ACL;
 	long long int	blocks;
 	long long int 	sort;

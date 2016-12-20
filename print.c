@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/20 01:35:27 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/20 22:39:04 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint)
 void			ft_just_print(t_info *info, t_sizeprint *sizeprint, 
 		t_option *option)
 {
-	char		buf[1028];
+	char		buf[614];
+	char		link[256];
 
-	(void)sizeprint;
-	ft_bzero(buf, 1028);
+	ft_bzero(buf, 614);
 	ft_space(buf, sizeprint->perm, info->perm);
 	ft_strcpy(buf, info->perm);
-	if (info->ACL)
+	if ((info->ACL || info->att) && info->perm[0] != 'l')
 		ft_strcat(buf, " ");
 	else
 		ft_strcat(buf, "  ");
@@ -75,7 +75,14 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	ft_strcat(buf, info->time);
 	ft_strcat(buf, " ");
 	ft_join_name(buf, info, option);
-	if (info->ACL)
+	if (info->perm[0] == 'l' || info->perm[0] == '0')
+	{
+		ft_bzero(link, 256);
+		readlink(info->path, link, 256);
+		ft_strcat(buf," -> ");
+		ft_strcat(buf, link);
+	}
+	if (option->e)
 		ft_strcat(buf, info->ACL);
 	else
 		ft_strcat(buf, "\n");
