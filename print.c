@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 00:22:13 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 01:27:10 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,13 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	ft_space(buf, sizeprint->time, info->time);
 	ft_strcat(buf, info->time);
 	ft_strcat(buf, " ");
-	ft_join_name(buf, info, option);
+	if (!option->G)
+		ft_join_name(buf, info, option);
+	else
+	{
+		write(1, &buf, ft_strlen(buf));
+		ft_put_color(info);
+	}
 	if (info->perm[0] == 'l' || info->perm[0] == '0')
 	{
 		ft_bzero(link, 256);
@@ -86,7 +92,8 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 		ft_strcat(buf, info->ACL);
 	else
 		ft_strcat(buf, "\n");
-	write(1, &buf, ft_strlen(buf));
+	if (!option->G)
+		write(1, &buf, ft_strlen(buf));
 }
 
 void			ft_print_all(t_dlist **list_files, t_option *option)

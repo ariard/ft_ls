@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 19:20:55 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 00:24:42 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 01:26:24 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,29 @@ char		*ft_set_date(long int time)
 	}
 	else
 		return((ft_strsub_lim(new)));	
+}
+
+void		ft_put_color(t_info *info)
+{
+	if (info->perm[0] == 'd')
+		ft_putstr(BLUE);
+	if (info->perm[0] == 'l')
+		ft_putstr(MAG);
+	if (info->perm[0] == 's')
+		ft_putstr(CYAN);
+	if (info->perm[0] == 'p')
+		ft_putstr(BROWN);
+	if (info->perm[0] == '-' && info->perm[3] == 'x')
+		ft_putstr(RED);
+	if (info->perm[0] == 'b')
+	{
+		ft_putstr(BLUE);
+		ft_putstr(CYAN);
+	}
+	if (info->perm[0] == 'c')
+		ft_putstr(BLUE);
+	ft_putstr(info->name);
+	ft_putchar(10);
+	ft_putstr(DEF);
+	ft_putstr(B_DEF);
 }

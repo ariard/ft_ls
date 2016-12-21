@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 00:18:15 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 01:26:02 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@
 # include <errno.h>
 # include <stdio.h>
 # include <unistd.h>
+
+# define RED "\e[31m"
+# define BLUE "\e[34m"
+# define MAG "\e[35m"
+# define CYAN "\e[36m"
+# define GREEN "\e[32m"
+# define BLACK "\e[30m"
+# define BROWN "\e[33m"
+# define DEF "\e[39m"
+# define B_DEF "\e[49m"
+# define B_RED "\e[41m"
+# define B_BLACK "\e[40m"
+# define B_BLUE "\e[44m"
+# define B_MAGENTA "\e[45m"
+# define B_CYAN "\e[46m"
+# define B_GREEN "\e[42m"
 
 typedef struct		s_option
 {
@@ -161,5 +177,7 @@ void				*ft_get_next(t_dlist *node, int nb, int block, int size);
 void				*ft_get_special(t_dlist *node, int nb, int block, int size);
 
 char				*ft_set_date(long int time);
+
+void				ft_put_color(t_info *info);
 
 #endif
