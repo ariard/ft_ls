@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 01:28:58 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 17:09:19 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define B_MAGENTA "\e[45m"
 # define B_CYAN "\e[46m"
 # define B_GREEN "\e[42m"
+# define B_BROWN "\e[43m"
 
 typedef struct		s_option
 {

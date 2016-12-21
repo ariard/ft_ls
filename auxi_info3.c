@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 19:20:55 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 01:29:02 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 17:11:21 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,30 @@ void		ft_put_color(t_info *info)
 	}
 	if (info->perm[0] == 'c')
 		ft_putstr(BLUE);
+	if (info->perm[0] == '-' && info->perm[3] == 's')
+	{
+		ft_putstr(BLACK);
+		ft_putstr(B_RED);
+	}
+	if (info->perm[0] == '-' && info->perm[6] == 's')
+	{
+		ft_putstr(BLACK);
+		ft_putstr(B_CYAN);
+	}
+	if (info->perm[0] == 'd' && info->perm[8] == 'w' 
+			&& (info->perm[9] == 't' || info->perm[9] == 'T'))
+	{
+		ft_putstr(BLACK);
+		ft_putstr(B_GREEN);
+	}
+	if (info->perm[0] == 'd' && info->perm[8] == 'w' 
+			&& info->perm[9] != 't' && info->perm[9] != 'T')
+	{
+		ft_putstr(BLACK);
+		ft_putstr(B_BROWN);
+	}
 	ft_putstr(info->name);
-	ft_putchar(10);
 	ft_putstr(DEF);
 	ft_putstr(B_DEF);
+	ft_putchar(10);
 }
