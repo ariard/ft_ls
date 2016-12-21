@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 15:18:28 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 20:40:46 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ t_error				*ft_set_error(char *name, char *message)
 		one_error->message = message;
 	else
 		one_error->message = 0;
-	one_error->sort = ft_strlen(one_error->name);
 	return (one_error);
 }
 
-int					ft_check_dir(char *argv, t_dlist **list_error, t_option *option)
+int					ft_check_dir(char *argv, t_dlist **list_error, 
+		t_option *option)
 {
 	DIR				*ds;
 	char			*s;
@@ -55,7 +55,7 @@ void				ft_print_error(t_dlist **list_error)
 	t_error			*error;
 
 	if (*list_error)
-		ft_insert_sort_2(list_error);
+		ft_insert_sort_3(list_error, &ft_stralphcmp);
 	tmp = *list_error;
 	while (tmp)
 	{
@@ -66,15 +66,25 @@ void				ft_print_error(t_dlist **list_error)
 	ft_list_clear(list_error);
 }
 
-void			ft_print_one_error(t_dlist **list_error)
+void				ft_check_dir_2(t_info *info)
 {
-	t_error		*error;
+	DIR				*ds;
+	char			*error;
+	char			*buf;
 
-	if (*list_error)
+	ds = opendir(info->path);
+	if (ds == NULL)
 	{
-		error = (*list_error)->data;
-		printf("ls: %s: %s\n", error->name, error->message);
-		free(*list_error);
-		*list_error = NULL;
+		buf = ft_strnew(128);
+		error = strerror(errno);
+		ft_strcpy(buf, "\n");
+		ft_strcat(buf, info->path);
+		ft_strcat(buf, ":\n");
+		ft_strcat(buf, "ls: ");
+		ft_strcat(buf, info->name);
+		ft_strcat(buf, ": ");
+		ft_strcat(buf, error);
+		ft_strcat(buf, "\n");
+		info->error = buf;
 	}
 }

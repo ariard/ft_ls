@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 16:04:40 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 17:54:03 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 20:47:00 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ void		ft_insert_sort_2(t_dlist **begin_list)
 	tmp = *begin_list;
 	while (tmp->next)
 	{
-		if (tmp->key < (tmp->next)->key)
+		if (tmp->key > (tmp->next)->key)
 		{
 			to_sort = ft_list_rem(begin_list, tmp->next);
 			tmp2 = *begin_list;
 			while (tmp2)
 			{	
-				if (tmp2->key < to_sort->key)
+				if (tmp2->key > to_sort->key)
 				{
 					ft_list_ins(begin_list, tmp2, to_sort);
 					break;

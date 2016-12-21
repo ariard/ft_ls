@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 15:47:50 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/18 18:11:14 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 20:27:49 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,9 @@ void				ft_push_dir_a(t_option *option, t_stack **head,
 			(info->name[0] != '.' || info->name[1] != 0))
 			if (info->perm[0] == 'd' && option->R) 
 			{	
-				if (ft_check_dir(info->path, list_error, option))
-				{
-					printf("\n");
-					ft_print_one_error(list_error);
-				}
-				else
-					ft_stack_push(head, info);
-				}
+				ft_check_dir_2(info);
+				ft_stack_push(head, info);
+			}
 		tmp = tmp->next;
 	}
 }
@@ -104,6 +99,8 @@ void				ft_scroll_dir_a(t_option *option, t_stack **head)
 			ft_read_dir_a(option, head, ds, path);
 			closedir(ds);
 		}
+		else if (ds == NULL)
+			ft_putstr(info->error);
 		ft_strdel(&path);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 18:20:29 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 20:34:19 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,6 @@ t_info				*ft_get_info(char *s, t_option *option)
 	if (info->ACL && !info->att)
 		ft_strcat(info->perm, "+");
 	ft_set_sort(info, option);
+	info->error = 0;
 	return (info);
 }

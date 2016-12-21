@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 18:32:31 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 20:12:41 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ typedef struct		s_info
 	char			*ACL;
 	long long int	blocks;
 	long long int 	sort;
+	char			*error;
 }					t_info;	
 
 typedef struct		s_error
 {
 	char			*name;
 	char			*message;
-	long long int	sort;
 }					t_error;
 
 typedef struct		s_sizeprint
@@ -185,5 +185,7 @@ void				ft_put_color(t_info *info);
 void				ft_set_sort(t_info *info, t_option *option);
 
 void				ft_set_time(struct stat  *buf, t_info *info, t_option *option);
+
+void				ft_check_dir_2(t_info *info);
 
 #endif
