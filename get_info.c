@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 01:19:00 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 17:00:58 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,13 @@ char				*ft_set_type(struct stat *buf)
 
 char				*ft_set_end_perm(struct stat *buf, char *perm)
 {
-	if (((buf->st_mode & S_IXGRP) ? 'x' : '-') == 'x')
+	if ((((buf->st_mode & S_ISGID) ? 's' : '-') == 's')
+		&& (((buf->st_mode & S_IXGRP) ? 'x' : '-') == 'x'))
+		ft_strcat(perm, "s");
+	else if ((((buf->st_mode & S_ISGID) ? 's' : '-') == 's')
+		&& (((buf->st_mode & S_IXGRP) ? 'x' : '-') != 'x'))
+		ft_strcat(perm, "S");
+	else if (((buf->st_mode & S_IXGRP) ? 'x' : '-') == 'x')
 		ft_strcat(perm, "x");
 	else
 		ft_strcat(perm, "-");
@@ -70,7 +76,13 @@ char				*ft_set_end_perm(struct stat *buf, char *perm)
 		ft_strcat(perm, "w");
 	else
 		ft_strcat(perm, "-");
-	if (((buf->st_mode & S_IXOTH) ? 'x' : '-') == 'x')
+	if ((((buf->st_mode & S_ISVTX) ? 's' : '-') == 's')
+		&& (((buf->st_mode & S_IXOTH) ? 'x' : '-') == 'x'))
+		ft_strcat(perm, "t");
+	else if ((((buf->st_mode & S_ISVTX) ? 's' : '-') == 's')
+		&& (((buf->st_mode & S_IXOTH) ? 'x' : '-') != 'x'))
+		ft_strcat(perm, "T");
+	else if (((buf->st_mode & S_IXOTH) ? 'x' : '-') == 'x')
 		ft_strcat(perm, "x");
 	else
 		ft_strcat(perm, "-");
@@ -91,9 +103,15 @@ char				*ft_set_perm(struct stat *buf)
 		ft_strcat(perm, "w");
 	else
 		ft_strcat(perm, "-");
-	if (((buf->st_mode & S_IXUSR) ? 'x' : '-') == 'x')
+	if ((((buf->st_mode & S_ISUID) ? 's' : '-') == 's')
+		&& (((buf->st_mode & S_IXUSR) ? 'x' : '-') == 'x'))
+		ft_strcat(perm, "s");
+	else if ((((buf->st_mode & S_ISUID) ? 's' : '-') == 's')
+		&& (((buf->st_mode & S_IXUSR) ? 'x' : '-') != 'x'))
+		ft_strcat(perm, "S");
+	else if (((buf->st_mode & S_IXUSR) ? 'x' : '-') == 'x')
 		ft_strcat(perm, "x");
-	else
+	else 
 		ft_strcat(perm, "-");
 	if (((buf->st_mode & S_IRGRP) ? 'r' : '-') == 'r')
 		ft_strcat(perm, "r");
@@ -129,7 +147,8 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->path = s;
 	info->name = ft_strrchr(s, '/'); 
 	info->ACL = ft_setACL(s, option);
-	info->att = listxattr(s, NULL, 1, 0); 
+	if (ft_strcmp(&info->perm[1], "---------"))
+		info->att = listxattr(s, NULL, 1, 0); 
 	if (info->att && info->perm[0] != 'l')
 		ft_strcat(info->perm, "@");
 	if (info->ACL && !info->att)
