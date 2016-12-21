@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 20:40:46 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 21:03:45 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void				ft_print_error(t_dlist **list_error)
 {
 	t_dlist			*tmp;
 	t_error			*error;
+	char			*buf;
 
 	if (*list_error)
 		ft_insert_sort_3(list_error, &ft_stralphcmp);
@@ -60,7 +61,13 @@ void				ft_print_error(t_dlist **list_error)
 	while (tmp)
 	{
 		error = tmp->data;
-		printf("ls: %s: %s\n", error->name, error->message);
+		buf = ft_strnew(614);
+		ft_strcpy(buf, "ls: ");
+		ft_strcat(buf, error->name);
+		ft_strcat(buf, ": ");
+		ft_strcat(buf, error->message);
+		ft_strcat(buf, "\n");
+		ft_putstr_fd(buf, 0);
 		tmp = tmp->next;
 	}
 	ft_list_clear(list_error);
@@ -75,7 +82,7 @@ void				ft_check_dir_2(t_info *info)
 	ds = opendir(info->path);
 	if (ds == NULL)
 	{
-		buf = ft_strnew(128);
+		buf = ft_strnew(614);
 		error = strerror(errno);
 		ft_strcpy(buf, "\n");
 		ft_strcat(buf, info->path);
