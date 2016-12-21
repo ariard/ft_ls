@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 19:20:55 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 17:19:53 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 18:44:49 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-char					*ft_strsub_lim(char *s)
+char			*ft_strsub_lim(char *s)
 {
 	char		*tmp;
 	char		*tmp2;
@@ -33,7 +33,7 @@ char					*ft_strsub_lim(char *s)
 	return (tmp);
 }
 
-char		*ft_set_date(long int time)
+char			*ft_set_date(long int time)
 {
 	char 			*new;
 	char 			*buf;
@@ -59,7 +59,38 @@ char		*ft_set_date(long int time)
 		return((ft_strsub_lim(new)));	
 }
 
-void		ft_put_color(t_info *info)
+void		 	ft_set_sort(t_info *info, t_option *option)
+{
+	if (option->t == 't')
+		info->sort = info->pure_time;
+	else if (option->sort == 'u')
+		info->sort = info->pure_time;
+	else if (option->sort == 'U')
+		info->sort = info->pure_time;
+	else if (option->S == 'S')
+		info->sort = info->size;
+}
+
+void			ft_set_time(struct stat *buf, t_info *info, t_option *option)
+{
+	if (option->sort == 'u')
+	{
+		info->pure_time = buf->st_atimespec.tv_sec;
+		info->time = ft_strdup(ft_set_date(info->pure_time));
+	}
+	else if (option->sort == 'U')
+	{
+		info->pure_time = buf->st_birthtimespec.tv_sec;
+		info->time = ft_strdup(ft_set_date(info->pure_time));
+	}
+	else
+	{
+		info->pure_time = buf->st_mtimespec.tv_sec;
+		info->time = ft_strdup(ft_set_date(info->pure_time));
+	}
+}
+
+void				ft_put_color(t_info *info)
 {
 	if (info->perm[0] == 'd')
 		ft_putstr(BLUE);

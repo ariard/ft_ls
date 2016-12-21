@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 17:52:42 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 18:20:29 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,7 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->team = gid->gr_name;
 	info->size = buf->st_size;
 	info->blocks = buf->st_blocks;
-	info->pure_time = buf->st_mtimespec.tv_sec;
-	info->time = ft_strdup(ft_set_date(info->pure_time));
+	ft_set_time(buf, info, option);
 	info->path = s;
 	info->name = ft_strrchr(s, '/'); 
 	info->ACL = ft_setACL(s, option);
@@ -153,9 +152,6 @@ t_info				*ft_get_info(char *s, t_option *option)
 		ft_strcat(info->perm, "@");
 	if (info->ACL && !info->att)
 		ft_strcat(info->perm, "+");
-	if (option->sort == 't')
-		info->sort = info->pure_time;
-	if (option->S == 'S')
-		info->sort = info->size;
+	ft_set_sort(info, option);
 	return (info);
 }

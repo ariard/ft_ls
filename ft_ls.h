@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 17:36:54 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 18:32:31 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct		s_option
 	char	R;
 	char	a;
 	char	r;
+	char	t;
 	char	sort;
 	char	S;
 	char 	G;
@@ -180,5 +181,9 @@ void				*ft_get_special(t_dlist *node, int nb, int block, int size);
 char				*ft_set_date(long int time);
 
 void				ft_put_color(t_info *info);
+
+void				ft_set_sort(t_info *info, t_option *option);
+
+void				ft_set_time(struct stat  *buf, t_info *info, t_option *option);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 17:49:19 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 18:36:42 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void		ft_generate_option1(t_option *option, char *value)
 	else if (*value == 'R')
 		option->R = 'R';
 	else if (*value == 't')
-		option->sort = 't';
+		option->t = 't';
 	else if (*value == 'r')
 		option->r = 'r';
 	else if (*value == 'S')
@@ -35,6 +35,8 @@ static void		ft_generate_option1(t_option *option, char *value)
 		option->mode = '1';
 	else if (*value == 'u')
 		option->sort = 'u';
+	else if (*value == 'U')
+		option->sort = 'U';
 	else if (*value == 'e')
 		option->sort = 'e';
 	else if (*value == 'g')
@@ -58,7 +60,7 @@ static int		ft_error_option(char *string)
 	ft_putstr("illegal option :");
 	ft_putchar(*string);
 	ft_putchar(10);
-	ft_putstr("usage: ls [-laRtr@n1uego][file ...]\n");
+	ft_putstr("usage: ls [-laRtr@n1uUegopdmxG][file ...]\n");
 	return (1);
 }
 
@@ -68,7 +70,7 @@ static int		ft_check_option(char *string)
 	int			check;
 	int			index;
 
-	legal_opt = "laRtrS@n1uegopdmxG";
+	legal_opt = "laRtrS@n1uUegopdmxG";
 	while (*string)
 	{
 		check = 0;
@@ -127,6 +129,8 @@ static void		ft_solve_conflict(t_option *option)
 		option->o = 'o';
 	if (option->n)
 		option->mode = 'l';
+	if ((option->sort == 'u' || option->sort == 'U') && !option->t)
+		option->sort = 0;
 }
 
 t_option		*ft_parse_option(char **argv, t_option *option)
