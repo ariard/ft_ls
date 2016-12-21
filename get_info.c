@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 20:34:19 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 22:37:12 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->name = ft_strrchr(s, '/'); 
 	info->ACL = ft_setACL(s, option);
 	if (ft_strcmp(&info->perm[1], "---------"))
-		info->att = listxattr(s, NULL, 1, 0); 
+		info->att = ft_setatt(s, option);
 	if (info->att && info->perm[0] != 'l')
 		ft_strcat(info->perm, "@");
 	if (info->ACL && !info->att)

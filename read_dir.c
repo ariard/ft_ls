@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 21:01:28 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 22:02:39 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
 	t_dlist			**list_files;
 	static int		i;
 
+	i = 0;
 	list_files = ft_memalloc(sizeof(t_list));
 	if (i != 0)
 		ft_print_path(path);
@@ -77,7 +78,7 @@ void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
 				ft_get_info(path2, option), &ft_create_info);
 		}
 	}
-	if (*list_files)
+	if (*list_files && !option->f)
 		ft_insert_sort(list_files, &ft_stralphcmp);
 	if (option->sort || option->S || option->r || option->t)
 		ft_sort(option, list_files);

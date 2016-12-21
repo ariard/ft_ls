@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 21:24:03 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 17:23:07 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 22:00:37 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		ft_join_owner(char *buf, t_info *info, t_sizeprint *sizeprint, 
 		t_option *option)
 {
-	if (!option->g && !option->n)
+	if (!option->g)
 	{
 		ft_space(buf, sizeprint->owner, info->owner);
 		ft_strcat(buf, info->owner);

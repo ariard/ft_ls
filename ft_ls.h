@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 21:03:48 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 22:30:29 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,8 @@ typedef struct		s_option
 	char	aro;
 	char	p;
 	char	d;
-	char	h;
 	char	o;
-	char	T;
-	char	n;
-	char	F;
-	char	i;
+	char	f;
 	char	x;
 }					t_option;	
 
@@ -81,7 +77,7 @@ typedef struct		s_info
 	long int 		pure_time;
 	char			*path;
 	char			*name;
-	long int		att;
+	char			*att;
 	char			*ACL;
 	long long int	blocks;
 	long long int 	sort;
@@ -187,5 +183,7 @@ void				ft_set_sort(t_info *info, t_option *option);
 void				ft_set_time(struct stat  *buf, t_info *info, t_option *option);
 
 void				ft_check_dir_2(t_info *info);
+
+char				*ft_setatt(char *s, t_option *option);
 
 #endif

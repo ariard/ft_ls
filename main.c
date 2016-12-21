@@ -1,6 +1,4 @@
 #include "ft_ls.h"
-#include <stdio.h>
-
 
 t_option			*ft_init_option(void)
 {
@@ -18,12 +16,11 @@ t_option			*ft_init_option(void)
 	option->e = 0;
 	option->aro = 0;
 	option->p = 0;
-	option->h = 0;
 	option->o = 0;
-	option->T = 0;
-	option->n = 0;
-	option->F = 0;
-	option->i = 0;
+	option->x = 0;
+	option->t = 0;
+	option->d = 0;
+	option->f = 0;
 	return (option);
 }
 
