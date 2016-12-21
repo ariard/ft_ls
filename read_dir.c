@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/19 23:17:29 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 17:53:27 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ void				ft_print_path(char *s)
 }
 
 void				ft_sort(t_option *option, t_dlist **list_files)
-{	
+{
 	if (*list_files && (option->sort || option->S))
+	{
+		ft_insert_sort_3(list_files, &ft_stralphcmp);
 		ft_insert_sort_2(list_files);
-	if (option->r || option->S)
+	}
+	if (option->r)
 		if (*list_files)
 			ft_list_reverse(list_files);
 }
@@ -50,7 +53,7 @@ void				ft_push_dir(t_option *option, t_stack **head,
 		{	
 			if (ft_check_dir(info->path, list_error, option))
 			{
-				printf("\n");
+				ft_putchar(10);	
 				ft_print_one_error(list_error);
 			}
 			else
@@ -66,9 +69,12 @@ void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
 	char			*path2;
 	struct dirent	*lu;
 	t_dlist			**list_files;
+	static int		i;
 
 	list_files = ft_memalloc(sizeof(t_list));
-	ft_print_path(path);
+	if (i != 0)
+		ft_print_path(path);
+	i++;
 	while ((lu = readdir(ds)))
 	{
 		if (lu->d_name[0] != '.')

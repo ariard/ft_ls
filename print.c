@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 01:28:57 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/21 17:52:35 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ void			ft_print_all(t_dlist **list_files, t_option *option)
 
 void			ft_print_dir(t_option *option, t_dlist **list_files)
 {
-	ft_insert_sort_3(list_files, &ft_stralphcmp);
+	if (!option->sort && !option->S)
+		ft_insert_sort_3(list_files, &ft_stralphcmp);
 	if (option->mode == 'l')
 		ft_print_all(list_files, option);
 	else
