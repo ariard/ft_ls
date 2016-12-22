@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 19:38:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 23:35:27 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 13:29:43 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char		*ft_setatt(char *s, t_option *option)
 	ft_bzero(buf, 614);
 	while (len < buflen)
 	{
-		ft_strcpy(buf, "		");
+		ft_strcpy(buf, "\n  	 ");
 		ft_strcat(buf, &list[len]);
 		vallen = getxattr(s, &list[len], NULL, 614, 0, 0);
 		ft_strcat(buf, "		");

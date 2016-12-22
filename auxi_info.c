@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 14:33:22 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 22:41:11 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 13:23:54 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		ft_fill(char *dst, char *src)
 		src++;
 	}
 	src++;
-	while (*src != ':')	
+	while (*src != ':')
 		src++;
 	src++;
 	while (*src != ':')
@@ -46,23 +46,40 @@ void		ft_fill(char *dst, char *src)
 		src++;
 	}
 	src++;
-	while (*src != ':')	
+	while (*src != ':')
 		src++;
 	src++;
 	ft_strcat(dst, " ");
 	ft_fill2(dst, src);
 }
 
-char		*ft_setACL(char *s, t_option *option)
+void		ft_fillacl(char *ret, char *str)
 {
-	char	*str;
-	char	*ret;	
-	acl_t	acl;
-	ssize_t	len;
 	int		d;
-	char	*tmp;
 
 	d = 0;
+	ft_strcat(ret, "\n");
+	while (*str)
+	{
+		ft_strcat(ret, " ");
+		ft_strcat(ret, ft_itoa(d));
+		ft_strcat(ret, ": ");
+		ft_fill(ret, str);
+		while (*str != 10)
+			str++;
+		str++;
+		d++;
+	}
+}
+
+char		*ft_setacl(char *s, t_option *option)
+{
+	char	*str;
+	char	*ret;
+	acl_t	acl;
+	ssize_t	len;
+	char	*tmp;
+
 	acl = acl_get_link_np(s, ACL_TYPE_EXTENDED);
 	if (!acl)
 		return (NULL);
@@ -73,20 +90,9 @@ char		*ft_setACL(char *s, t_option *option)
 	ret = ft_strnew(1028);
 	ft_strcpy(str, acl_to_text(acl, &len));
 	while (*str != 10)
-		str++;	
-	str++;
-	ft_strcat(ret, "\n");
-	while (*str)
-	{
-		ft_strcat(ret, " ");
-		ft_strcat(ret, ft_itoa(d));
-		ft_strcat(ret, ": ");	
-		ft_fill(ret, str);
-		while (*str != 10)
-			str++;
 		str++;
-		d++;
-	}
+	str++;
+	ft_fillacl(ret, str);
 	acl_free(acl);
 	acl = NULL;
 	ft_strdel(&tmp);

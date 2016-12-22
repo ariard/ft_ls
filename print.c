@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 02:05:55 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 13:24:45 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint,
 void			ft_just_print(t_info *info, t_sizeprint *sizeprint, 
 		t_option *option)
 {
-	char		buf[614];
+	char		buf[1028];
 	char		link[256];
 
-	ft_bzero(buf, 614);
+	ft_bzero(buf, 1028);
 	ft_space(buf, sizeprint->perm, info->perm);
 	ft_strcpy(buf, info->perm);
 	if ((info->ACL || info->att) && info->perm[0] != 'l' && info->perm[0] != 'c' 
@@ -91,8 +91,10 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 		ft_strcat(buf," -> ");
 		ft_strcat(buf, link);
 	}
-	if (option->e)
+	if (option->e && info->ACL)
 		ft_strcat(buf, info->ACL);
+	if (option->aro && info->att)
+		ft_strcat(buf, info->att);
 	else
 		ft_strcat(buf, "\n");
 	if (!option->G)

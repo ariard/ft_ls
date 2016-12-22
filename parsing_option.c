@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 01:30:11 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 13:14:03 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		ft_generate_option1(t_option *option, char *value)
 	else if (*value == 'U')
 		option->sort = 'U';
 	else if (*value == 'e')
-		option->sort = 'e';
+		option->e = 'e';
 	else if (*value == 'g')
 		option->g = 'g';
 	else if (*value == 'o')
