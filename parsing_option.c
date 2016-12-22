@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 19:11:47 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 20:31:38 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int		ft_error_option(char *string)
 {
-	ft_putstr("illegal option :");
+	ft_putstr("ls: illegal option -- ");
 	ft_putchar(*string);
 	ft_putchar(10);
-	ft_putstr("usage: ls [-laRtr@1uUegopdmxGf][file ...]\n");
+	ft_putstr("usage: ls [-laRtr@1uUegopdmxGf] [file ...]\n");
 	return (1);
 }
 
@@ -48,7 +48,7 @@ static int		ft_check_option(char *string)
 	return (0);
 }
 
-t_option		*ft_parse_option(char **argv, t_option *option)
+int				ft_parse_option(char **argv, t_option *option)
 {
 	int			i;
 	int			j;
@@ -57,7 +57,7 @@ t_option		*ft_parse_option(char **argv, t_option *option)
 	while (argv[i] && argv[i][0] == '-')
 	{
 		if (ft_check_option(&argv[i][1]))
-			return (NULL);
+			return (0);
 		j = 1;
 		while (argv[i][j])
 		{
@@ -66,5 +66,5 @@ t_option		*ft_parse_option(char **argv, t_option *option)
 		}
 		i++;
 	}
-	return (option);
+	return (1);
 }
