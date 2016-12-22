@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 19:19:52 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 19:57:36 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 20:36:14 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ void				ft_read_dir_a(t_option *option, t_stack **head, DIR *ds,
 	if (!i)
 		i = 0;
 	list_files = ft_memalloc(sizeof(t_list));
+	if (i != 0 || option->nb > 1)
+		ft_print_path(path);
+	i++;
 	while ((lu = readdir(ds)))
 	{
 		path2 = ft_strjoin(path, lu->d_name);
