@@ -6,16 +6,16 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:38:00 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 17:05:34 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 19:26:33 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_ls.h"
+#include "ft_ls.h"
 
 static void				ft_push_dir_d(t_option *option, t_dlist **list_files)
-{	
+{
 	t_dlist			*tmp;
-	t_dlist			**list_error;	
+	t_dlist			**list_error;
 
 	list_error = ft_memalloc(sizeof(t_error));
 	if (*list_files)
@@ -33,16 +33,16 @@ static void				ft_read_dir_d(t_option *option, DIR *ds, char *path)
 	while ((lu = readdir(ds)))
 	{
 		if (ft_strcmp(lu->d_name, ".") == 0)
-		{	
+		{
 			path2 = ft_strjoin(path, lu->d_name);
-			ft_list_push_back_special(list_files, 
+			ft_list_push_back_special(list_files,
 				ft_get_info(path2, option), &ft_create_info);
 		}
 	}
 	ft_push_dir_d(option, list_files);
 }
 
-void				ft_scroll_dir_d(t_option *option, t_stack **head)
+void					ft_scroll_dir_d(t_option *option, t_stack **head)
 {
 	DIR				*ds;
 	char			*path;
@@ -54,11 +54,15 @@ void				ft_scroll_dir_d(t_option *option, t_stack **head)
 		ds = opendir(info->path);
 		path = ft_strjoin(info->path, "/");
 		ft_stack_pop(head);
-		if (ds) 
+		if (ds)
 		{
 			ft_read_dir_d(option, ds, path);
 			closedir(ds);
 		}
+		else if (ds == NULL && info->error)
+			ft_print_dir_error(info);
+		if (*head)
+			ft_putchar(10);
 		ft_strdel(&path);
 	}
 }

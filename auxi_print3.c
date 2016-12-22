@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 17:55:13 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 19:04:40 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 19:12:48 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void			ft_just_print_color(t_info *info, t_sizeprint *sizeprint,
 	write(1, &buf, ft_strlen(buf));
 }
 
-void		ft_print_dir_error(t_info *info)
+void			ft_print_dir_error(t_info *info)
 {
 	ft_putchar(*info->error++);
 	ft_putchar(*info->error++);

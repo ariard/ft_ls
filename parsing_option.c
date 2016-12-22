@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 16:20:41 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 19:11:47 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static int		ft_check_option(char *string)
 		}
 		if (*string == '-' && *(string - 1) == '-')
 			check++;
-		if ((*string == '-' && *(string - 1) == '-' && *(string + 1)) || check == 0)
+		if ((*string == '-' && *(string - 1) == '-' && *(string + 1))
+				|| check == 0)
 			return (ft_error_option(string));
 		string++;
 	}

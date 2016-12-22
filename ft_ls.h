@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 19:06:36 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 19:32:14 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct		s_option
 	char	t;
 	char	sort;
 	char	ss;
-	char 	gg;
+	char	gg;
 	char	g;
 	char	e;
 	char	aro;
@@ -67,7 +67,7 @@ typedef struct		s_option
 	int		isindev;
 	int		nb;
 	char	*exe;
-}					t_option;	
+}					t_option;
 
 typedef struct		s_info
 {
@@ -78,15 +78,15 @@ typedef struct		s_info
 	long long int	size;
 	dev_t			dev;
 	char			*time;
-	long int 		pure_time;
+	long int		pure_time;
 	char			*path;
 	char			*name;
 	char			*att;
 	char			*acl;
 	long long int	blocks;
-	long long int 	sort;
+	long long int	sort;
 	char			*error;
-}					t_info;	
+}					t_info;
 
 typedef struct		s_error
 {
@@ -129,14 +129,14 @@ void				ft_insert_sort(t_dlist **begin_list,
 
 void				ft_insert_sort_2(t_dlist **begin_list);
 
-void				ft_insert_sort_3(t_dlist **begin_list, 
+void				ft_insert_sort_3(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));
 
 t_info				*ft_get_info(char *s, t_option *option);
 
 t_error				*ft_set_error(char *name, char *message);
 
-int					ft_check_dir(char *argv, t_dlist **list_error, 
+int					ft_check_dir(char *argv, t_dlist **list_error,
 		t_option *option, t_dlist **list_files);
 
 void				ft_print_error(t_dlist **list_error);
@@ -161,11 +161,11 @@ char				*ft_setacl(char *s, t_option *option);
 
 void				ft_space(char *buf, size_t len_max, char *s);
 
-void				ft_join_owner(char *buf, t_info *info, t_sizeprint *sizeprint,
-		t_option *option);
+void				ft_join_owner(char *buf, t_info *info,
+		t_sizeprint *sizeprint, t_option *option);
 
-void				ft_join_team(char *buf, t_info *info, t_sizeprint *sizeprint,
-		t_option *option);
+void				ft_join_team(char *buf, t_info *info,
+		t_sizeprint *sizeprint, t_option *option);
 
 void				ft_join_name(char *buf, t_info *info, t_option *option);
 
@@ -195,14 +195,15 @@ void				ft_put_color(t_info *info);
 
 void				ft_set_sort(t_info *info, t_option *option);
 
-void				ft_set_time(struct stat  *buf, t_info *info, t_option *option);
+void				ft_set_time(struct stat *buf, t_info *info,
+		t_option *option);
 
 void				ft_check_dir_2(t_info *info);
 
 char				*ft_setatt(char *s, t_option *option);
 
-void				ft_join_size(char *buf, t_info *info, t_sizeprint *sizeprint, 
-		t_option *option);
+void				ft_join_size(char *buf, t_info *info,
+		t_sizeprint *sizeprint, t_option *option);
 
 char				*ft_set_perm(struct stat *buf);
 
