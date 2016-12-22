@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 17:39:44 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 19:06:36 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,5 +211,14 @@ void				ft_generate_option1(t_option *option, char *value);
 void				ft_solve_conflict(t_option *option);
 
 void				ft_print_column2(t_col *col, t_dlist *tmp);
+
+void				ft_get_size2(t_sizeprint *sizeprint, t_info *info);
+
+void				ft_set_others(t_info *info, t_option *option, char *buf);
+
+void				ft_just_print_color(t_info *info, t_sizeprint *sizeprint,
+		t_option *option);
+
+void				ft_print_dir_error(t_info *info);
 
 #endif

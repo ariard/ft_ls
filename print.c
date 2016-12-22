@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 15:37:05 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 18:57:26 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,7 @@ int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint,
 	while (tmp)
 	{
 		info = tmp->data;
-		if (ft_strlen(info->perm) > sizeprint->perm)
-			sizeprint->perm = ft_strlen(info->perm);
-		if (ft_strlen(ft_itoa(info->link)) > sizeprint->link)
-			sizeprint->link = ft_strlen(ft_itoa(info->link));
-		if (ft_strlen(info->owner) > sizeprint->owner)
-			sizeprint->owner = ft_strlen(info->owner);
-		if (ft_strlen(info->team) > sizeprint->team)
-			sizeprint->team = ft_strlen(info->team);
-		if (ft_strlen(ft_itoa(info->size)) > sizeprint->size)
-			sizeprint->size = ft_strlen(ft_itoa(info->size));
-		if (ft_strlen(info->time) > sizeprint->time)
-			sizeprint->time = ft_strlen(info->time);
+		ft_get_size2(sizeprint, info);
 		blocks += info->blocks;
 		if (info->perm[0] == 'c' || info->perm[0] == 'b')
 			option->isindev--;
@@ -58,13 +47,12 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 		t_option *option)
 {
 	char		buf[1028];
-	char		link[256];
 
 	ft_bzero(buf, 1028);
 	ft_space(buf, sizeprint->perm, info->perm);
 	ft_strcpy(buf, info->perm);
-	if ((info->acl || info->att) && info->perm[0] != 'l' && info->perm[0] != 'c' 
-			&& info->perm[0] != 'b')
+	if ((info->acl || info->att) && info->perm[0] != 'l' 
+			&& info->perm[0] != 'c' && info->perm[0] != 'b')
 		ft_strcat(buf, " ");
 	else
 		ft_strcat(buf, "  ");
@@ -77,28 +65,9 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	ft_space(buf, sizeprint->time, info->time);
 	ft_strcat(buf, info->time);
 	ft_strcat(buf, " ");
-	if (!option->gg)
-		ft_join_name(buf, info, option);
-	else
-	{
-		write(1, &buf, ft_strlen(buf));
-		ft_put_color(info);
-	}
-	if (info->perm[0] == 'l' || info->perm[0] == '0')
-	{
-		ft_bzero(link, 256);
-		readlink(info->path, link, 256);
-		ft_strcat(buf," -> ");
-		ft_strcat(buf, link);
-	}
-	if (option->e && info->acl)
-		ft_strcat(buf, info->acl);
-	if (option->aro && info->att)
-		ft_strcat(buf, info->att);
-	else
-		ft_strcat(buf, "\n");
-	if (!option->gg)
-		write(1, &buf, ft_strlen(buf));
+	ft_join_name(buf, info, option);
+	ft_set_others(info, option, buf);
+	write(1, &buf, ft_strlen(buf));
 }
 
 void			ft_print_all(t_dlist **list_files, t_option *option)
@@ -118,7 +87,10 @@ void			ft_print_all(t_dlist **list_files, t_option *option)
 	while (tmp)
 	{
 		info = tmp->data;
-		ft_just_print(info, sizeprint, option);
+		if (option->gg)
+			ft_just_print_color(info, sizeprint, option);
+		else
+			ft_just_print(info, sizeprint, option);
 		tmp = tmp->next;
 	}
 	free(sizeprint);

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 23:27:06 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 17:45:26 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 17:49:34 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static void			ft_print_uno(t_dlist **list_files)
 	}
 }
 
-static void 		ft_print_comma(t_dlist **list_files)
+static void			ft_print_comma(t_dlist **list_files)
 {
-	t_dlist 	*tmp;
+	t_dlist		*tmp;
 	t_info		*info;
 	char		buf[1028];
 
@@ -75,7 +75,7 @@ static void			ft_print_lines(t_dlist **list_files, int column)
 			if (nb == 0 || !(tmp->next))
 				ft_strcat(buf, "\n");
 			write(1, &buf, ft_strlen(buf));
-			tmp = tmp->next;	
+			tmp = tmp->next;
 		}
 	}
 }
@@ -96,9 +96,9 @@ static void			ft_print_column(t_dlist **list_files, int column)
 	while (tmp && col->block && col->lines)
 	{
 		col->nb = col->block;
-		while (col->nb-- && tmp)	
+		while (col->nb-- && tmp)
 			ft_print_column2(col, tmp);
-		col->lines--;	
+		col->lines--;
 		tmp = tmp->next;
 	}
 }
@@ -116,5 +116,5 @@ void				ft_print_files(t_dlist **list_files, t_option *option)
 	else if (option->x == 'x')
 		ft_print_lines(list_files, column);
 	else
-		ft_print_column(list_files, column); 
+		ft_print_column(list_files, column);
 }

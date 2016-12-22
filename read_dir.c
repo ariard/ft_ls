@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:30:56 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 16:33:16 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 19:04:56 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,18 +98,14 @@ void				ft_scroll_dir(t_option *option, t_stack **head)
 		path = ft_strjoin(info->path, "/");
 		ft_stack_pop(head);
 		if (ds)
-			ft_read_dir(option, head, ds, path);
-		else if (ds == NULL && info->error)
 		{
-			ft_putchar(*info->error++);
-			ft_putchar(*info->error++);
-			while (*(info->error - 1) != '\n')
-				ft_putchar(*info->error++);
-			ft_putstr_fd(info->error, 0);
+			ft_read_dir(option, head, ds, path);
+			closedir(ds);
 		}
+		else if (ds == NULL && info->error)
+			ft_print_dir_error(info);
 		if (*head)
 			ft_putchar(10);
 		ft_strdel(&path);
-		closedir(ds);
 	}
 }

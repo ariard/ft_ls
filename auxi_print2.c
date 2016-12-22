@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 17:06:50 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 17:37:14 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 18:35:04 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void			ft_put_color2(t_info *info)
 	ft_putstr(info->name);
 	ft_putstr(DEF);
 	ft_putstr(B_DEF);
-	ft_putchar(10);
 }
 
 void			ft_put_color(t_info *info)
