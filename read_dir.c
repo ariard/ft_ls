@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 01:58:10 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 02:14:54 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
 	if (!i)
 		i = 0;
 	list_files = ft_memalloc(sizeof(t_list));
-	if (i != 0 || option->nb != 1)
+	if (i != 0 || option->nb > 1)
 		ft_print_path(path);
 	i++;
 	while ((lu = readdir(ds)))
@@ -101,8 +101,6 @@ void				ft_scroll_dir(t_option *option, t_stack **head)
 		{
 			ft_read_dir(option, head, ds, path);
 			closedir(ds);
-			if (*head)
-				ft_putchar(10);
 		}
 		else if (ds == NULL && info->error)
 		{
@@ -112,6 +110,8 @@ void				ft_scroll_dir(t_option *option, t_stack **head)
 				ft_putchar(*info->error++);
 			ft_putstr_fd(info->error, 0);
 		}
+		if (*head)
+			ft_putchar(10);
 		ft_strdel(&path);
 	}
 }
