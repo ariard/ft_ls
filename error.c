@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 02:16:47 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 12:47:46 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_error				*ft_set_error(char *name, char *message)
 }
 
 int					ft_check_dir(char *argv, t_dlist **list_error, 
-		t_option *option)
+		t_option *option, t_dlist **list_files)
 {
 	DIR				*ds;
 	char			*s;
@@ -40,7 +40,8 @@ int					ft_check_dir(char *argv, t_dlist **list_error,
 		s = strerror(errno);
 		if (ft_strcmp(s, "Not a directory") == 0 && !option->R)
 		{
-//			ft_set_simple_files();
+			ft_list_push_back_special(list_files, 
+					ft_get_info(argv, option), &ft_create_info);
 			return (1);
 		}	
 		ft_list_push_back_special(list_error,

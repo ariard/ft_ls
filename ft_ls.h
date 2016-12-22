@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 02:05:59 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 12:48:49 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,8 @@ t_info				*ft_get_info(char *s, t_option *option);
 
 t_error				*ft_set_error(char *name, char *message);
 
-int					ft_check_dir(char *argv, t_dlist **list_error, t_option *option);
+int					ft_check_dir(char *argv, t_dlist **list_error, 
+		t_option *option, t_dlist **list_files);
 
 void				ft_print_error(t_dlist **list_error);
 
