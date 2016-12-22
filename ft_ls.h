@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 01:10:30 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 01:50:01 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct		s_option
 	char	f;
 	char	x;
 	int		isindev;
+	int		nb;
 }					t_option;	
 
 typedef struct		s_info

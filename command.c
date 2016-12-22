@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 00:24:01 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 01:52:08 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,20 @@ void				ft_read_argv(char **argv, t_option *option, t_stack **head)
 	t_dlist 		**list_error;
 	t_dlist			**list_arg;
 	t_dlist			*tmp;
+	int				nb;
 
 	list_error = ft_memalloc(sizeof(t_list));
 	list_arg = ft_memalloc(sizeof(t_list));
+	nb = 0;
 	while (*argv)
 	{
 		if (!ft_check_dir(*argv, list_error, option))
 			ft_list_push_back_special(list_arg, 
 				ft_get_info(*argv, option), &ft_create_info);
 		argv++;
+		nb++;
 	}
+	option->nb = nb;
 	if (*list_error)
 		ft_print_error(list_error);
 	if (*list_arg)
