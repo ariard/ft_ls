@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 13:22:17 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:46:39 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define CYAN "\e[36m"
 # define GREEN "\e[32m"
 # define BLACK "\e[30m"
-# define BROWN "\e[33m"
+# define YELLOW "\e[33m"
 # define DEF "\e[39m"
 # define B_DEF "\e[49m"
 # define B_RED "\e[41m"
@@ -44,18 +44,18 @@
 # define B_MAGENTA "\e[45m"
 # define B_CYAN "\e[46m"
 # define B_GREEN "\e[42m"
-# define B_BROWN "\e[43m"
+# define B_YELLOW "\e[43m"
 
 typedef struct		s_option
 {
 	char	mode;
-	char	R;
+	char	rr;
 	char	a;
 	char	r;
 	char	t;
 	char	sort;
-	char	S;
-	char 	G;
+	char	ss;
+	char	gg;
 	char	g;
 	char	e;
 	char	aro;
@@ -66,7 +66,8 @@ typedef struct		s_option
 	char	x;
 	int		isindev;
 	int		nb;
-}					t_option;	
+	char	*exe;
+}					t_option;
 
 typedef struct		s_info
 {
@@ -77,15 +78,15 @@ typedef struct		s_info
 	long long int	size;
 	dev_t			dev;
 	char			*time;
-	long int 		pure_time;
+	long int		pure_time;
 	char			*path;
 	char			*name;
 	char			*att;
-	char			*ACL;
+	char			*acl;
 	long long int	blocks;
-	long long int 	sort;
+	long long int	sort;
 	char			*error;
-}					t_info;	
+}					t_info;
 
 typedef struct		s_error
 {
@@ -118,14 +119,14 @@ void				ft_insert_sort(t_dlist **begin_list,
 
 void				ft_insert_sort_2(t_dlist **begin_list);
 
-void				ft_insert_sort_3(t_dlist **begin_list, 
+void				ft_insert_sort_3(t_dlist **begin_list,
 		int (*cmp)(const void *key1, const void *key2));
 
 t_info				*ft_get_info(char *s, t_option *option);
 
 t_error				*ft_set_error(char *name, char *message);
 
-int					ft_check_dir(char *argv, t_dlist **list_error, 
+int					ft_check_dir(char *argv, t_dlist **list_error,
 		t_option *option, t_dlist **list_files);
 
 void				ft_print_error(t_dlist **list_error);
@@ -150,11 +151,11 @@ char				*ft_setacl(char *s, t_option *option);
 
 void				ft_space(char *buf, size_t len_max, char *s);
 
-void				ft_join_owner(char *buf, t_info *info, t_sizeprint *sizeprint,
-		t_option *option);
+void				ft_join_owner(char *buf, t_info *info,
+		t_sizeprint *sizeprint, t_option *option);
 
-void				ft_join_team(char *buf, t_info *info, t_sizeprint *sizeprint,
-		t_option *option);
+void				ft_join_team(char *buf, t_info *info,
+		t_sizeprint *sizeprint, t_option *option);
 
 void				ft_join_name(char *buf, t_info *info, t_option *option);
 
@@ -184,13 +185,14 @@ void				ft_put_color(t_info *info);
 
 void				ft_set_sort(t_info *info, t_option *option);
 
-void				ft_set_time(struct stat  *buf, t_info *info, t_option *option);
+void				ft_set_time(struct stat *buf, t_info *info,
+		t_option *option);
 
 void				ft_check_dir_2(t_info *info);
 
 char				*ft_setatt(char *s, t_option *option);
 
-void				ft_join_size(char *buf, t_info *info, t_sizeprint *sizeprint, 
-		t_option *option);
+void				ft_join_size(char *buf, t_info *info,
+		t_sizeprint *sizeprint, t_option *option);
 
 #endif

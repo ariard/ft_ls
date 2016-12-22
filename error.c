@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 13:25:33 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:42:50 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_error				*ft_set_error(char *name, char *message)
 	return (one_error);
 }
 
-int					ft_check_dir(char *argv, t_dlist **list_error, 
+int					ft_check_dir(char *argv, t_dlist **list_error,
 		t_option *option, t_dlist **list_files)
 {
 	DIR				*ds;
@@ -38,12 +38,12 @@ int					ft_check_dir(char *argv, t_dlist **list_error,
 	if (ds == NULL)
 	{
 		s = strerror(errno);
-		if (ft_strcmp(s, "Not a directory") == 0 && !option->R)
+		if (ft_strcmp(s, "Not a directory") == 0)
 		{
-			ft_list_push_back_special(list_files, 
+			ft_list_push_back_special(list_files,
 					ft_get_info(argv, option), &ft_create_info);
 			return (1);
-		}	
+		}
 		ft_list_push_back_special(list_error,
 				ft_set_error(argv, s), &ft_create_error);
 		return (1);
@@ -53,7 +53,7 @@ int					ft_check_dir(char *argv, t_dlist **list_error,
 	return (0);
 }
 
-void				ft_print_error(t_dlist **list_error) 
+void				ft_print_error(t_dlist **list_error)
 {
 	t_dlist			*tmp;
 	t_error			*error;
@@ -87,7 +87,7 @@ void				ft_check_dir_2(t_info *info)
 	if (ds == NULL)
 	{
 		buf = ft_strnew(614);
-		error = strerror(errno);	
+		error = strerror(errno);
 		ft_strcat(buf, info->path);
 		ft_strcat(buf, ":\n");
 		ft_strcat(buf, "ls: ");

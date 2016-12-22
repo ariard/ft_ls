@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 15:47:50 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 20:27:49 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:40:55 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int					ft_no_parent(char *s)
 
 void				ft_sort_a(t_option *option, t_dlist **list_files)
 {	
-	if (*list_files && (option->sort || option->S))
+	if (*list_files && (option->sort || option->ss))
 		ft_insert_sort_2(list_files);
-	if (option->r || option->S)
+	if (option->r || option->ss)
 		if (*list_files)
 			ft_list_reverse(list_files);
 }
@@ -51,7 +51,7 @@ void				ft_push_dir_a(t_option *option, t_stack **head,
 		info = tmp->data;
 		if ((info->name[0] != '.' || info->name[1] != '.') &&
 			(info->name[0] != '.' || info->name[1] != 0))
-			if (info->perm[0] == 'd' && option->R) 
+			if (info->perm[0] == 'd' && option->rr) 
 			{	
 				ft_check_dir_2(info);
 				ft_stack_push(head, info);
@@ -77,7 +77,7 @@ void				ft_read_dir_a(t_option *option, t_stack **head, DIR *ds,
 	}
 	if (*list_files)
 		ft_insert_sort(list_files, &ft_stralphcmp);
-	if (option->sort || option->S || option->r)
+	if (option->sort || option->ss || option->r)
 		ft_sort_a(option, list_files);
 	ft_push_dir_a(option, head, list_files);
 }

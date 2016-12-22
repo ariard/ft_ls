@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 13:24:45 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:37:05 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	ft_bzero(buf, 1028);
 	ft_space(buf, sizeprint->perm, info->perm);
 	ft_strcpy(buf, info->perm);
-	if ((info->ACL || info->att) && info->perm[0] != 'l' && info->perm[0] != 'c' 
+	if ((info->acl || info->att) && info->perm[0] != 'l' && info->perm[0] != 'c' 
 			&& info->perm[0] != 'b')
 		ft_strcat(buf, " ");
 	else
@@ -77,7 +77,7 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	ft_space(buf, sizeprint->time, info->time);
 	ft_strcat(buf, info->time);
 	ft_strcat(buf, " ");
-	if (!option->G)
+	if (!option->gg)
 		ft_join_name(buf, info, option);
 	else
 	{
@@ -91,13 +91,13 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 		ft_strcat(buf," -> ");
 		ft_strcat(buf, link);
 	}
-	if (option->e && info->ACL)
-		ft_strcat(buf, info->ACL);
+	if (option->e && info->acl)
+		ft_strcat(buf, info->acl);
 	if (option->aro && info->att)
 		ft_strcat(buf, info->att);
 	else
 		ft_strcat(buf, "\n");
-	if (!option->G)
+	if (!option->gg)
 		write(1, &buf, ft_strlen(buf));
 }
 

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 13:14:03 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:40:10 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static void		ft_generate_option1(t_option *option, char *value)
 	else if (*value == 'a')
 		option->a = 'a';
 	else if (*value == 'R')
-		option->R = 'R';
+		option->rr = 'R';
 	else if (*value == 't')
 		option->t = 't';
 	else if (*value == 'r')
 		option->r = 'r';
 	else if (*value == 'S')
-		option->S = 'S';
+		option->ss = 'S';
 	else if (*value == '@')
 		option->aro = '@';
 	else if (*value == '1')
@@ -50,7 +50,7 @@ static void		ft_generate_option1(t_option *option, char *value)
 	else if (*value == 'x')
 		option->x = 'x';
 	else if (*value == 'G')
-		option->G = 'G';
+		option->gg = 'G';
 	else if (*value == 'f')
 		option->f = 'f';
 }
@@ -108,7 +108,7 @@ static void		ft_solve_conflict(t_option *option)
 		j++;
 	if (option->o)
 		k++;
-	if (option->S && option->sort)
+	if (option->ss && option->sort)
 		option->sort = 0;
 	if (option->g || option->o)
 		option->mode = 'l';
@@ -132,7 +132,7 @@ static void		ft_solve_conflict(t_option *option)
 	if (option->f)
 	{
 		option->sort = 0;
-		option->S = 0;
+		option->ss = 0;
 		option->r = 0;
 		option->a = 'a';
 	}

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 02:29:45 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:38:04 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void				ft_print_path(char *s)
 
 void				ft_sort(t_option *option, t_dlist **list_files)
 {
-	if (*list_files && (option->sort || option->S || option->t))
+	if (*list_files && (option->sort || option->ss || option->t))
 	{
 		ft_insert_sort(list_files, &ft_stralphcmp);
 		ft_insert_sort_2(list_files);
@@ -46,7 +46,7 @@ void				ft_push_dir(t_option *option, t_stack **head,
 	while (tmp)
 	{
 		info = tmp->data;
-		if (info->perm[0] == 'd' && option->R) 
+		if (info->perm[0] == 'd' && option->rr) 
 		{	
 			ft_check_dir_2(info);
 			ft_stack_push(head, info);
@@ -80,7 +80,7 @@ void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
 	}
 	if (*list_files && !option->f)
 		ft_insert_sort(list_files, &ft_stralphcmp);
-	if (option->sort || option->S || option->r || option->t)
+	if (option->sort || option->ss || option->r || option->t)
 		ft_sort(option, list_files);
 	ft_push_dir(option, head, list_files);
 }

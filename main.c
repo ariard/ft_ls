@@ -6,12 +6,12 @@ t_option			*ft_init_option(void)
 
 	option = ft_memalloc(sizeof(t_option));
 	option->mode = 0;
-	option->R = 0;
+	option->rr = 0;
 	option->a = 0;
 	option->r = 0;
 	option->sort = 0;
-	option->S = 0;
-	option->G = 0;
+	option->ss = 0;
+	option->gg = 0;
 	option->g = 0;
 	option->e = 0;
 	option->aro = 0;
@@ -21,6 +21,8 @@ t_option			*ft_init_option(void)
 	option->t = 0;
 	option->d = 0;
 	option->f = 0;
+	option->nb = 0;
+	option->exe = 0;
 	return (option);
 }
 
@@ -31,6 +33,7 @@ int				main(int argc, char **argv)
 
 	i = 0;
 	option = ft_init_option();
+	option->exe = ft_strdup(argv[0]);
 	if (argc > 1)
 	{
 		if (argv[1][0] == '-')
