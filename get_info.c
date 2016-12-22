@@ -6,13 +6,14 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 15:49:33 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 16:05:17 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 20:04:39 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void				ft_set_info(struct stat *buf, t_info *info, t_option *option)
+void				ft_set_info(struct stat *buf, t_info *info,
+		t_option *option)
 {
 	struct passwd	*uid;
 	struct group	*gid;

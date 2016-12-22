@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 01:42:02 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 23:49:57 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 20:06:20 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_list_push_back_special(t_dlist **begin_list, void *data, 
+void	ft_list_push_back_special(t_dlist **begin_list, void *data,
 		t_dlist *(*create)(void *))
 {
 	t_dlist	*node;

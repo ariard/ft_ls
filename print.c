@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 18:57:26 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 19:56:37 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint,
 	return (blocks);
 }
 
-void			ft_just_print(t_info *info, t_sizeprint *sizeprint, 
+void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 		t_option *option)
 {
 	char		buf[1028];
@@ -51,7 +51,7 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	ft_bzero(buf, 1028);
 	ft_space(buf, sizeprint->perm, info->perm);
 	ft_strcpy(buf, info->perm);
-	if ((info->acl || info->att) && info->perm[0] != 'l' 
+	if ((info->acl || info->att) && info->perm[0] != 'l'
 			&& info->perm[0] != 'c' && info->perm[0] != 'b')
 		ft_strcat(buf, " ");
 	else

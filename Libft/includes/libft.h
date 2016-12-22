@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 19:52:29 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/16 21:39:43 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 20:07:07 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,11 +198,12 @@ void				ft_list_cycle(t_dlist **begin_list);
 
 void				ft_list_rem_front(t_dlist **begin_list);
 
-void				ft_list_swap(t_dlist **begin_list, t_dlist *node1, t_dlist *node2);
+void				ft_list_swap(t_dlist **begin_list,
+		t_dlist *node1, t_dlist *node2);
 
 t_dlist				*ft_list_rem(t_dlist **begin_list, t_dlist *node);
 
-void				ft_list_ins(t_dlist **begin_list, 
+void				ft_list_ins(t_dlist **begin_list,
 		t_dlist *node1, t_dlist *node2);
 
 void				ft_stack_pop(t_stack **stack);

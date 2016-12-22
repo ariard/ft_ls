@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 19:19:52 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 19:21:55 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 19:57:36 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void				ft_read_dir_a(t_option *option, t_stack **head, DIR *ds,
 	struct dirent	*lu;
 	t_dlist			**list_files;
 	static int		i;
-	
+
 	if (!i)
 		i = 0;
 	list_files = ft_memalloc(sizeof(t_list));
