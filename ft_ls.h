@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 22:47:57 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 01:10:30 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct		s_option
 	char	o;
 	char	f;
 	char	x;
+	int		isindev;
 }					t_option;	
 
 typedef struct		s_info
@@ -73,6 +74,7 @@ typedef struct		s_info
 	char			*owner;
 	char			*team;
 	long long int	size;
+	dev_t			dev;
 	char			*time;
 	long int 		pure_time;
 	char			*path;
@@ -185,5 +187,8 @@ void				ft_set_time(struct stat  *buf, t_info *info, t_option *option);
 void				ft_check_dir_2(t_info *info);
 
 char				*ft_setatt(char *s, t_option *option);
+
+void				ft_join_size(char *buf, t_info *info, t_sizeprint *sizeprint, 
+		t_option *option);
 
 #endif

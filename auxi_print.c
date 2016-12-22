@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 21:24:03 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 22:00:37 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 01:27:42 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 void		ft_join_owner(char *buf, t_info *info, t_sizeprint *sizeprint, 
 		t_option *option)
 {
-	if (!option->g)
+	if (!option->g && option->isindev > 0) 
 	{
 		ft_space(buf, sizeprint->owner, info->owner);
 		ft_strcat(buf, info->owner);
+		ft_strcat(buf, "  ");
+	}
+	else if (!option->g)
+	{
+		ft_strcat(buf, info->owner);
+		ft_space(buf, sizeprint->owner, info->owner);
 		ft_strcat(buf, "  ");
 	}
 }
@@ -26,11 +32,17 @@ void		ft_join_owner(char *buf, t_info *info, t_sizeprint *sizeprint,
 void		ft_join_team(char *buf, t_info *info, t_sizeprint *sizeprint,
 		t_option *option)
 {
-	if (!option->o)
+	if (!option->o && option->isindev > 0)
 	{
 		ft_space(buf, sizeprint->team, info->team);
 		ft_strcat(buf, info->team);
 		ft_strcat(buf, "  ");
+	}
+	else if (!option->o)
+	{
+		ft_strcat(buf, info->team);
+		ft_space(buf, sizeprint->team, info->team);
+		ft_strcat(buf, "   ");
 	}
 }
 
@@ -45,4 +57,35 @@ void		ft_join_name(char *buf, t_info *info, t_option *option)
 	}
 	else if (option->p)
 		ft_strcat(buf, info->name);
+}
+
+void		ft_join_size(char *buf, t_info *info, t_sizeprint *sizeprint,
+		t_option *option)
+{
+	int	major_d;
+	int	minor_d;
+
+	major_d = 0;
+	minor_d = 0;
+	if (info->perm[0] == 'b' || info->perm[0] == 'c')
+	{
+		ft_space(buf, 2, ft_itoa(major(info->dev)));
+		ft_strcat(buf, ft_itoa(major(info->dev)));
+		ft_strcat(buf, ", ");
+		ft_space(buf, 3, ft_itoa(minor(info->dev)));
+		ft_strcat(buf, ft_itoa(minor(info->dev)));
+		ft_strcat(buf, " ");
+	}
+	else if (option->isindev < 1)
+	{
+		ft_strcat(buf, "      ");
+		ft_strcat(buf, ft_itoa(info->size));
+		ft_strcat(buf, " ");
+	}
+	else	
+	{
+		ft_space(buf, sizeprint->size, ft_itoa(info->size));
+		ft_strcat(buf, ft_itoa(info->size));
+		ft_strcat(buf, " ");
+	}
 }

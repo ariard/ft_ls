@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 19:13:31 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 22:37:12 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 01:17:06 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->owner = uid->pw_name;
 	info->team = gid->gr_name;
 	info->size = buf->st_size;
+	info->dev = buf->st_rdev;
 	info->blocks = buf->st_blocks;
 	ft_set_time(buf, info, option);
 	info->path = s;
@@ -148,7 +149,8 @@ t_info				*ft_get_info(char *s, t_option *option)
 	info->ACL = ft_setACL(s, option);
 	if (ft_strcmp(&info->perm[1], "---------"))
 		info->att = ft_setatt(s, option);
-	if (info->att && info->perm[0] != 'l')
+	if (info->att && info->perm[0] != 'l' && info->perm[0] != 'c'
+			&& info->perm[0] != 'b')
 		ft_strcat(info->perm, "@");
 	if (info->ACL && !info->att)
 		ft_strcat(info->perm, "+");

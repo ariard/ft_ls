@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/21 21:58:25 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 01:19:12 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void			ft_space(char *buf, size_t len_max, char *s)
 		ft_strcat(buf, " ");
 }
 
-int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint)
+int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint,
+		t_option *option)
 {
 	t_dlist			*tmp;
 	t_info			*info;
@@ -29,6 +30,7 @@ int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint)
 
 	blocks = 0;
 	tmp = *list_files;
+	option->isindev = 1;
 	while (tmp)
 	{
 		info = tmp->data;
@@ -45,6 +47,8 @@ int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint)
 		if (ft_strlen(info->time) > sizeprint->time)
 			sizeprint->time = ft_strlen(info->time);
 		blocks += info->blocks;
+		if (info->perm[0] == 'c' || info->perm[0] == 'b')
+			option->isindev--;
 		tmp = tmp->next;
 	}
 	return (blocks);
@@ -59,7 +63,8 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	ft_bzero(buf, 614);
 	ft_space(buf, sizeprint->perm, info->perm);
 	ft_strcpy(buf, info->perm);
-	if ((info->ACL || info->att) && info->perm[0] != 'l')
+	if ((info->ACL || info->att) && info->perm[0] != 'l' && info->perm[0] != 'c' 
+			&& info->perm[0] != 'b')
 		ft_strcat(buf, " ");
 	else
 		ft_strcat(buf, "  ");
@@ -68,9 +73,7 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	ft_strcat(buf, " ");
 	ft_join_owner(buf, info, sizeprint, option);
 	ft_join_team(buf, info, sizeprint, option);
-	ft_space(buf, sizeprint->size, ft_itoa(info->size));
-	ft_strcat(buf, ft_itoa(info->size));
-	ft_strcat(buf, " ");
+	ft_join_size(buf, info, sizeprint, option);
 	ft_space(buf, sizeprint->time, info->time);
 	ft_strcat(buf, info->time);
 	ft_strcat(buf, " ");
@@ -107,7 +110,7 @@ void			ft_print_all(t_dlist **list_files, t_option *option)
 	sizeprint = ft_memalloc(sizeof(t_sizeprint));
 	ft_bzero(buf, 1028);
 	ft_strcpy(buf, "total ");
-	ft_strcat(buf, ft_itoa(ft_get_size(list_files, sizeprint)));
+	ft_strcat(buf, ft_itoa(ft_get_size(list_files, sizeprint, option)));
 	ft_strcat(buf, "\n");
 	write(1, buf, ft_strlen(buf));
 	while (tmp)
