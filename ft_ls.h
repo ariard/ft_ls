@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 16:21:47 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 17:39:44 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,16 @@ typedef struct		s_sizeprint
 	size_t			time;
 }					t_sizeprint;
 
+typedef struct		s_col
+{
+	int				block;
+	int				lines;
+	int				cp;
+	int				max;
+	int				nb;
+	int				size;
+}					t_col;
+
 t_option			*ft_parse_option(char **argv, t_option *option);
 
 void				ft_command(int argc, char **argv, t_option *option);
@@ -199,5 +209,7 @@ char				*ft_set_perm(struct stat *buf);
 void				ft_generate_option1(t_option *option, char *value);
 
 void				ft_solve_conflict(t_option *option);
+
+void				ft_print_column2(t_col *col, t_dlist *tmp);
 
 #endif

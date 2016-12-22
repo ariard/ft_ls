@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 21:24:03 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 15:32:22 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 17:46:18 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,30 @@ void		ft_join_size(char *buf, t_info *info, t_sizeprint *sizeprint,
 		ft_space(buf, sizeprint->size, ft_itoa(info->size));
 		ft_strcat(buf, ft_itoa(info->size));
 		ft_strcat(buf, " ");
+	}
+}
+
+void		ft_print_column2(t_col *col, t_dlist *tmp)
+{
+	char	buf[614];
+	t_info	*info;
+
+	ft_bzero(buf, 614);
+	if (col->size == col->block * col->cp)
+		info = ft_get_special(tmp, col->nb, col->block, col->size);
+	else
+		info = ft_get_next(tmp, col->nb, col->block, col->size);
+	if (info)
+	{
+		ft_strcpy(buf, info->name);
+		ft_space(buf, col->max, info->name);
+		if (col->nb == 0 || !(tmp->next))
+			ft_strcat(buf, "\n");
+		write(1, &buf, ft_strlen(buf));
+	}
+	else if (col->size != 1)
+	{
+		col->nb = 0;
+		ft_putchar(10);
 	}
 }
