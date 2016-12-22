@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:19:50 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:34:26 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <grp.h>
 # include <time.h>
 # include <errno.h>
-# include <stdio.h>
 # include <unistd.h>
 
 # define RED "\e[31m"
