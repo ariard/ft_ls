@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 18:33:11 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 20:48:54 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void		ft_generate_option1(t_option *option, char *value)
 		option->aro = '@';
 	else if (*value == '1')
 		option->mode = '1';
-	else if (*value == 'u')
+	else if (*value == 'u' && !option->t)
 		option->sort = 'u';
-	else if (*value == 'U')
+	else if (*value == 'U' && !option->t)
 		option->sort = 'U';
 	ft_generate_option2(option, value);
 }

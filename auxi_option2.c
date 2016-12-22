@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 18:33:02 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 20:58:36 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,13 @@ static void			ft_solve_conflict3(t_option *option)
 
 static void			ft_solve_conflict2(t_option *option)
 {
-	if (option->ss && option->sort)
+	if ((option->sort == 'u' || option->sort == 'U') && option->t)
 		option->sort = 0;
+	if (option->ss && (option->sort || option->t))
+	{
+		option->sort = 0;
+		option->t = 0;
+	}
 	if (option->g || option->o)
 		option->mode = 'l';
 	if ((option->sort == 'u' || option->sort == 'U') && !option->t)

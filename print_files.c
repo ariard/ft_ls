@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 23:27:06 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 17:49:34 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:12:34 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ static void			ft_print_lines(t_dlist **list_files, int column)
 	}
 }
 
-static void			ft_print_column(t_dlist **list_files, int column)
+static void			ft_print_column(t_dlist **list_files, int column,
+		t_option *option)
 {
 	t_dlist			*tmp;
 	t_col			*col;
@@ -97,7 +98,7 @@ static void			ft_print_column(t_dlist **list_files, int column)
 	{
 		col->nb = col->block;
 		while (col->nb-- && tmp)
-			ft_print_column2(col, tmp);
+			ft_print_column2(col, tmp, option);
 		col->lines--;
 		tmp = tmp->next;
 	}
@@ -116,5 +117,5 @@ void				ft_print_files(t_dlist **list_files, t_option *option)
 	else if (option->x == 'x')
 		ft_print_lines(list_files, column);
 	else
-		ft_print_column(list_files, column);
+		ft_print_column(list_files, column, option);
 }

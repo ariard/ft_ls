@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 17:06:50 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 18:35:04 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:19:26 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void			ft_put_color(t_info *info)
 		ft_putstr(BLUE);
 		ft_putstr(B_CYAN);
 	}
+	if (info->perm[0] == '-' && (info->perm[3] == 'x' || info->perm[6] == 'x'
+			|| info->perm[9] == 'x'))
+		ft_putstr(RED);
 	if (info->perm[0] == 'c')
 	{
 		ft_putstr(BLUE);

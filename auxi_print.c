@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 21:24:03 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 18:33:39 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:13:06 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		ft_join_size(char *buf, t_info *info, t_sizeprint *sizeprint,
 	}
 }
 
-void		ft_print_column2(t_col *col, t_dlist *tmp)
+void		ft_print_column2(t_col *col, t_dlist *tmp, t_option *option)
 {
 	char	buf[614];
 	t_info	*info;
@@ -97,7 +97,10 @@ void		ft_print_column2(t_col *col, t_dlist *tmp)
 		info = ft_get_next(tmp, col->nb, col->block, col->size);
 	if (info)
 	{
-		ft_strcpy(buf, info->name);
+		if (!option->gg)
+			ft_strcpy(buf, info->name);
+		else
+			ft_put_color(info);
 		ft_space(buf, col->max, info->name);
 		if (col->nb == 0 || !(tmp->next))
 			ft_strcat(buf, "\n");

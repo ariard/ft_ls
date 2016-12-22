@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 15:48:07 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:02:43 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int					ft_check_dir(char *argv, t_dlist **list_error,
 			return (1);
 		}
 		ft_list_push_back_special(list_error,
-				ft_set_error(argv, s), &ft_create_error);
+				ft_set_error(ft_strrchr(argv, '/'), s), &ft_create_error);
 		return (1);
 	}
 	else
