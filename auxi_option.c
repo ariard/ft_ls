@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 20:48:54 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:23:25 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		ft_generate_option2(t_option *option, char *value)
+static void		ft_generate_option2(t_option *option, char *value)
 {
 	if (*value == 'e')
 		option->e = 'e';
@@ -34,7 +34,7 @@ void		ft_generate_option2(t_option *option, char *value)
 		option->f = 'f';
 }
 
-void		ft_generate_option1(t_option *option, char *value)
+void			ft_generate_option1(t_option *option, char *value)
 {
 	if (*value == 'l')
 		option->mode = 'l';

@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 19:56:37 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:28:22 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void			ft_space(char *buf, size_t len_max, char *s)
+void				ft_space(char *buf, size_t len_max, char *s)
 {
 	size_t		to_space;
 
@@ -21,7 +21,7 @@ void			ft_space(char *buf, size_t len_max, char *s)
 		ft_strcat(buf, " ");
 }
 
-int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint,
+int					ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint,
 		t_option *option)
 {
 	t_dlist			*tmp;
@@ -43,7 +43,7 @@ int				ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint,
 	return (blocks);
 }
 
-void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
+static void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 		t_option *option)
 {
 	char		buf[1028];
@@ -70,7 +70,7 @@ void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	write(1, &buf, ft_strlen(buf));
 }
 
-void			ft_print_all(t_dlist **list_files, t_option *option)
+static void			ft_print_all(t_dlist **list_files, t_option *option)
 {
 	t_dlist		*tmp;
 	t_info		*info;
@@ -97,7 +97,7 @@ void			ft_print_all(t_dlist **list_files, t_option *option)
 	sizeprint = NULL;
 }
 
-void			ft_print_dir(t_option *option, t_dlist **list_files)
+void				ft_print_dir(t_option *option, t_dlist **list_files)
 {
 	ft_list_reverse(list_files);
 	if (option->mode == 'l')

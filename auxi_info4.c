@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 15:49:33 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 19:02:44 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:22:48 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-char				*ft_set_type(struct stat *buf)
+static char				*ft_set_type(struct stat *buf)
 {
 	char			*c;
 
@@ -34,7 +34,7 @@ char				*ft_set_type(struct stat *buf)
 	return (c);
 }
 
-char				*ft_set_end_perm(struct stat *buf, char *perm)
+static char				*ft_set_end_perm(struct stat *buf, char *perm)
 {
 	if (((buf->st_mode & S_IROTH) ? 'r' : '-') == 'r')
 		ft_strcat(perm, "r");
@@ -57,7 +57,7 @@ char				*ft_set_end_perm(struct stat *buf, char *perm)
 	return (perm);
 }
 
-char				*ft_set_mid_perm(struct stat *buf, char *perm)
+static char				*ft_set_mid_perm(struct stat *buf, char *perm)
 {
 	if (((buf->st_mode & S_IRGRP) ? 'r' : '-') == 'r')
 		ft_strcat(perm, "r");
@@ -80,7 +80,7 @@ char				*ft_set_mid_perm(struct stat *buf, char *perm)
 	return (ft_set_end_perm(buf, perm));
 }
 
-char				*ft_set_perm(struct stat *buf)
+char					*ft_set_perm(struct stat *buf)
 {
 	char			*perm;
 

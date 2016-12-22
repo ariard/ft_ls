@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:30:56 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:01:01 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:29:16 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void				ft_print_path(char *s)
+void					ft_print_path(char *s)
 {
 	char		buf[1028];
 
@@ -22,7 +22,7 @@ void				ft_print_path(char *s)
 	write(1, &buf, ft_strlen(buf));
 }
 
-void				ft_sort(t_option *option, t_dlist **list_files)
+void					ft_sort(t_option *option, t_dlist **list_files)
 {
 	if (*list_files && (option->sort || option->ss || option->t))
 	{
@@ -34,7 +34,7 @@ void				ft_sort(t_option *option, t_dlist **list_files)
 			ft_list_reverse(list_files);
 }
 
-void				ft_push_dir(t_option *option, t_stack **head,
+static void				ft_push_dir(t_option *option, t_stack **head,
 		t_dlist **list_files)
 {
 	t_dlist			*tmp;
@@ -55,7 +55,7 @@ void				ft_push_dir(t_option *option, t_stack **head,
 	}
 }
 
-void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
+static void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
 		char *path)
 {
 	char			*path2;
@@ -85,7 +85,7 @@ void				ft_read_dir(t_option *option, t_stack **head, DIR *ds,
 	ft_push_dir(option, head, list_files);
 }
 
-void				ft_scroll_dir(t_option *option, t_stack **head)
+void					ft_scroll_dir(t_option *option, t_stack **head)
 {
 	DIR				*ds;
 	char			*path;

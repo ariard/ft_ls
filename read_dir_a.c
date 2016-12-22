@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 19:19:52 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 20:56:10 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:30:00 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void				ft_sort_a(t_option *option, t_dlist **list_files)
+static void				ft_sort_a(t_option *option, t_dlist **list_files)
 {
 	if (*list_files && (option->sort || option->ss || option->t))
 	{
@@ -24,7 +24,7 @@ void				ft_sort_a(t_option *option, t_dlist **list_files)
 			ft_list_reverse(list_files);
 }
 
-void				ft_push_dir_a(t_option *option, t_stack **head,
+static void				ft_push_dir_a(t_option *option, t_stack **head,
 		t_dlist **list_files)
 {
 	t_dlist			*tmp;
@@ -47,7 +47,7 @@ void				ft_push_dir_a(t_option *option, t_stack **head,
 	}
 }
 
-void				ft_read_dir_a(t_option *option, t_stack **head, DIR *ds,
+static void				ft_read_dir_a(t_option *option, t_stack **head, DIR *ds,
 		char *path)
 {
 	char			*path2;
@@ -74,7 +74,7 @@ void				ft_read_dir_a(t_option *option, t_stack **head, DIR *ds,
 	ft_push_dir_a(option, head, list_files);
 }
 
-void				ft_scroll_dir_a(t_option *option, t_stack **head)
+void					ft_scroll_dir_a(t_option *option, t_stack **head)
 {
 	DIR				*ds;
 	char			*path;

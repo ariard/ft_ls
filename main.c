@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:05:36 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 20:33:07 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:27:11 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-t_option			*ft_init_option(void)
+static t_option			*ft_init_option(void)
 {
 	t_option		*option;
 
@@ -38,7 +38,7 @@ t_option			*ft_init_option(void)
 	return (option);
 }
 
-int					main(int argc, char **argv)
+int						main(int argc, char **argv)
 {
 	t_option	*option;
 	int			i;

@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 19:00:05 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:25:29 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void				ft_read_all(t_dlist **list_files, t_dlist **list_arg,
+static void				ft_read_all(t_dlist **list_files, t_dlist **list_arg,
 		t_option *option, t_stack **head)
 {
 	t_dlist			*tmp;
@@ -36,7 +36,8 @@ void				ft_read_all(t_dlist **list_files, t_dlist **list_arg,
 	}
 }
 
-void				ft_read_argv(char **argv, t_option *option, t_stack **head)
+static void				ft_read_argv(char **argv, t_option *option,
+		t_stack **head)
 {
 	t_dlist			**list_error;
 	t_dlist			**list_arg;
@@ -62,7 +63,7 @@ void				ft_read_argv(char **argv, t_option *option, t_stack **head)
 	ft_read_all(list_files, list_arg, option, head);
 }
 
-void				ft_command(int argc, char **argv, t_option *option)
+void					ft_command(int argc, char **argv, t_option *option)
 {
 	t_stack			**head;
 

@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 14:33:22 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 15:31:22 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:21:41 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		ft_fill2(char *dst, char *src)
+static void		ft_fill2(char *dst, char *src)
 {
 	while (*src != ':')
 	{
@@ -29,7 +29,7 @@ void		ft_fill2(char *dst, char *src)
 	ft_strncat(dst, "\n", 1);
 }
 
-void		ft_fill(char *dst, char *src)
+static void		ft_fill(char *dst, char *src)
 {
 	while (*(src - 1) != ':')
 	{
@@ -53,7 +53,7 @@ void		ft_fill(char *dst, char *src)
 	ft_fill2(dst, src);
 }
 
-void		ft_fillacl(char *ret, char *str)
+static void		ft_fillacl(char *ret, char *str)
 {
 	int		d;
 
@@ -72,7 +72,7 @@ void		ft_fillacl(char *ret, char *str)
 	}
 }
 
-char		*ft_setacl(char *s, t_option *option)
+char			*ft_setacl(char *s, t_option *option)
 {
 	char	*str;
 	char	*ret;

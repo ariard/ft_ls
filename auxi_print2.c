@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 17:06:50 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:19:26 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:24:24 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void			ft_put_color2(t_info *info)
+static void			ft_put_color2(t_info *info)
 {
 	if (info->perm[0] == 'l')
 		ft_putstr(MAG);
@@ -38,7 +38,7 @@ void			ft_put_color2(t_info *info)
 	ft_putstr(B_DEF);
 }
 
-void			ft_put_color(t_info *info)
+void				ft_put_color(t_info *info)
 {
 	if (info->perm[0] == 'd')
 		ft_putstr(BLUE);
@@ -67,7 +67,7 @@ void			ft_put_color(t_info *info)
 	ft_put_color2(info);
 }
 
-int				ft_get_column(void)
+int					ft_get_column(void)
 {
 	struct winsize w;
 

@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 15:49:33 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 20:04:39 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:26:58 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void				ft_set_info(struct stat *buf, t_info *info,
+static void				ft_set_info(struct stat *buf, t_info *info,
 		t_option *option)
 {
 	struct passwd	*uid;
@@ -30,7 +30,7 @@ void				ft_set_info(struct stat *buf, t_info *info,
 	ft_set_time(buf, info, option);
 }
 
-t_info				*ft_get_info(char *s, t_option *option)
+t_info					*ft_get_info(char *s, t_option *option)
 {
 	struct stat		*buf;
 	t_info			*info;

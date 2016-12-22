@@ -6,13 +6,13 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:02:43 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/22 21:31:07 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-t_error				*ft_set_error(char *name, char *message)
+t_error						*ft_set_error(char *name, char *message)
 {
 	t_error			*one_error;
 
@@ -28,7 +28,7 @@ t_error				*ft_set_error(char *name, char *message)
 	return (one_error);
 }
 
-int					ft_check_dir(char *argv, t_dlist **list_error,
+int							ft_check_dir(char *argv, t_dlist **list_error,
 		t_option *option, t_dlist **list_files)
 {
 	DIR				*ds;
@@ -53,7 +53,7 @@ int					ft_check_dir(char *argv, t_dlist **list_error,
 	return (0);
 }
 
-void				ft_print_error(t_dlist **list_error)
+void						ft_print_error(t_dlist **list_error)
 {
 	t_dlist			*tmp;
 	t_error			*error;
@@ -77,7 +77,7 @@ void				ft_print_error(t_dlist **list_error)
 	ft_list_clear(list_error);
 }
 
-void				ft_check_dir_2(t_info *info)
+void						ft_check_dir_2(t_info *info)
 {
 	DIR				*ds;
 	char			*error;
