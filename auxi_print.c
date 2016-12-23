@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 21:24:03 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 16:16:35 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 16:43:39 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ void		ft_join_team(char *buf, t_info *info, t_sizeprint *sizeprint,
 	{
 		ft_strcat(buf, info->team);
 		ft_space(buf, sizeprint->team, info->team);
-		if (!option->isindev)
-			ft_strcat(buf, "  ");
-		else
-			ft_strcat(buf, "   ");
+		ft_strcat(buf, "  ");
 	}
 }
 
@@ -55,6 +52,7 @@ void		ft_join_size(char *buf, t_info *info, t_sizeprint *sizeprint,
 {
 	if (info->perm[0] == 'b' || info->perm[0] == 'c')
 	{
+		ft_strcat(buf, " ");
 		ft_space(buf, 2, ft_itoa(major(info->dev)));
 		ft_strcat(buf, ft_itoa(major(info->dev)));
 		ft_strcat(buf, ", ");
