@@ -6,11 +6,17 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 14:32:19 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 15:01:46 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+static void				ft_sort_arg(t_dlist **list_arg)
+{
+	ft_insert_sort(list_arg, &ft_stralphcmp);
+	ft_insert_sort_2(list_arg);
+}
 
 static void				ft_read_all(t_dlist **list_files, t_dlist **list_arg,
 		t_option *option, t_stack **head)
@@ -26,11 +32,10 @@ static void				ft_read_all(t_dlist **list_files, t_dlist **list_arg,
 		if (*list_arg)
 			ft_putchar(10);
 	}
-	if (*list_arg)
-		ft_insert_sort_2(list_arg);
 	tmp = *list_arg;
-	if (tmp->next)
-		alone++;
+	if (tmp)
+		if (tmp->next)
+			alone++;
 	if (tmp)
 		while (tmp->next)
 			tmp = tmp->next;
@@ -67,6 +72,8 @@ static void				ft_read_argv(char **argv, t_option *option,
 	option->nb = nb;
 	if (*list_error)
 		ft_print_error(list_error);
+	if (*list_arg)
+		ft_sort_arg(list_arg);
 	ft_read_all(list_files, list_arg, option, head);
 }
 
