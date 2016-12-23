@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:21 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 13:46:38 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int							ft_check_dir(char *argv, t_dlist **list_error,
 	char			*s;
 
 	ds = opendir(argv);
-	if (ds == NULL)
+	s = strerror(errno);
+	if (ds == NULL && ft_strcmp(s, "Permission denied") != 0)
 	{
-		s = strerror(errno);
 		if (ft_strcmp(s, "Not a directory") == 0)
 		{
 			ft_list_push_back_special(list_files,
@@ -48,7 +48,7 @@ int							ft_check_dir(char *argv, t_dlist **list_error,
 				ft_set_error(ft_strrchr(argv, '/'), s), &ft_create_error);
 		return (1);
 	}
-	else
+	else if (ds)
 		closedir(ds);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:18 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 13:45:59 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void				ft_read_all(t_dlist **list_files, t_dlist **list_arg,
 		t_option *option, t_stack **head)
 {
 	t_dlist			*tmp;
+	t_info			*info;
 
 	if (*list_files)
 	{
@@ -31,7 +32,9 @@ static void				ft_read_all(t_dlist **list_files, t_dlist **list_arg,
 			tmp = tmp->next;
 	while (tmp)
 	{
-		ft_stack_push(head, tmp->data);
+		info = tmp->data;
+		ft_check_dir_2(info);
+		ft_stack_push(head, info);
 		tmp = tmp->previous;
 	}
 }
