@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 21:24:03 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:05 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 16:16:35 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,7 @@
 void		ft_join_owner(char *buf, t_info *info, t_sizeprint *sizeprint,
 		t_option *option)
 {
-	if (!option->g && option->isindev > 0)
-	{
-		ft_space(buf, sizeprint->owner, info->owner);
-		ft_strcat(buf, info->owner);
-		ft_strcat(buf, "  ");
-	}
-	else if (!option->g)
+	if (!option->g)
 	{
 		ft_strcat(buf, info->owner);
 		ft_space(buf, sizeprint->owner, info->owner);
@@ -32,17 +26,14 @@ void		ft_join_owner(char *buf, t_info *info, t_sizeprint *sizeprint,
 void		ft_join_team(char *buf, t_info *info, t_sizeprint *sizeprint,
 		t_option *option)
 {
-	if (!option->o && option->isindev > 0)
-	{
-		ft_space(buf, sizeprint->team, info->team);
-		ft_strcat(buf, info->team);
-		ft_strcat(buf, "  ");
-	}
-	else if (!option->o)
+	if (!option->o)
 	{
 		ft_strcat(buf, info->team);
 		ft_space(buf, sizeprint->team, info->team);
-		ft_strcat(buf, "   ");
+		if (!option->isindev)
+			ft_strcat(buf, "  ");
+		else
+			ft_strcat(buf, "   ");
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 15:01:46 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 15:20:32 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void				ft_sort_arg(t_dlist **list_arg)
 {
-	ft_insert_sort(list_arg, &ft_stralphcmp);
+	ft_insert_sort_3(list_arg, &ft_stralphcmp);
 	ft_insert_sort_2(list_arg);
 }
 
@@ -65,7 +65,7 @@ static void				ft_read_argv(char **argv, t_option *option,
 		if (ft_strcmp(option->exe, *argv))
 			if (!ft_check_dir(*argv, list_error, option, list_files))
 				ft_list_push_back_special(list_arg,
-					ft_get_info(*argv, option), &ft_create_info);
+					ft_get_info(*argv, option), &ft_create_info2);
 		argv++;
 		nb++;
 	}

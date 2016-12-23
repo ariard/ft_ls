@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 14:29:16 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 15:14:12 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,5 +221,7 @@ void				ft_just_print_color(t_info *info, t_sizeprint *sizeprint,
 		t_option *option);
 
 void				ft_print_dir_error(t_info *info);
+
+t_dlist				*ft_create_info2(void *data);
 
 #endif

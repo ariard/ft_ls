@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 15:49:10 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:33:52 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 15:15:28 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,27 @@ t_dlist				*ft_create_info(void *data)
 			info = data;
 			node->key = info->sort;
 			node->name = info->name;
+		}
+	}
+	return (node);
+}
+
+t_dlist				*ft_create_info2(void *data)
+{
+	t_dlist		*node;
+	t_info		*info;
+
+	node = ft_memalloc(sizeof(t_dlist));
+	if (node)
+	{
+		node->data = data;
+		node->next = NULL;
+		node->previous = NULL;
+		if (data)
+		{
+			info = data;
+			node->key = info->sort;
+			node->name = info->path;
 		}
 	}
 	return (node);

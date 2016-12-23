@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:38 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 16:15:08 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int				ft_parse_option(char **argv, t_option *option)
 	i = 1;
 	while (argv[i] && argv[i][0] == '-')
 	{
+		if (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] != '-')
+			return (2);
 		if (ft_check_option(&argv[i][1]))
 			return (0);
 		j = 1;
