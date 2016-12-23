@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:05:36 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:34 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 12:46:27 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ int						main(int argc, char **argv)
 	i = 0;
 	option = ft_init_option();
 	option->exe = ft_strdup(argv[0]);
-	if (argc > 1)
+	if (argc > 1 && ft_strcmp(argv[1], "-") != 0)
 	{
 		if (argv[1][0] == '-')
 			if (ft_parse_option(argv, option) == 0)
-				return (0);
+				return (1);
 		if (option)
 		{
 			argv++;
