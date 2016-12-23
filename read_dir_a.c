@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 19:19:52 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 13:14:22 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 14:28:23 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void				ft_push_dir_a(t_option *option, t_stack **head,
 			(info->name[0] != '.' || info->name[1] != 0))
 			if (info->perm[0] == 'd' && option->rr)
 			{
-				ft_check_dir_2(info);
+				ft_check_dir_2(info, 1);
 				ft_stack_push(head, info);
 			}
 		tmp = tmp->next;

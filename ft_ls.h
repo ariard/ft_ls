@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:39:51 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:26 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 14:29:16 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ void				ft_set_sort(t_info *info, t_option *option);
 void				ft_set_time(struct stat *buf, t_info *info,
 		t_option *option);
 
-void				ft_check_dir_2(t_info *info);
+void				ft_check_dir_2(t_info *info, int alone);
 
 char				*ft_setatt(char *s, t_option *option);
 

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 13:46:38 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 14:30:03 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void						ft_print_error(t_dlist **list_error)
 	ft_list_clear(list_error);
 }
 
-void						ft_check_dir_2(t_info *info)
+void						ft_check_dir_2(t_info *info, int alone)
 {
 	DIR				*ds;
 	char			*error;
@@ -88,8 +88,11 @@ void						ft_check_dir_2(t_info *info)
 	{
 		buf = ft_strnew(614);
 		error = strerror(errno);
-		ft_strcat(buf, info->path);
-		ft_strcat(buf, ":\n");
+		if (alone != 0)
+		{
+			ft_strcat(buf, info->path);
+			ft_strcat(buf, ":\n");
+		}
 		ft_strcat(buf, "ls: ");
 		ft_strcat(buf, info->name);
 		ft_strcat(buf, ": ");
