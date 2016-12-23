@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 19:19:52 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:52 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/23 13:14:22 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void				ft_read_dir_a(t_option *option, t_stack **head, DIR *ds,
 	}
 	if (*list_files)
 		ft_insert_sort(list_files, &ft_stralphcmp);
-	if (option->sort || option->ss || option->r)
+	if (option->sort || option->ss || option->r || option->t)
 		ft_sort_a(option, list_files);
 	ft_push_dir_a(option, head, list_files);
 }
