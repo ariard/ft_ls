@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 21:24:03 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/26 17:05:55 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 18:42:38 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		ft_join_size(char *buf, t_info *info, t_sizeprint *sizeprint,
 	}
 	else if (option->isindev < 1)
 	{
-		ft_strcat(buf, "      ");
+		ft_strcat(buf, "       ");
 		ft_strcat(buf, ft_itoa(info->size));
 		ft_strcat(buf, " ");
 	}
