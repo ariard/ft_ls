@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:05:36 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 15:58:15 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 16:43:55 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ static t_option			*ft_init_option(void)
 int						main(int argc, char **argv)
 {
 	t_option	*option;
-	int			i;
 	int			check;
 
-	i = 0;
 	option = ft_init_option();
 	option->exe = ft_strdup(argv[0]);
 	if (argc > 1 && ft_strcmp(argv[1], "-") != 0)
@@ -62,6 +60,8 @@ int						main(int argc, char **argv)
 			}
 		}
 	}
+	if (ft_strcmp("--", *argv) == 0)
+		argv++;
 	ft_command(argc, argv, option);
 	return (0);
 }
