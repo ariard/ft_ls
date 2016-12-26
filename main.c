@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:05:36 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/26 17:05:12 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 18:22:07 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,16 @@ int						main(int argc, char **argv)
 			if ((check = ft_parse_option(argv, option)) == 0)
 				return (1);
 		if (option)
+			argv++;
+		while (*argv && **argv == '-' && check != 3)
 		{
 			argv++;
-			while (*argv && **argv == '-' && check != 3)
-			{
-				argv++;
-				check++;
-			}
+			check++;
 		}
 	}
-	if (ft_strcmp("--", *argv) == 0)
-		argv++;
+	if (*argv)
+		if (ft_strcmp("--", *argv) == 0)
+			argv++;
 	ft_command(argc, argv, option);
 	return (0);
 }
