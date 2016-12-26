@@ -6,20 +6,11 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:40 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 16:34:32 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-void				ft_space(char *buf, size_t len_max, char *s)
-{
-	size_t		to_space;
-
-	to_space = len_max - ft_strlen(s);
-	while (to_space--)
-		ft_strcat(buf, " ");
-}
 
 int					ft_get_size(t_dlist **list_files, t_sizeprint *sizeprint,
 		t_option *option)
@@ -70,6 +61,15 @@ static void			ft_just_print(t_info *info, t_sizeprint *sizeprint,
 	write(1, &buf, ft_strlen(buf));
 }
 
+static void			ft_print_total(t_dlist **list_files, char buf[],
+		t_sizeprint *sizeprint, t_option *option)
+{
+	ft_bzero(buf, 1028);
+	ft_strcpy(buf, "total ");
+	ft_strcat(buf, ft_itoa(ft_get_size(list_files, sizeprint, option)));
+	ft_strcat(buf, "\n");
+}
+
 static void			ft_print_all(t_dlist **list_files, t_option *option)
 {
 	t_dlist		*tmp;
@@ -79,11 +79,10 @@ static void			ft_print_all(t_dlist **list_files, t_option *option)
 
 	tmp = *list_files;
 	sizeprint = ft_memalloc(sizeof(t_sizeprint));
-	ft_bzero(buf, 1028);
-	ft_strcpy(buf, "total ");
-	ft_strcat(buf, ft_itoa(ft_get_size(list_files, sizeprint, option)));
-	ft_strcat(buf, "\n");
-	write(1, buf, ft_strlen(buf));
+	ft_print_total(list_files, buf, sizeprint, option);
+	if (tmp)
+		if (tmp->next)
+			write(1, &buf, ft_strlen(buf));
 	while (tmp)
 	{
 		info = tmp->data;

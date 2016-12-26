@@ -1,0 +1,22 @@
+total 151632
+drwxr-xr-x  45 ariard  2016_paris      1530 Dec 23 16:19 42FileChecker
+drwx------   4 ariard  2016_paris       136 Nov 15 17:23 Applications
+drwxr-xr-x  14 ariard  2016_paris       476 Nov 26 16:06 Desktop
+drwx------+ 23 ariard  2016_paris       782 Nov 28 11:10 Documents
+drwx------  32 ariard  2016_paris      1088 Dec 23 16:46 Downloads
+drwxr-xr-x@ 51 ariard  2016_paris      1734 Dec 26 15:59 Library
+drwx------+  3 ariard  2016_paris       102 Nov  3 10:32 Movies
+drwx------+  3 ariard  2016_paris       102 Nov  2 10:59 Music
+drwxrwxrwx+  3 ariard  2016_paris       102 Nov  3 10:32 Pictures
+drwxr-xr-x  13 ariard  2016_paris       442 Dec  8 00:10 Piscine
+drwxr-xr-x  17 ariard  2016_paris       578 Dec 23 12:31 Projects
+-rwxr-xr-x   1 ariard  2016_paris      8480 Dec 20 14:25 a.out
+drwxr-xr-x   6 ariard  2016_paris       204 Nov 10 17:20 back
+drwxr-xr-x   2 ariard  2016_paris        68 Dec 22 00:38 dev
+lrwxr-xr-x   1 ariard  2016_paris        32 Nov  2 09:55 goinfre -> /Volumes/Storage/goinfre/ariard/
+drwxr-xr-x  13 ariard  2016_paris       442 Dec 19 12:42 sandbox
+-rwxrwxrwx+  1 ariard  2016_paris         0 Dec 19 17:43 test2
+-rwx------   1 ariard  2016_paris         0 Dec 21 18:00 test4
+drwxr-xr-x   2 ariard  2016_paris        68 Dec 20 14:22 test_col
+-rwxrwxrwx+  1 ariard  2016_paris         0 Dec 19 19:11 testuser
+-rw-r--r--   1 ariard  2016_paris  77619200 Dec 19 14:34 text

@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 16:36:08 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:00 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 16:24:27 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,8 @@ void				ft_solve_conflict(t_option *option)
 		i++;
 	if (option->g)
 		j++;
-	if ((option->aro == '@' || option->g == 'g') && option->mode != 'l')
-	{
+	if (option->aro == '@' && option->mode != 'l')
 		option->aro = 0;
-		option->g = 0;
-	}
 	if (option->mode == 'l' && i)
 		option->aro = '@';
 	if (option->mode == 'l' && j)

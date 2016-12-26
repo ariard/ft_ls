@@ -6,11 +6,20 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 17:55:13 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/22 21:34:12 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 16:32:33 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+void			ft_space(char *buf, size_t len_max, char *s)
+{
+	size_t		to_space;
+
+	to_space = len_max - ft_strlen(s);
+	while (to_space--)
+		ft_strcat(buf, " ");
+}
 
 void			ft_get_size2(t_sizeprint *sizeprint, t_info *info)
 {
