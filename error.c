@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 14:30:03 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 17:40:59 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int							ft_check_dir(char *argv, t_dlist **list_error,
 	{
 		if (ft_strcmp(s, "Not a directory") == 0)
 		{
+			option->file = 1;
 			ft_list_push_back_special(list_files,
 					ft_get_info(argv, option), &ft_create_info);
 			return (1);

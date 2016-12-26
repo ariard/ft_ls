@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 18:27:21 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 15:20:32 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 17:40:58 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void					ft_command(int argc, char **argv, t_option *option)
 	t_stack			**head;
 
 	head = ft_memalloc(sizeof(t_stack));
+	option->file = 0;
 	if (argc == 1 || !*argv)
 		ft_list_push_back_special(head, ft_get_info(".", option),
 				&ft_create_info);

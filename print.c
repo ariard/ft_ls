@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 16:40:19 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/26 16:39:46 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 17:38:10 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,10 @@ static void			ft_print_all(t_dlist **list_files, t_option *option)
 	tmp = *list_files;
 	sizeprint = ft_memalloc(sizeof(t_sizeprint));
 	ft_print_total(list_files, buf, sizeprint, option);
-	if (tmp)
-		if (tmp->next)
-			write(1, &buf, ft_strlen(buf));
+	if (option->file == 0)
+		write(1, &buf, ft_strlen(buf));
+	else
+		option->file = 0;
 	while (tmp)
 	{
 		info = tmp->data;
