@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 17:55:13 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/26 18:33:56 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 19:14:03 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,13 @@ void			ft_just_print_color(t_info *info, t_sizeprint *sizeprint,
 	write(1, &buf, ft_strlen(buf));
 }
 
-void			ft_print_dir_error(t_info *info)
+void			ft_print_dir_error(t_info *info, t_option *option)
 {
+	if (option->nb > 1)
+	{
+		ft_putstr(info->path);
+		ft_putchar(10);
+	}
 	ft_putchar(*info->error++);
 	ft_putchar(*info->error++);
 	while (*(info->error - 1) != '\n')

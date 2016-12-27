@@ -6,7 +6,7 @@
 /*   By: ariard <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 19:19:52 by ariard            #+#    #+#             */
-/*   Updated: 2016/12/23 14:28:23 by ariard           ###   ########.fr       */
+/*   Updated: 2016/12/26 19:12:00 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void					ft_scroll_dir_a(t_option *option, t_stack **head)
 			closedir(ds);
 		}
 		else if (ds == NULL && info->error)
-			ft_print_dir_error(info);
+			ft_print_dir_error(info, option);
 		if (*head)
 			ft_putchar(10);
 		ft_strdel(&path);
